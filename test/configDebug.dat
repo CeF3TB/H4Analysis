@@ -1,12 +1,18 @@
 ######## Input Files #######
 InputBranches=data/unpackBranches.dat
-include=data/physicsRuns.dat
+#include=data/physicsRuns.dat
+# 700 V 50 GeV -- Good
+#InputRuns=dcap://t3se01.psi.ch:22125/pnfs/psi.ch/cms/trivcat/store/t3groups/ethz-ecal/testbeamH4_Fall2014/data/DQM_TB3/%%RUN%%/*root 398
+## PEDESTAL RUN
+InputRuns=dcap://t3se01.psi.ch:22125/pnfs/psi.ch/cms/trivcat/store/t3groups/ethz-ecal/testbeamH4_Fall2014/data/DQM_TB3/%%RUN%%/*root 583
 
 ######## Output File #######
-OutputBranches=data/dqmBranchesExtended.dat
+#OutputBranches=data/dqmBranchesExtended.dat
+OutputBranches=data/dqmBranchesExtended.dat,data/digiBranches.dat,data/timeBranches.dat
 
 ####### Analysis #######
-Analysis=PromptRecoAnalysis,DatabaseReadAnalysis,PedSubAnalysis,SimpleAnalysis,PlotAnalysis,Corr1Analysis,Corr2Analysis
+Analysis=PromptRecoAnalysis,DatabaseReadAnalysis,PedestalAnalysis,PedSubAnalysis,SimpleAnalysis,PlotAnalysis,Corr1Analysis
+#,Corr2Analysis
 #Analysis=PromptRecoAnalysis,DatabaseReadAnalysis,PedSubAnalysis,SimpleAnalysis,PlotAnalysis,Corr1Analysis
 #
 config=DatabaseReadAnalysis databasename="sqlite://data/CeF3_H4DFall2014_analysisdb.sqlite" tablename="cef3"
@@ -14,6 +20,8 @@ config=DatabaseReadAnalysis databasename="sqlite://data/CeF3_H4DFall2014_analysi
 config=PedSubAnalysis pedestalFileName="data/pedestal.root" nChannels=4 HV.push_back(650) HV.push_back(700) HV.push_back(950) HV.push_back(600)
 #
 config=SimpleAnalysis nChannels=4 inputType=1
+#
+config=PedestalAnalysis nChannels=4 HV.push_back(650) HV.push_back(700) HV.push_back(950) HV.push_back(600)
 #
 config=PlotAnalysis nChannels=4 E.push_back(10) E.push_back(15) E.push_back(20) E.push_back(50) E.push_back(100) E.push_back(150) E.push_back(200)
 #
