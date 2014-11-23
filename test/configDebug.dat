@@ -2,9 +2,9 @@
 InputBranches=data/unpackBranches.dat
 #include=data/physicsRuns.dat
 # 700 V 50 GeV -- Good
-InputRuns=dcap://t3se01.psi.ch:22125/pnfs/psi.ch/cms/trivcat/store/t3groups/ethz-ecal/testbeamH4_Fall2014/data/DQM_TB3/%%RUN%%/*root 398
+#InputRuns=dcap://t3se01.psi.ch:22125/pnfs/psi.ch/cms/trivcat/store/t3groups/ethz-ecal/testbeamH4_Fall2014/data/DQM_TB3/%%RUN%%/*root 398
 ## PEDESTAL RUN
-#InputRuns=dcap://t3se01.psi.ch:22125/pnfs/psi.ch/cms/trivcat/store/t3groups/ethz-ecal/testbeamH4_Fall2014/data/DQM_TB3/%%RUN%%/*root 583
+InputRuns=dcap://t3se01.psi.ch:22125/pnfs/psi.ch/cms/trivcat/store/t3groups/ethz-ecal/testbeamH4_Fall2014/data/DQM_TB3/%%RUN%%/*root 583
 
 ######## Output File #######
 #OutputBranches=data/dqmBranchesExtended.dat

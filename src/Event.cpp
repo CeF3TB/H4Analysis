@@ -31,7 +31,12 @@ tree::tree(){
 
 	// -- DEBUG
 	digi_pedestal_m =new vector<float> ; 
-	digi_pedestal_q =new     vector<float> ; 
+	digi_pedestal_q =new vector<float> ; 
+
+	digi_pedestal_m0 =new vector<float> ; 
+	digi_pedestal_q0 =new vector<float> ; 
+	digi_pedestal_m1 =new vector<float> ; 
+	digi_pedestal_q1 =new vector<float> ; 
 }
 
 tree::~tree(){

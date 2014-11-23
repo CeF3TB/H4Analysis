@@ -120,4 +120,9 @@ void Looper::SetBranchesOuttree(){
 
 	SetBranchAddress("digi_pedestal_m"		,&digi_pedestal_m);
 	SetBranchAddress("digi_pedestal_q"		,&digi_pedestal_q);
+
+	SetBranchAddress("digi_pedestal_m0"		,&digi_pedestal_m0);
+	SetBranchAddress("digi_pedestal_q0"		,&digi_pedestal_q0);
+	SetBranchAddress("digi_pedestal_m1"		,&digi_pedestal_m1);
+	SetBranchAddress("digi_pedestal_q1"		,&digi_pedestal_q1);
 }

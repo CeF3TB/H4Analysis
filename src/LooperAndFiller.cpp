@@ -112,6 +112,11 @@ void LoopAndFill::Fill(){
 	// DEBUG
  	CopyVector(digi_pedestal_m         ,out.digi_pedestal_m);
  	CopyVector(digi_pedestal_q         ,out.digi_pedestal_q);
+
+ 	CopyVector(digi_pedestal_m0        ,out.digi_pedestal_m0);
+ 	CopyVector(digi_pedestal_q0        ,out.digi_pedestal_q0);
+ 	CopyVector(digi_pedestal_m1        ,out.digi_pedestal_m1);
+ 	CopyVector(digi_pedestal_q1        ,out.digi_pedestal_q1);
 	
 	Filler::Fill();	
 	StopWatch();
