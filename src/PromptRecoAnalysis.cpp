@@ -86,7 +86,7 @@ void PromptRecoAnalysis::AnalyzeEvent()
     l->digi_pedestal->at(i)=wave_pedestal.pedestal;
     l->digi_pedestal_rms->at(i)=wave_pedestal.rms;
     l->digi_max_amplitude->at(i)=wave_max.max_amplitude;
-    l->digi_charge_integrated->at(i)=waveform.at(i)->charge_integrated(0,900);
+    l->digi_charge_integrated->at(i)=waveform.at(i)->charge_integrated(4,900);
     l->digi_time_at_max->at(i)=wave_max.time_at_max*1.e9;
     l->digi_time_at_frac30->at(i)=waveform.at(i)->time_at_frac(wave_max.time_at_max-3.e-9,wave_max.time_at_max,0.3,wave_max,7)*1.e9;
     l->digi_time_at_frac50->at(i)=waveform.at(i)->time_at_frac(wave_max.time_at_max-3.e-9,wave_max.time_at_max,0.5,wave_max,7)*1.e9;

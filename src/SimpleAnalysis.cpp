@@ -64,7 +64,7 @@ for (unsigned int iSample=0;iSample< l->nDigiSamples;iSample++)
 	waveforms[i]->offset(ped.pedestal);
 	waveforms[i]->rescale(-1);
 	float max_ampl=waveforms[i]->max_amplitude(50,300,5).max_amplitude;
-	float chg_int =waveforms[i]->charge_integrated(0,900);
+	float chg_int =waveforms[i]->charge_integrated(4,900);
 	if (inputType==0){
 		if (l->digi_max_amplitude != NULL)	{ l->digi_max_amplitude->push_back(max_ampl); }
 		if (l->digi_pedestal != NULL)		{ l->digi_pedestal->push_back(ped.pedestal); }
