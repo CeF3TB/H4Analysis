@@ -118,4 +118,6 @@ void Looper::SetBranchesOuttree(){
 	SetBranchAddress("digi_charge_integrated_corr2"	,&digi_charge_integrated_corr2);
 	SetBranchAddress("digi_max_amplitude_corr2"	,&digi_max_amplitude_corr2);
 
+	SetBranchAddress("digi_pedestal_m"		,&digi_pedestal_m);
+	SetBranchAddress("digi_pedestal_q"		,&digi_pedestal_q);
 }

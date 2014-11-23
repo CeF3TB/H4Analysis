@@ -17,6 +17,7 @@ public:
 	vector<int> HV;
 	void Init(LoopAndFill *l1); // { l = l1 ; };
 	void AnalyzeEvent();
+	void ClearEvent();
 	
 	// regression stuff
 	static float mean(vector<float> &a);

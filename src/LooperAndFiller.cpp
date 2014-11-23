@@ -109,6 +109,9 @@ void LoopAndFill::Fill(){
  	CopyVector(digi_max_amplitude_corr1    ,out.digi_max_amplitude_corr1);
  	CopyVector(digi_charge_integrated_corr2,out.digi_charge_integrated_corr2);
  	CopyVector(digi_max_amplitude_corr2    ,out.digi_max_amplitude_corr2);
+	// DEBUG
+ 	CopyVector(digi_pedestal_m         ,out.digi_pedestal_m);
+ 	CopyVector(digi_pedestal_q         ,out.digi_pedestal_q);
 	
 	Filler::Fill();	
 	StopWatch();

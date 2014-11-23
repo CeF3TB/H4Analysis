@@ -245,6 +245,9 @@ void Filler::SetBranchesOuttree(){
 
 	SetBranchAddress("digi_charge_integrated_corr2"	,&out.digi_charge_integrated_corr2);
 	SetBranchAddress("digi_max_amplitude_corr2"	,&out.digi_max_amplitude_corr2);
+
+	SetBranchAddress("digi_pedestal_m",&out.digi_pedestal_m);
+	SetBranchAddress("digi_pedestal_q",&out.digi_pedestal_q);
 }
 
 bool Filler::isActive(string name)

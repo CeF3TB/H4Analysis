@@ -28,6 +28,10 @@ tree::tree(){
 
 	digi_charge_integrated_corr2 =new vector<float> ; 
 	digi_max_amplitude_corr2 =new     vector<float> ; 
+
+	// -- DEBUG
+	digi_pedestal_m =new vector<float> ; 
+	digi_pedestal_q =new     vector<float> ; 
 }
 
 tree::~tree(){
@@ -57,4 +61,8 @@ tree::~tree(){
 
 	delete digi_charge_integrated_corr2 ;
 	delete digi_max_amplitude_corr2 ;
+
+	// DEBUG	
+	delete digi_pedestal_m;
+	delete digi_pedestal_q;
 }

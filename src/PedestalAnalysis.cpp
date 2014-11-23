@@ -3,15 +3,26 @@
 #include <cmath>
 
 #define DOUBLE_PEAK
+void PedestalAnalysis::ClearEvent(){
+	BaseAnalysis::ClearEvent();
+	#ifdef DOUBLE_PEAK
+	l->digi_pedestal_m->clear();
+	l->digi_pedestal_q->clear();
+	#endif
+	return;
+}
 
 void PedestalAnalysis::AnalyzeEvent()
 {
 	#ifdef DOUBLE_PEAK 
-	vector<float> samplesY[nChannels];
+	vector<float> samplesY[nChannels]; // tail
 	vector<float> samplesX[nChannels];
 
-	vector<float> pedestalY[nChannels];
+	vector<float> pedestalY[nChannels]; // begin
 	vector<float> pedestalX[nChannels];
+
+	vector<float> baselineY[nChannels]; // begin+tail
+	vector<float> baselineX[nChannels];
 
 	for(int i=0;i<nChannels;++i)
 		{
@@ -20,6 +31,9 @@ void PedestalAnalysis::AnalyzeEvent()
 
 		pedestalX[i].clear();
 		pedestalY[i].clear();
+		
+		baselineX[i].clear();
+		baselineX[i].clear();
 		}
 	#endif
 
@@ -43,11 +57,17 @@ void PedestalAnalysis::AnalyzeEvent()
 				{
 				samplesX[digiChannel].push_back(digiSampleIndex);
 				samplesY[digiChannel].push_back(digiSampleValue);
+
+				baselineX[digiChannel].push_back(digiSampleIndex);
+				baselineY[digiChannel].push_back(digiSampleValue);
 				}
 			if( digiSampleIndex >4 && digiSampleIndex<50)
 				{
 				pedestalX[digiChannel].push_back(digiSampleIndex);
 				pedestalY[digiChannel].push_back(digiSampleValue);
+
+				baselineX[digiChannel].push_back(digiSampleIndex);
+				baselineY[digiChannel].push_back(digiSampleValue);
 				}
 			#endif
 		// END DOUBLE PEAK
@@ -69,6 +89,12 @@ void PedestalAnalysis::AnalyzeEvent()
 
 		l->FillHisto(Form("th1d_m0_ch%d_HV%d",iCh,int(l->CeF3HV)),m0[iCh] );
 		l->FillHisto(Form("th1d_q0_ch%d_HV%d",iCh,int(l->CeF3HV)),q0[iCh] );
+		// baseline
+		pair<float,float> B=regression(baselineX[iCh],baselineY[iCh]);
+		l->FillHisto(Form("th1d_m2_ch%d_HV%d",iCh,int(l->CeF3HV)),B.second );
+		l->FillHisto(Form("th1d_q2_ch%d_HV%d",iCh,int(l->CeF3HV)),B.first );
+		l->digi_pedestal_m->push_back(B.second);
+		l->digi_pedestal_q->push_back(B.first);
 		}
 		
 	for (unsigned int iSample=0;iSample< l->nDigiSamples;iSample++)
@@ -128,6 +154,9 @@ void PedestalAnalysis::Init(LoopAndFill *l1)
 		l->BookHisto(Form("th1d_q1_ch%d_HV%d",iCh,HV[iHV]),"Q TAIL",20000,3600-100,3600+100,"TH1D"); // there is no trend
 		l->BookHisto(Form("th1d_m0_ch%d_HV%d",iCh,HV[iHV]),"M PED",20000,-1.,1.,"TH1D"); // there is no trend
 		l->BookHisto(Form("th1d_q0_ch%d_HV%d",iCh,HV[iHV]),"Q PED",20000,3600-100,3600+100,"TH1D"); // there is no trend
+
+		l->BookHisto(Form("th1d_m2_ch%d_HV%d",iCh,HV[iHV]),"M PED",20000,-1.,1.,"TH1D"); // there is no trend
+		l->BookHisto(Form("th1d_q2_ch%d_HV%d",iCh,HV[iHV]),"Q PED",20000,3600-300,3600+300,"TH1D"); // there is no trend
 		#endif
 		//END DOUBLE PEAK
 	      }	

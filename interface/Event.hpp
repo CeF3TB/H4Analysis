@@ -86,6 +86,10 @@ map<string,bool> isFilled;
  	vector<bool>   *HODOX2    ;
  	vector<bool>   *HODOY1    ;
  	vector<bool>   *HODOY2    ;
+	// -- DEBUG
+	
+ 	vector<float>  *digi_pedestal_m ; 
+ 	vector<float>  *digi_pedestal_q ;
 
   float TableX;
   float TableY;
