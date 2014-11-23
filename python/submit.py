@@ -88,6 +88,8 @@ for iJob in range(0,opts.njobs):
 	sh.write('[ $EXITCODE != 0 ] && touch %s/sub%d.fail\n'%(basedir,iJob))
 	if opts.tar:
 		if basedir != opts.dir : sh.write("mv %s/output%d.root %s/output%d.root\n"%(opts.dir,iJob,basedir,iJob))
+		if opts.compress:
+			sh.write("mv %s/log%d.txt.gz %s/log%d.txt.gz\n"%(opts.dir,iJob,basedir,iJob) )
 	
 	dat=open("%s/input%d.dat"%(opts.dir,iJob),"w")
 	dat.write("include=%s\n"%opts.input)

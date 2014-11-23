@@ -37,6 +37,9 @@ def ParseInputFile(fileName):
 			R[parts[0]]=[]
 			fileList=parts[1].split(',')
 			for fName in fileList:
+				if len(fName) >0 and fName[0] == '$':
+					br=fName[1:]
+					R[parts[0]].append(br);
 				fIn=open(fName,"r")
 				for branch in fIn:
 					br= branch.split('#')[0]
