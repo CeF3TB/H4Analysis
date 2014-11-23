@@ -11,12 +11,13 @@ class PedestalAnalysis : public BaseAnalysis
  */
 
 public:
-	PedestalAnalysis(){pedMin=3550; pedMax=3610;};
+	PedestalAnalysis(){pedMin=3550; pedMax=3610;pedDelta=0.2;};
 	~PedestalAnalysis(){};
 	int nChannels;
 	vector<int> HV;
 	int pedMin;
 	int pedMax;
+	float pedDelta;
 	void Init(LoopAndFill *l1); // { l = l1 ; };
 	void AnalyzeEvent();
 	void ClearEvent();

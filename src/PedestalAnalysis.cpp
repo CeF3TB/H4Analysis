@@ -1,6 +1,7 @@
 #include "interface/PedestalAnalysis.hpp"
 #include <assert.h>
 #include <cmath>
+#include "TMath.h"
 
 #define DOUBLE_PEAK
 
@@ -19,12 +20,18 @@ void PedestalAnalysis::ClearEvent(){
 
 void PedestalAnalysis::AnalyzeEvent()
 {
+	vector<float> pedestalY[nChannels]; // begin
+	vector<float> pedestalX[nChannels];
+	for(int i=0;i<nChannels;++i)
+		{
+		pedestalX[i].clear();
+		pedestalY[i].clear();
+		}
+		
+
 	#ifdef DOUBLE_PEAK 
 	vector<float> samplesY[nChannels]; // tail
 	vector<float> samplesX[nChannels];
-
-	vector<float> pedestalY[nChannels]; // begin
-	vector<float> pedestalX[nChannels];
 
 	vector<float> baselineY[nChannels]; // begin+tail
 	vector<float> baselineX[nChannels];
@@ -34,14 +41,31 @@ void PedestalAnalysis::AnalyzeEvent()
 		samplesX[i].clear();
 		samplesY[i].clear();
 
-		pedestalX[i].clear();
-		pedestalY[i].clear();
-		
 		baselineX[i].clear();
 		baselineX[i].clear();
 		}
 	#endif
+	// compute m,q for the pedestal subtraction
+	for (unsigned int iSample=0;iSample< l->nDigiSamples;iSample++)
+	{
+ 		UInt_t digiGroup   = l->digiGroup[iSample];
+ 		UInt_t digiChannel = l->digiChannel[iSample] + 8*digiGroup;
+ 		UInt_t digiSampleIndex = l->digiSampleIndex[iSample];
+ 		Float_t digiSampleValue = l->digiSampleValue[iSample];
+			if( digiSampleIndex >4 && digiSampleIndex<44)
+				{
+				pedestalX[digiChannel].push_back(digiSampleIndex);
+				pedestalY[digiChannel].push_back(digiSampleValue);
+				}
+	}
 
+	float pedM[nChannels];	
+	//float pedQ[nChannels];
+	for (int iCh=0;iCh<nChannels ;iCh++)
+		{
+		pair<float,float> P=regression(pedestalX[iCh],pedestalY[iCh]);
+		pedM[iCh]=P.second;//pedQ[iCh]=P.first;
+		}
 
 	for (unsigned int iSample=0;iSample< l->nDigiSamples;iSample++)
 	{
@@ -50,13 +74,22 @@ void PedestalAnalysis::AnalyzeEvent()
  		UInt_t digiSampleIndex = l->digiSampleIndex[iSample];
  		Float_t digiSampleValue = l->digiSampleValue[iSample];
 		int HV = int(l->CeF3HV);
-		if( digiChannel <nChannels) 
+		if( digiChannel < unsigned(nChannels)) 
 			{
 			l->FillProfile( Form("tprofile_pedestal_ch%d_HV%d",digiChannel, HV ),digiSampleIndex +1 , digiSampleValue );
 			l->FillProfile( Form("tprofile_pedestal_ch%d_HV%d",digiChannel, 0 ),digiSampleIndex +1 , digiSampleValue ); //fill 0 with everything
-			int ped= int(l->digi_pedestal->at(digiChannel) );
+			float ped= l->digi_pedestal->at(digiChannel);
+			// approximate to the closest pedDelta*n+pedMin
+			int n= TMath::Floor((ped-pedMin)/pedDelta);
+			ped=pedMin+n*ped;
+				assert( fabs(ped - l->digi_pedestal->at(digiChannel)) < pedDelta) ;
+				assert( l->digi_pedestal->at(digiChannel) >= ped) ;
 			if (ped>pedMax ||ped<pedMin) ped=0;
-			l->FillProfile( Form("tprofile_pedestal_ch%d_ped%d",digiChannel,ped),digiSampleIndex +1 , digiSampleValue );
+			l->FillProfile( Form("tprofile_pedestal_ch%d_ped%.1f",digiChannel,ped),digiSampleIndex +1 , digiSampleValue );
+			if (pedM[digiChannel]>=0)l->FillProfile( Form("tprofile_pedestal_ch%d_ped%.1f_mPlus",digiChannel,ped),digiSampleIndex +1 , digiSampleValue );
+			else l->FillProfile( Form("tprofile_pedestal_ch%d_ped%.1f_mMinus",digiChannel,ped),digiSampleIndex +1 , digiSampleValue );
+
+
 
 		// DOUBLE PEAK
 			#ifdef DOUBLE_PEAK
@@ -69,10 +102,10 @@ void PedestalAnalysis::AnalyzeEvent()
 				baselineX[digiChannel].push_back(digiSampleIndex);
 				baselineY[digiChannel].push_back(digiSampleValue);
 				}
-			if( digiSampleIndex >4 && digiSampleIndex<50)
+			if( digiSampleIndex >4 && digiSampleIndex<44)
 				{
-				pedestalX[digiChannel].push_back(digiSampleIndex);
-				pedestalY[digiChannel].push_back(digiSampleValue);
+				//pedestalX[digiChannel].push_back(digiSampleIndex);
+				//pedestalY[digiChannel].push_back(digiSampleValue);
 
 				baselineX[digiChannel].push_back(digiSampleIndex);
 				baselineY[digiChannel].push_back(digiSampleValue);
@@ -86,7 +119,7 @@ void PedestalAnalysis::AnalyzeEvent()
 		//perform regression
 		float m1[nChannels],q1[nChannels];
 		float m0[nChannels],q0[nChannels];
-	for (unsigned iCh=0;iCh<nChannels ;++iCh)
+	for (unsigned iCh=0;iCh<unsigned(nChannels) ;++iCh)
 		{
 		pair<float,float> R=regression(samplesX[iCh],samplesY[iCh]);
 		m1[iCh]=R.second; q1[iCh]=R.first;
@@ -134,7 +167,7 @@ void PedestalAnalysis::Init(LoopAndFill *l1)
 	HV.push_back(0);
 	for( unsigned int iHV=0;iHV<HV.size() ;++iHV)
 	   {
-	   for( unsigned int iCh=0;iCh<nChannels;++iCh)
+	   for( unsigned int iCh=0;iCh<unsigned(nChannels);++iCh)
 	      {
 		cout<<"[PedestalAnalysis]::[Init] Ch="<<iCh<<"/"<<nChannels<<" HV="<<iHV<<"/"<<HV.size() <<endl;
 		l->BookHisto(Form("tprofile_pedestal_ch%d_HV%d",iCh,HV[iHV]),"Pedestal",1024,0,1024,"TProfile");
@@ -152,13 +185,17 @@ void PedestalAnalysis::Init(LoopAndFill *l1)
 	      }	
 	   }
 	cout<<"[PedestalAnalisis]::[Init]: Pedestal Histograms vs ped"<<endl;
-	for( unsigned int iCh=0;iCh<nChannels;++iCh)
+	for( unsigned int iCh=0;iCh<unsigned(nChannels);++iCh)
 	{
-		for( int iPed=pedMin;iPed<= pedMax;++iPed)
+		for( float iPed=pedMin;iPed<= pedMax;iPed+=pedDelta)
 		{
-			l->BookHisto(Form("tprofile_pedestal_ch%d_ped%d",iCh,iPed),"Pedestal",1024,0,1024,"TProfile");
+			l->BookHisto(Form("tprofile_pedestal_ch%d_ped%.1f",iCh,iPed),"Pedestal",1024,0,1024,"TProfile");
+			l->BookHisto(Form("tprofile_pedestal_ch%d_ped%.1f_mPlus",iCh,iPed),"Pedestal",1024,0,1024,"TProfile");
+			l->BookHisto(Form("tprofile_pedestal_ch%d_ped%.1f_mMinus",iCh,iPed),"Pedestal",1024,0,1024,"TProfile");
 		}
 	        l->BookHisto(Form("tprofile_pedestal_ch%d_ped0",iCh),"Pedestal",1024,0,1024,"TProfile");
+	        l->BookHisto(Form("tprofile_pedestal_ch%d_ped0_mPlus",iCh),"Pedestal",1024,0,1024,"TProfile");
+	        l->BookHisto(Form("tprofile_pedestal_ch%d_ped0_mMinus",iCh),"Pedestal",1024,0,1024,"TProfile");
 	}
 	cout<<"[PedestalAnalysis]::[Init]::Done"<<endl;
 	return ;
