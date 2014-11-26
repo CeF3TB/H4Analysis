@@ -3,6 +3,7 @@
 
 #include "TROOT.h"
 #include "Math/Interpolator.h"
+#include "TVirtualFFT.h"
 
 #include <vector> 
 #include <algorithm> 
@@ -14,6 +15,14 @@ class Waveform
   std::vector<double> _samples;
   std::vector<double> _times;
   ROOT::Math::Interpolator* _interpolator;
+  // FFT --- members	
+  std::vector<double> _fft_re;
+  std::vector<double> _fft_im;
+
+  std::vector<double> _fftI_samples;
+	
+  void fft(); // compute the fft
+  void inv_fft(int cut); // compute the inverse fft, with a freq cut. Hard.
   
   struct max_amplitude_informations
   {
@@ -152,6 +161,8 @@ class Waveform
     for (unsigned int i(0);i<_times.size();++i)
       _times[i]+=time_offset;
   } 
+
+  
     
 };
 

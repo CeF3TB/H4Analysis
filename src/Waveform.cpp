@@ -5,7 +5,7 @@
 #include "TMath.h"
 #include <assert.h>
 
-#define WARNING_ERROR 1
+#define WARNING_ERROR 0
 
 using namespace std;
 
@@ -453,3 +453,60 @@ Waveform::baseline_informations Waveform::baseline(const int& x1, const int& x2)
   return return_value;
 
 };
+
+//compute fft
+void Waveform::fft(){
+	int n=_samples.size();
+	TVirtualFFT *vfft =TVirtualFFT::FFT(1,&n,"C2CFORWARD");
+
+	Double_t orig_re[n],orig_im[n];
+	for(int i=0;i<n;i++) 
+		{
+		orig_re[i]=_samples[i];
+		if(i>1000) orig_re[i]=orig_re[999];// DIGI CAENV1742 NOT USABLE
+		orig_im[i]=0;
+		}
+	vfft->SetPointsComplex(orig_re,orig_im);
+	vfft->Transform();
+	Double_t re[n],im[n];
+	vfft->GetPointsComplex(re,im);
+	_fft_re.clear();
+	_fft_im.clear();
+	for(int i=0;i<n ;i++)
+		{
+		_fft_re.push_back(re[i]);
+		_fft_im.push_back(im[i]);
+		}
+
+	delete vfft;
+}
+
+void Waveform::inv_fft(int cut=0){
+	int n=_samples.size();
+	TVirtualFFT *vfft =TVirtualFFT::FFT(1,&n,"C2CBACKWARD M K");
+	Double_t orig_re[n],orig_im[n];
+
+	for(int i=0;i<n;i++) 
+		{
+		if( i> cut && i<n-cut) 
+			{
+			orig_im[i]=0;
+			orig_re[i]=0;
+			continue;
+			}
+		orig_re[i]= _fft_re[i];
+		orig_im[i]= _fft_im[i];
+		}
+
+	vfft->SetPointsComplex(orig_re,orig_im);
+	vfft->Transform();
+	Double_t re[n],im[n];
+	vfft->GetPointsComplex(re,im);
+	_samples.clear();
+	for(int i=0;i<n ;i++)
+		{
+		_samples.push_back(re[i]/n);
+		}
+
+	delete vfft;
+}

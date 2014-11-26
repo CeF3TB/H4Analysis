@@ -62,6 +62,8 @@ void PromptRecoAnalysis::AnalyzeEvent()
   l->digi_time_at_max->clear();
   l->digi_time_at_frac30->clear();
   l->digi_time_at_frac50->clear();
+  l->digi_fall_time_at_frac30->clear();
+  l->digi_fall_time_at_frac50->clear();
   l->digi_pedestal->resize(nDigiChannels,-999);
   l->digi_pedestal_rms->resize(nDigiChannels,-999);
   l->digi_max_amplitude->resize(nDigiChannels,-999);
@@ -69,15 +71,29 @@ void PromptRecoAnalysis::AnalyzeEvent()
   l->digi_time_at_max->resize(nDigiChannels,-999);
   l->digi_time_at_frac30->resize(nDigiChannels,-999);
   l->digi_time_at_frac50->resize(nDigiChannels,-999);
+  l->digi_fall_time_at_frac30->resize(nDigiChannels,-999);
+  l->digi_fall_time_at_frac50->resize(nDigiChannels,-999);
 
+  int digiFrequency[nDigiChannels];
+  // add informations in the waveform
   for (unsigned int iS=0; iS < l->nDigiSamples; iS++){
     unsigned int index = mapdigichannels[l->digiGroup[iS]*8+l->digiChannel[iS]];
     //    cout << "debug " << l->digiGroup[iS] << " " << l->digiChannel[iS] << " " << index << endl;
     waveform.at(index)->addTimeAndSample(l->digiSampleIndex[iS]*timeSampleUnit(l->digiFrequency[iS]),l->digiSampleValue[iS]);
     //    cout << index << " " << l->digiSampleIndex[iS]*timeSampleUnit(l->digiFrequency[iS]) << " " << l->digiSampleValue[iS] << endl;
+    digiFrequency[index] = l->digiFrequency[iS];
   }
   
   for (unsigned int i=0; i<nDigiChannels; i++) {
+ // fft!!!
+    waveform[i]->fft();
+    int cut= 60;
+	if (digiFrequency[i] == 1) cut=30;
+	else cut=15;
+	cut+=12;
+    waveform[i]->inv_fft(cut);
+    
+
     //    cout << i << " " << waveform.at(i)->_samples.size() << endl;
     Waveform::baseline_informations wave_pedestal = waveform.at(i)->baseline(5,44);
     waveform.at(i)->offset(wave_pedestal.pedestal);
