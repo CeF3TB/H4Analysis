@@ -114,7 +114,8 @@ void PromptRecoAnalysis::FillTdc(){
 
   l->TDCreco->clear();
   l->TDCreco->resize(2,-999);
-  
+  l->nTdcHits->resize(4,-999);
+
   std::vector<unsigned int> tdc_readings[4];
 
   float tdc_recox=-999;
@@ -136,6 +137,11 @@ void PromptRecoAnalysis::FillTdc(){
     float Y = (TYu-TYd)*0.005; // = /40./5./10. //position in cm 0.2mm/ns with 25ps LSB TDC
     tdc_recoy = Y;
   }
+
+  l->nTdcHits->at(0)=tdc_readings[wcXl].size();
+  l->nTdcHits->at(1)=tdc_readings[wcXr].size();
+  l->nTdcHits->at(2)=tdc_readings[wcYu].size();
+  l->nTdcHits->at(3)=tdc_readings[wcYd].size();
 
   if (tdc_recox>-999 && tdc_recoy>-999){
     l->TDCreco->at(0)=tdc_recox;

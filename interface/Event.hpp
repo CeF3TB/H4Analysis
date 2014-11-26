@@ -111,6 +111,8 @@ map<string,bool> isFilled;
   float BeamTilt;
   int IsPhysics;
 
+  vector<int> *nTdcHits;
+
 	tree();
 	~tree();
 	

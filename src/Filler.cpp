@@ -234,6 +234,7 @@ void Filler::SetBranchesOuttree(){
 	SetBranchAddress("BeamEnergy",&out.BeamEnergy);
 	SetBranchAddress("BeamTilt",&out.BeamTilt);
 	SetBranchAddress("IsPhysics",&out.IsPhysics);
+	SetBranchAddress("nTdcHits",&out.nTdcHits);
 
 	SetBranchAddress("digi_charge_integrated_sub"	,&out.digi_charge_integrated_sub);
 	SetBranchAddress("digi_max_amplitude_sub"	,&out.digi_max_amplitude_sub);

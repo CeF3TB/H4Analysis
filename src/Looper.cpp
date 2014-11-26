@@ -105,6 +105,7 @@ void Looper::SetBranchesOuttree(){
 	SetBranchAddress("BeamEnergy",&BeamEnergy);
 	SetBranchAddress("BeamTilt",&BeamTilt);
 	SetBranchAddress("IsPhysics",&IsPhysics);
+	SetBranchAddress("nTdcHits",&nTdcHits);
 	
 	//SUB
 	SetBranchAddress("digi_charge_integrated_sub"	,&digi_charge_integrated_sub);

@@ -98,6 +98,7 @@ void LoopAndFill::Fill(){
 	out.BeamEnergy = BeamEnergy;
 	out.BeamTilt = BeamTilt;
 	out.IsPhysics = IsPhysics;
+	CopyVector(nTdcHits,out.nTdcHits);
 	
 	//  Sub
  	CopyVector(digi_charge_integrated_sub,out.digi_charge_integrated_sub);

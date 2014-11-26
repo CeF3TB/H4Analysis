@@ -42,6 +42,9 @@ tree::tree(){
 	digi_pedestal_mu0 =new vector<float> ; 
 	digi_pedestal_mu1 =new vector<float> ; 
 	digi_pedestal_mu2 =new vector<float> ; 
+
+	nTdcHits = new vector<int>;
+
 }
 
 tree::~tree(){
@@ -75,4 +78,7 @@ tree::~tree(){
 	// DEBUG	
 	delete digi_pedestal_m;
 	delete digi_pedestal_q;
+
+	delete nTdcHits;
+
 }
