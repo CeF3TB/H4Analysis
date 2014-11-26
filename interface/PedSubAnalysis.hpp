@@ -11,12 +11,16 @@ class PedSubAnalysis : public BaseAnalysis
  */
 TFile *pedFile;
 //map<string,TProfile*> pedHisto;
-map<pair<int,int>,TProfile*> pedHisto; //ch-HV
+map<string,TProfile*> pedHisto; 
 public:
-	PedSubAnalysis(){pedFile=NULL;};
+	PedSubAnalysis(){pedFile=NULL;muMin=-2;muMax=6;muDelta=0.2;nCat=3;};
 	~PedSubAnalysis(){Close();};
 	int nChannels;
-	vector<int> HV;
+	//vector<int> HV;
+	float muMin;
+	float muMax;
+	float muDelta;
+	int nCat;
 	void Init(LoopAndFill *l1); // { l = l1 ; };
 	void ClearEvent();
 	void AnalyzeEvent();

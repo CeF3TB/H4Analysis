@@ -6,12 +6,14 @@ include=data/physicsRuns.dat
 OutputBranches=data/dqmBranchesExtended.dat
 
 ####### Analysis #######
-Analysis=PromptRecoAnalysis,DatabaseReadAnalysis,PedSubAnalysis,SimpleAnalysis,PlotAnalysis,Corr1Analysis,Corr2Analysis
-#Analysis=PromptRecoAnalysis,DatabaseReadAnalysis,PedSubAnalysis,SimpleAnalysis,PlotAnalysis,Corr1Analysis
+#Analysis=PromptRecoAnalysis,DatabaseReadAnalysis,PedestalAnalysis,PedSubAnalysis,SimpleAnalysis,PlotAnalysis,Corr1Analysis,Corr2Analysis
+Analysis=PromptRecoAnalysis,DatabaseReadAnalysis,PedestalAnalysis,PedSubAnalysis,SimpleAnalysis,PlotAnalysis,Corr1Analysis
 #
 config=DatabaseReadAnalysis databasename="sqlite://data/CeF3_H4DFall2014_analysisdb.sqlite" tablename="cef3"
 #
-config=PedSubAnalysis pedestalFileName="data/pedestal.root" nChannels=4 HV.push_back(650) HV.push_back(700) HV.push_back(950) HV.push_back(600)
+config=PedestalAnalysis nChannels=4
+#
+config=PedSubAnalysis pedestalFileName="data/pedestal.root" nChannels=4 
 #
 config=SimpleAnalysis nChannels=4 inputType=1
 #

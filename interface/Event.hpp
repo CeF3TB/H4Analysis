@@ -91,11 +91,17 @@ map<string,bool> isFilled;
  	vector<float>  *digi_pedestal_m ; 
  	vector<float>  *digi_pedestal_q ;
 
+ 	vector<float>  *digi_pedestal_m2 ; 
+ 	vector<float>  *digi_pedestal_q2 ;
+ 	vector<float>  *digi_pedestal_mu2 ; 
+
  	vector<float>  *digi_pedestal_m1 ; 
  	vector<float>  *digi_pedestal_q1 ;
+ 	vector<float>  *digi_pedestal_mu1 ; 
 
  	vector<float>  *digi_pedestal_m0 ; 
  	vector<float>  *digi_pedestal_q0 ;
+ 	vector<float>  *digi_pedestal_mu0 ; 
 
   float TableX;
   float TableY;

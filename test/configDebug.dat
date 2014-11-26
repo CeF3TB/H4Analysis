@@ -21,7 +21,8 @@ config=PedSubAnalysis pedestalFileName="data/pedestal.root" nChannels=4 HV.push_
 #
 config=SimpleAnalysis nChannels=4 inputType=1
 #
-config=PedestalAnalysis nChannels=4 HV.push_back(650) HV.push_back(700) HV.push_back(950) HV.push_back(600)
+config=PedestalAnalysis nChannels=4 
+#HV.push_back(650) HV.push_back(700) HV.push_back(950) HV.push_back(600)
 #
 config=PlotAnalysis nChannels=4 E.push_back(10) E.push_back(15) E.push_back(20) E.push_back(50) E.push_back(100) E.push_back(150) E.push_back(200)
 #

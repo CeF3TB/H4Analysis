@@ -253,6 +253,12 @@ void Filler::SetBranchesOuttree(){
 	SetBranchAddress("digi_pedestal_q0",&out.digi_pedestal_q0);
 	SetBranchAddress("digi_pedestal_m1",&out.digi_pedestal_m1);
 	SetBranchAddress("digi_pedestal_q1",&out.digi_pedestal_q1);
+	SetBranchAddress("digi_pedestal_m2",&out.digi_pedestal_m2);
+	SetBranchAddress("digi_pedestal_q2",&out.digi_pedestal_q2);
+
+	SetBranchAddress("digi_pedestal_mu0"		,&out.digi_pedestal_mu0);
+	SetBranchAddress("digi_pedestal_mu1"		,&out.digi_pedestal_mu1);
+	SetBranchAddress("digi_pedestal_mu2"		,&out.digi_pedestal_mu2);
 }
 
 bool Filler::isActive(string name)

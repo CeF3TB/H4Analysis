@@ -11,13 +11,14 @@ class PedestalAnalysis : public BaseAnalysis
  */
 
 public:
-	PedestalAnalysis(){pedMin=3550; pedMax=3610;pedDelta=0.2;};
+	PedestalAnalysis(){ muMin=-2; muMax=6;muDelta=0.2; nCat=3;};
 	~PedestalAnalysis(){};
 	int nChannels;
-	vector<int> HV;
-	int pedMin;
-	int pedMax;
-	float pedDelta;
+	//vector<int> HV;
+	float muMin;
+	float muMax;
+	float muDelta;
+	int nCat;
 	void Init(LoopAndFill *l1); // { l = l1 ; };
 	void AnalyzeEvent();
 	void ClearEvent();
@@ -25,6 +26,7 @@ public:
 	// regression stuff
 	static float mean(vector<float> &a);
 	static pair<float,float> regression(vector<float>&a,vector<float>&b);
+	static char computeCategory(const UInt_t digiChannel,const float dmu2,const float dum1);
 	
 	
 };

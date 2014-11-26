@@ -4,7 +4,8 @@ OutputBranches=data/noneBranches.dat
 ## Simple Analysis -> WaveForm Tools for Pedestal subtraction
 Analysis=DatabaseReadAnalysis,SimpleAnalysis,PedestalAnalysis
 config=DatabaseReadAnalysis databasename="sqlite://data/CeF3_H4DFall2014_analysisdb.sqlite" tablename="cef3"
-config=PedestalAnalysis nChannels=4 HV.push_back(650) HV.push_back(700) HV.push_back(950) HV.push_back(600)
+config=PedestalAnalysis nChannels=4
+#HV.push_back(650) HV.push_back(700) HV.push_back(950) HV.push_back(600)
 config=SimpleAnalysis nChannels=4 inputType=0
 
 #InputFiles=dcap://t3se01.psi.ch:22125/pnfs/psi.ch/cms/trivcat/store/t3groups/ethz-ecal/testbeamH4_Fall2014/data/DQM_TB3/516/*root
