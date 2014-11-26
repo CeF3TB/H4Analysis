@@ -140,8 +140,8 @@ void PromptRecoAnalysis::FillTdc(){
 
   l->nTdcHits->at(0)=tdc_readings[wcXl].size();
   l->nTdcHits->at(1)=tdc_readings[wcXr].size();
-  l->nTdcHits->at(2)=tdc_readings[wcYu].size();
-  l->nTdcHits->at(3)=tdc_readings[wcYd].size();
+  l->nTdcHits->at(2)=tdc_readings[wcYd].size();
+  l->nTdcHits->at(3)=tdc_readings[wcYu].size();
 
   if (tdc_recox>-999 && tdc_recoy>-999){
     l->TDCreco->at(0)=tdc_recox;
