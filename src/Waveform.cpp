@@ -5,7 +5,7 @@
 #include "TMath.h"
 #include <assert.h>
 
-#define WARNING_ERROR 0
+#define WARNING_ERROR 1
 
 using namespace std;
 
@@ -176,7 +176,7 @@ float Waveform::interpolatedValue(const int& i1, int SampleToInterpolate) const
 
 
 //Get the time at a given fraction of the amplitude for times between x1 and x2 
-float Waveform::time_at_frac(const float& t1, const float& t2, const float& frac, const max_amplitude_informations& maxInfos, int SampleToInterpolate) const
+float Waveform::time_at_frac(const float& t1, const float& t2, const float& frac, const max_amplitude_informations& maxInfos, int SampleToInterpolate,bool rising) const
 {
   //std::cout << "_____ " << t1 << "," << t2 << std::endl;
   int tmin=0;
@@ -190,18 +190,29 @@ float Waveform::time_at_frac(const float& t1, const float& t2, const float& frac
 	tmax=i;
     }
 
-  return time_at_frac(tmin,tmax,frac,maxInfos,SampleToInterpolate);
+  return time_at_frac(tmin,tmax,frac,maxInfos,SampleToInterpolate,rising);
 }
 
 
 //Get the time at a given fraction of the amplitude for times between x1 and x2 
-float Waveform::time_at_frac(const int& x1, const int& x2, const float& frac, const max_amplitude_informations& maxInfos, int SampleToInterpolate) const
+float Waveform::time_at_frac(const int& x1, const int& x2, const float& frac, const max_amplitude_informations& maxInfos, int SampleToInterpolate, bool rising) const
 {
-  int cfSample=maxInfos.sample_at_max;
+  int cfSample=-1;
 
   //  std::cout << "===== " << x1 << "," << x2 << std::endl;
+  int start=(int)maxInfos.sample_at_max;
+  int end1=max(x1,0);
+  int end2=start;
+  int incr=-1;
+  if (not rising)
+	{
+	end1=start;
+	end2=min( int(_samples.size())-1,x2);
+	incr=+1;
+	}
+	
 
-  for(int iSample=(int)maxInfos.sample_at_max; iSample>max(x1,0); iSample--)
+  for(int iSample=start; iSample>=end1 && iSample<=end2; iSample+=incr)
     {
       if(_samples[iSample] < maxInfos.max_amplitude*frac) 
 	{
@@ -263,8 +274,8 @@ float Waveform::time_at_frac(const int& x1, const int& x2, const float& frac, co
 	}
 
     }
-    assert(0); // should not arrive here
-    return -1;
+    //assert(0); // should not arrive here
+    return -999;
 };
 
 //Get the crossing time of the amplitude at a given threshold for times between t1 and t2 

@@ -82,14 +82,17 @@ void PromptRecoAnalysis::AnalyzeEvent()
     Waveform::baseline_informations wave_pedestal = waveform.at(i)->baseline(5,44);
     waveform.at(i)->offset(wave_pedestal.pedestal);
     waveform.at(i)->rescale(-1);
-    Waveform::max_amplitude_informations wave_max = waveform.at(i)->max_amplitude(50,300,5);
+    Waveform::max_amplitude_informations wave_max = waveform.at(i)->max_amplitude(50,300,7);
     l->digi_pedestal->at(i)=wave_pedestal.pedestal;
     l->digi_pedestal_rms->at(i)=wave_pedestal.rms;
     l->digi_max_amplitude->at(i)=wave_max.max_amplitude;
     l->digi_charge_integrated->at(i)=waveform.at(i)->charge_integrated(4,900);
     l->digi_time_at_max->at(i)=wave_max.time_at_max*1.e9;
-    l->digi_time_at_frac30->at(i)=waveform.at(i)->time_at_frac(wave_max.time_at_max-3.e-9,wave_max.time_at_max,0.3,wave_max,7)*1.e9;
-    l->digi_time_at_frac50->at(i)=waveform.at(i)->time_at_frac(wave_max.time_at_max-3.e-9,wave_max.time_at_max,0.5,wave_max,7)*1.e9;
+    l->digi_time_at_frac30->at(i)=waveform.at(i)->time_at_frac(wave_max.time_at_max-30.e-9,wave_max.time_at_max,0.3,wave_max,7)*1.e9;
+    l->digi_time_at_frac50->at(i)=waveform.at(i)->time_at_frac(wave_max.time_at_max-30.e-9,wave_max.time_at_max,0.5,wave_max,7)*1.e9;
+
+    l->digi_fall_time_at_frac30->at(i)=waveform.at(i)->time_at_frac(wave_max.time_at_max,wave_max.time_at_max+60.e-9,0.3,wave_max,7,false)*1.e9;
+    l->digi_fall_time_at_frac50->at(i)=waveform.at(i)->time_at_frac(wave_max.time_at_max,wave_max.time_at_max+60.e-9,0.5,wave_max,7,false)*1.e9;
     //    cout << "pedestal " << i << " " << wave_pedestal.pedestal << " " << l->digi_pedestal->at(i) << endl; 
   }
   

@@ -63,7 +63,7 @@ for (unsigned int iSample=0;iSample< l->nDigiSamples;iSample++)
 	Waveform::baseline_informations ped=waveforms[i]->baseline(minPed,maxPed);
 	waveforms[i]->offset(ped.pedestal);
 	waveforms[i]->rescale(-1);
-	float max_ampl=waveforms[i]->max_amplitude(50,300,5).max_amplitude;
+	float max_ampl=waveforms[i]->max_amplitude(50,300,7).max_amplitude;
 	float chg_int =waveforms[i]->charge_integrated(4,900);
 	if (inputType==0){
 		if (l->digi_max_amplitude != NULL)	{ l->digi_max_amplitude->push_back(max_ampl); }

@@ -85,6 +85,8 @@ void LoopAndFill::Fill(){
  	CopyVector(digi_pedestal_rms     ,out.digi_pedestal_rms);
  	CopyVector(digi_time_at_frac30   ,out.digi_time_at_frac30);
  	CopyVector(digi_time_at_frac50   ,out.digi_time_at_frac50);
+ 	CopyVector(digi_fall_time_at_frac30   ,out.digi_fall_time_at_frac30);
+ 	CopyVector(digi_fall_time_at_frac50   ,out.digi_fall_time_at_frac50);
  	CopyVector(digi_time_at_max      ,out.digi_time_at_max);
  	CopyVector(HODOX1                ,out.HODOX1);
  	CopyVector(HODOX2                ,out.HODOX2);

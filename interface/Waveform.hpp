@@ -97,10 +97,10 @@ class Waveform
   float interpolatedValue(const int& i1, int SampleToInterpolate=9) const;
 
   //Get the time at a given fraction of the amplitude for times between x1 and x2 
-  float time_at_frac(const int& i1, const int& i2, const float& frac, const max_amplitude_informations& maxInfos, int SampleToInterpolate=5) const;
+  float time_at_frac(const int& i1, const int& i2, const float& frac, const max_amplitude_informations& maxInfos, int SampleToInterpolate=5,bool rising=true) const;
 
   //Get the time at a given fraction of the amplitude for times between x1 and x2 
-  float time_at_frac(const float& t1, const float& t2, const float& frac, const max_amplitude_informations& maxInfos, int SampleToInterpolate=5) const;
+  float time_at_frac(const float& t1, const float& t2, const float& frac, const max_amplitude_informations& maxInfos, int SampleToInterpolate=5,bool rising=true) const;
 
   //Get the baseline (pedestal and RMS) informations computed between x1 and x2
   baseline_informations baseline(const int& x1, const int& x2) const;

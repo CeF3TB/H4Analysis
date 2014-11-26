@@ -92,6 +92,8 @@ void Looper::SetBranchesOuttree(){
 	SetBranchAddress("digi_pedestal_rms"		,&digi_pedestal_rms);
 	SetBranchAddress("digi_time_at_frac30"		,&digi_time_at_frac30);
 	SetBranchAddress("digi_time_at_frac50"		,&digi_time_at_frac50);
+	SetBranchAddress("digi_fall_time_at_frac30"		,&digi_fall_time_at_frac30);
+	SetBranchAddress("digi_fall_time_at_frac50"		,&digi_fall_time_at_frac50);
 	SetBranchAddress("digi_time_at_max"		,&digi_time_at_max);
 	SetBranchAddress("HODOX1",&HODOX1   );
 	SetBranchAddress("HODOX2",&HODOX2   );

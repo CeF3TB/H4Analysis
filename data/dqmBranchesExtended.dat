@@ -14,6 +14,8 @@ digi_pedestal
 digi_pedestal_rms
 digi_time_at_frac30
 digi_time_at_frac50
+digi_fall_time_at_frac30
+digi_fall_time_at_frac50
 digi_time_at_max
 HODOX1
 HODOX2

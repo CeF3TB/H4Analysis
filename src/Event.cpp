@@ -12,6 +12,8 @@ tree::tree(){
 	digi_pedestal_rms =new      vector<float> ; 
 	digi_time_at_frac30 =new    vector<float> ; 
 	digi_time_at_frac50 =new    vector<float> ; 
+	digi_fall_time_at_frac30 =new    vector<float> ; 
+	digi_fall_time_at_frac50 =new    vector<float> ; 
 	digi_time_at_max =new       vector<float> ; 
 	HODOX1    =new              vector<bool>  ; 
 	HODOX2    =new              vector<bool>  ; 
@@ -58,6 +60,8 @@ tree::~tree(){
 	delete digi_pedestal_rms ;
 	delete digi_time_at_frac30 ;
 	delete digi_time_at_frac50 ;
+	delete digi_fall_time_at_frac30 ;
+	delete digi_fall_time_at_frac50 ;
 	delete digi_time_at_max ;
 	delete HODOX1    ;
 	delete HODOX2    ;

@@ -69,6 +69,8 @@ map<string,bool> isFilled;
  	vector<float>  *digi_pedestal_rms ;
  	vector<float>  *digi_time_at_frac30 ;
  	vector<float>  *digi_time_at_frac50 ;
+ 	vector<float>  *digi_fall_time_at_frac30 ;
+ 	vector<float>  *digi_fall_time_at_frac50 ;
  	vector<float>  *digi_time_at_max ;
 	// --- sub
  	vector<float>  *digi_charge_integrated_sub ;

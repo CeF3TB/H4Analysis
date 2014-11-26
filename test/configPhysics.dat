@@ -13,7 +13,7 @@ config=DatabaseReadAnalysis databasename="sqlite://data/CeF3_H4DFall2014_analysi
 #
 config=PedestalAnalysis nChannels=4
 #
-config=PedSubAnalysis pedestalFileName="data/pedestal.root" nChannels=4 
+config=PedSubAnalysis pedestalFileName="data/pedestal.root" nChannels=4
 #
 config=SimpleAnalysis nChannels=4 inputType=1
 #
