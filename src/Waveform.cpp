@@ -481,7 +481,7 @@ void Waveform::fft(){
 	delete vfft;
 }
 
-void Waveform::inv_fft(int cut=0){
+void Waveform::inv_fft(int cut=0,double tau){
 	int n=_samples.size();
 	TVirtualFFT *vfft =TVirtualFFT::FFT(1,&n,"C2CBACKWARD M K");
 	Double_t orig_re[n],orig_im[n];
@@ -490,8 +490,10 @@ void Waveform::inv_fft(int cut=0){
 		{
 		if( i> cut && i<n-cut) 
 			{
-			orig_im[i]=0;
-			orig_re[i]=0;
+			int delta = TMath::Min(i-cut,n-cut-i); 
+			double dump=TMath::Exp(-delta/tau);
+			orig_im[i]*=dump;
+			orig_re[i]*=dump;
 			continue;
 			}
 		orig_re[i]= _fft_re[i];

@@ -44,6 +44,12 @@ tree::tree(){
 	digi_pedestal_mu0 =new vector<float> ; 
 	digi_pedestal_mu1 =new vector<float> ; 
 	digi_pedestal_mu2 =new vector<float> ; 
+	
+	// --- FFT
+	digi_value 	= new vector<float>;
+	digi_value_ch 	= new vector<int>;
+	digi_value_time = new vector<float>;
+	// ----
 
 	nTdcHits = new vector<int>;
 

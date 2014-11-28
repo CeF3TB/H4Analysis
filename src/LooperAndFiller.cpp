@@ -126,6 +126,11 @@ void LoopAndFill::Fill(){
  	CopyVector(digi_pedestal_mu1        ,out.digi_pedestal_mu1);
  	CopyVector(digi_pedestal_mu0        ,out.digi_pedestal_mu0);
 	
+	// --- FFT
+	CopyVector(digi_value,out.digi_value);
+	CopyVector(digi_value_ch,out.digi_value_ch);
+	CopyVector(digi_value_time,out.digi_value_time);
+	
 	Filler::Fill();	
 	StopWatch();
 }

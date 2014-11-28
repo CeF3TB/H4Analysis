@@ -134,4 +134,9 @@ void Looper::SetBranchesOuttree(){
 	SetBranchAddress("digi_pedestal_mu0"		,&digi_pedestal_mu0);
 	SetBranchAddress("digi_pedestal_mu1"		,&digi_pedestal_mu1);
 	SetBranchAddress("digi_pedestal_mu2"		,&digi_pedestal_mu2);
+	
+	// --- FFT
+	SetBranchAddress("digi_value"			,&digi_value);
+	SetBranchAddress("digi_value_ch"		,&digi_value_ch);
+	SetBranchAddress("digi_value_time"		,&digi_value_time);
 }

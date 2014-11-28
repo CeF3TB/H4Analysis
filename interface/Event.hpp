@@ -83,6 +83,13 @@ map<string,bool> isFilled;
 	
  	vector<float>  *digi_charge_integrated_corr2 ;
  	vector<float>  *digi_max_amplitude_corr2 ;
+	
+	// --- FFT
+ 	vector<float >  *digi_value ;
+ 	vector<int >    *digi_value_ch ;
+ 	vector<float >  *digi_value_time ;
+
+	// ---- HODO
 
  	vector<bool>   *HODOX1    ;
  	vector<bool>   *HODOX2    ;

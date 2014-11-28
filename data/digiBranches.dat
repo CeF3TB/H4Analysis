@@ -17,3 +17,6 @@ digi_pedestal_q2
 digi_pedestal_mu0
 digi_pedestal_mu1
 digi_pedestal_mu2
+digi_value
+digi_value_ch
+digi_value_time

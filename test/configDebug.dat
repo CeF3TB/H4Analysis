@@ -6,7 +6,9 @@ InputBranches=data/unpackBranches.dat
 ## NOT CENTRAL NW2
 #InputRuns=dcap://t3se01.psi.ch:22125/pnfs/psi.ch/cms/trivcat/store/t3groups/ethz-ecal/testbeamH4_Fall2014/data/DQM_TB3/%%RUN%%/*root 399
 # CENTRAL 50 GEV 950 V
-InputRuns=dcap://t3se01.psi.ch:22125/pnfs/psi.ch/cms/trivcat/store/t3groups/ethz-ecal/testbeamH4_Fall2014/data/DQM_TB3/%%RUN%%/*root 274
+#InputRuns=dcap://t3se01.psi.ch:22125/pnfs/psi.ch/cms/trivcat/store/t3groups/ethz-ecal/testbeamH4_Fall2014/data/DQM_TB3/%%RUN%%/*root 274
+#NW2+NW3+SW2+SE2+... CENTER
+InputRuns=dcap://t3se01.psi.ch:22125/pnfs/psi.ch/cms/trivcat/store/t3groups/ethz-ecal/testbeamH4_Fall2014/data/DQM_TB3/%%RUN%%/*root 285,286,287,290,291,292,293,296,297,274
 ## PEDESTAL RUN
 #InputRuns=dcap://t3se01.psi.ch:22125/pnfs/psi.ch/cms/trivcat/store/t3groups/ethz-ecal/testbeamH4_Fall2014/data/DQM_TB3/%%RUN%%/*root 583
 

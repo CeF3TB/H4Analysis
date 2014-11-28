@@ -45,24 +45,37 @@ else if (inputType==1){
 void SimpleAnalysis::AnalyzeEvent()
 {
 //ClearEvent(); //called by the python directly
+int digiFrequency[nChannels];
+
 for (unsigned int iSample=0;iSample< l->nDigiSamples;iSample++)
  {
  //fill waveform
- //waveform->baseline(5,44); //use 40 samples between 5-44 to get pedestal and RMS
  UInt_t digiGroup   = l->digiGroup[iSample];
  UInt_t digiChannel = l->digiChannel[iSample] + 8*digiGroup; // update this in order to consider also the group. for us the group is always 0
  UInt_t digiSampleIndex = l->digiSampleIndex[iSample];
  Float_t digiSampleValue = l->digiSampleValue[iSample];
 	if (inputType==1) digiSampleValue=l->digiSampleValueSub[iSample];
- UInt_t digiFrequency = l->digiFrequency[iSample];
  if (digiChannel >= nChannels) continue;
- waveforms[ digiChannel ]-> addTimeAndSample(digiSampleIndex *timeSampleUnit(digiFrequency), digiSampleValue);
+    waveforms[ digiChannel ]-> addTimeAndSample(digiSampleIndex *timeSampleUnit(l->digiFrequency[iSample]), digiSampleValue);
+    digiFrequency[ digiChannel ] = l->digiFrequency[iSample];
  }
+
  for(unsigned int i=0;i<waveforms.size() ;++i)
 	{
 	Waveform::baseline_informations ped=waveforms[i]->baseline(minPed,maxPed);
 	waveforms[i]->offset(ped.pedestal);
 	waveforms[i]->rescale(-1);
+    	// --------------------- fft!!! --------------------------
+    	waveforms[i]->fft();
+    	int cut= 60;
+    	double tau=10;
+    	    if (digiFrequency[i] == 1) { cut=30;tau=5;}
+    	    else {cut=12; tau=2;}
+    	    cut+=12; 
+
+    	waveforms[i]->inv_fft(cut,tau);
+    	// --- end fft ------------------------------------
+
 	float max_ampl=waveforms[i]->max_amplitude(50,300,7).max_amplitude;
 	float chg_int =waveforms[i]->charge_integrated(4,900);
 	if (inputType==0){

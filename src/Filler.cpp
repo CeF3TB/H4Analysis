@@ -262,6 +262,11 @@ void Filler::SetBranchesOuttree(){
 	SetBranchAddress("digi_pedestal_mu0"		,&out.digi_pedestal_mu0);
 	SetBranchAddress("digi_pedestal_mu1"		,&out.digi_pedestal_mu1);
 	SetBranchAddress("digi_pedestal_mu2"		,&out.digi_pedestal_mu2);
+
+	// --- FFT
+	SetBranchAddress("digi_value"			,&out.digi_value);
+	SetBranchAddress("digi_value_ch"		,&out.digi_value_ch);
+	SetBranchAddress("digi_value_time"		,&out.digi_value_time);
 }
 
 bool Filler::isActive(string name)

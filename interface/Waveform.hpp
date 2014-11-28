@@ -22,7 +22,7 @@ class Waveform
   std::vector<double> _fftI_samples;
 	
   void fft(); // compute the fft
-  void inv_fft(int cut); // compute the inverse fft, with a freq cut. Hard.
+  void inv_fft(int cut,double tau=0.0001); // compute the inverse fft, with a freq cut. Hard.
   
   struct max_amplitude_informations
   {

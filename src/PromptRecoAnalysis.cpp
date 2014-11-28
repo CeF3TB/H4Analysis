@@ -64,6 +64,9 @@ void PromptRecoAnalysis::AnalyzeEvent()
   l->digi_time_at_frac50->clear();
   l->digi_fall_time_at_frac30->clear();
   l->digi_fall_time_at_frac50->clear();
+  l->digi_value->clear();
+  l->digi_value_ch->clear();
+  l->digi_value_time->clear();
   l->digi_pedestal->resize(nDigiChannels,-999);
   l->digi_pedestal_rms->resize(nDigiChannels,-999);
   l->digi_max_amplitude->resize(nDigiChannels,-999);
@@ -85,19 +88,38 @@ void PromptRecoAnalysis::AnalyzeEvent()
   }
   
   for (unsigned int i=0; i<nDigiChannels; i++) {
- // fft!!!
-    waveform[i]->fft();
-    int cut= 60;
-	if (digiFrequency[i] == 1) cut=30;
-	else cut=15;
-	cut+=12;
-    waveform[i]->inv_fft(cut);
     
 
     //    cout << i << " " << waveform.at(i)->_samples.size() << endl;
-    Waveform::baseline_informations wave_pedestal = waveform.at(i)->baseline(5,44);
+    Waveform::baseline_informations wave_pedestal = waveform.at(i)->baseline(5,34);
     waveform.at(i)->offset(wave_pedestal.pedestal);
     waveform.at(i)->rescale(-1);
+
+    // --------------------- fft!!! --------------------------
+    waveform[i]->fft();
+    int cut= 60;
+    double tau=10;
+	if (digiFrequency[i] == 1) { cut=30;tau=5;}
+	else {cut=12; tau=2;}
+	cut+=12; 
+
+    waveform[i]->inv_fft(cut,tau);
+	
+    // --- SAVE INFO IN OUTFILE
+    if (waveform[i]->_samples.size() != waveform[i]->_times.size() )
+	{
+	cout<<"[PromptRecoAnalysis]::[AnalyzeEvent]::[ERROR] waveform"<<i<<" of event "<<l->runNumber<<"|"<<l->spillNumber<<"|"<<l->evtNumber
+		<<" samples size ("<<waveform[i]->_samples.size()<<") different from times size ("<<waveform[i]->_times.size()<<")"<<endl;
+	assert(0);
+	}
+    for(unsigned int iSample=0;iSample<waveform[i]->_samples.size();++iSample)
+	{
+	l->digi_value->push_back(waveform[i]->_samples.at(iSample));		
+	l->digi_value_ch->push_back(i);		
+	l->digi_value_time->push_back(waveform[i]->_times.at(iSample));
+	}
+    // --- end fft ------------------------------------
+    
     Waveform::max_amplitude_informations wave_max = waveform.at(i)->max_amplitude(50,300,7);
     l->digi_pedestal->at(i)=wave_pedestal.pedestal;
     l->digi_pedestal_rms->at(i)=wave_pedestal.rms;
