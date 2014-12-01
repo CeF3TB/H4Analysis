@@ -84,11 +84,15 @@ for iEntry in range(0,l.GetEntries() ) :
 	if opts.debug >0  and iEntry % 1000 ==0 : print "--> Entry",iEntry,"of",l.GetEntries()
 	l.GetEntry(iEntry)
 	## ALL ANALYSIS ANALIZE EVENT
-	for A in analysis:
+	for idx,A in enumerate(analysis):
+	     try:
 		A.StartWatch();
 		A.ClearEvent()
 		A.AnalyzeEvent()
 		A.StopWatch();
+	     except Exception as e:
+		print "Exception occured while processing analysis:",config["Analysis"][idx]
+		raise e
 	l.Fill()
 	
 if opts.debug >0 : print "-> Writing"

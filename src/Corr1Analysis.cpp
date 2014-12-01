@@ -44,18 +44,25 @@ void Corr1Analysis::AnalyzeEvent()
 
 	for( unsigned int iCh=0;iCh<unsigned(nChannels);++iCh)
 	      {
+		double chint= -1;
+		if      (inputType==0)chint=(*l->digi_charge_integrated)[iCh];
+		else if (inputType==1)chint=(*l->digi_charge_integrated_sub)[iCh];
+		else assert(0);
 		l->digi_charge_integrated_corr1->push_back(CorrType1( 
-			  (*l->digi_charge_integrated_sub)[iCh],
+			  chint,
 			  chIntSpls[iCh],
 			  chIntLines[iCh],
 			  chIntSplLimits[iCh].first,// min
 		 	  chIntSplLimits[iCh].second //max
 			  ));
 	#ifdef VERBOSE_CORR1
-		cout <<"CHINT Ch :"<<iCh<<" Before:"<< (*l->digi_charge_integrated_sub)[iCh] << " After: "<<(*l->digi_charge_integrated_corr1)[iCh]<<endl;
+		cout <<"CHINT Ch :"<<iCh<<" Before:"<< chint << " After: "<<(*l->digi_charge_integrated_corr1)[iCh]<<endl;
 	#endif
+		double maxampl=-1;
+		if      (inputType==0)maxampl=(*l->digi_max_amplitude)[iCh];
+		else if (inputType==1)maxampl=(*l->digi_max_amplitude_sub)[iCh];
 		l->digi_max_amplitude_corr1->push_back(CorrType1(
-			(*l->digi_max_amplitude_sub)[iCh],
+			maxampl,
 			maxAmplSpls[iCh],
 			maxAmplLines[iCh],
 			  maxAmplSplLimits[iCh].first,// min
@@ -123,17 +130,79 @@ double Corr1Analysis::EvalSpline(double x, TSpline3 *spl,double min, double max)
 {
 	if (x<min) // linear extrapolation
 		{
-		double a=spl->Derivative(min);
+		//double a=spl->Derivative(min);
+		double a=GetDerivative(spl,true);
 		double y1=spl->Eval(min);
 		double y=a*(x-min) + y1;
 		return y;
 		}
 	if (x>max) // linear extrapolation
 		{
-		double a=spl->Derivative(max);
+		//double a=spl->Derivative(max);
+		double a=GetDerivative(spl,false);
 		double y1=spl->Eval(max);
 		double y=a*(x-max) + y1;
 		return y;
 		}
 	return spl->Eval(x);
+}
+
+double Corr1Analysis::GetDerivative(TSpline3 *spl, bool min)
+{
+	// Compute discrete derivative and not  the one on the spline itself
+	//  better for extrapolation
+	double x0,y0; // first and second point
+	double x1,y1;
+	int N=spl->GetNp();
+	for(int i=0;i<N;++i)
+		{
+		double x,y;
+		spl->GetKnot(i,x,y);
+		if( i==0 ) 
+			{
+			x0=x;
+			y0=y;
+			}
+		if (i==1)
+			{
+			x1=x;
+			y1=y;
+			if ( x0 > x1 )  
+				{
+				// x0 <-> x1
+				x1=x0; x0=x;
+				y1=y0; y0=y;
+				}
+			}
+		if(min)
+			{
+			if (x<x0)
+				{
+				// x0-> x1 ; x -> x0
+				x1=x0;y1=y0;
+				x0=x; y0=y;
+				}
+			else if (x<x1)
+				{
+				// x -> x1
+				x1=x; y1=y;
+				}
+			}
+		else    {
+			if (x > x1)
+				{
+				// x1-> x0  ; x-> x1
+				x0=x1; y0=y1;
+				x1=x; y1=y;
+				}
+			else if ( x> x0)
+				{
+				// x-> x0
+				x0=x; y0=y;
+				}
+			}
+		}// end for on knots
+
+		double m=(y0-y1)/(x0-x1);
+		return m;	
 }

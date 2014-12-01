@@ -22,7 +22,7 @@ void PedSubAnalysis::AnalyzeEvent()
 		{
 		float 	dmu2= l->digi_pedestal_mu2->at(digiChannel) - l->digi_pedestal_mu0->at(digiChannel);
 		float 	dmu1= l->digi_pedestal_mu1->at(digiChannel) - l->digi_pedestal_mu0->at(digiChannel);
-		char cat=PedestalAnalysis::computeCategory(digiChannel,dmu2,dmu1);
+		char 	cat	=PedestalAnalysis::computeCategory(digiChannel,dmu2,dmu1);
 		float mu=dmu1;
 		int n=  TMath::Floor((mu-muMin)/muDelta); 
 		mu=muMin+n*muDelta;

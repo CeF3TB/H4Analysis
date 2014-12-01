@@ -31,8 +31,10 @@ public:
 			chIntFile=NULL; 
 			chIntFileName="data/chintCorr1.root";
 			maxAmplFileName="data/chintCorr1.root";
+			inputType=0;
 			};
 	~Corr1Analysis(){Close();};
+	int inputType; // 0 = base; 1=sub
 	int nChannels;
 	void Init(LoopAndFill *l1); // { l = l1 ; };
 	void ClearEvent();
@@ -43,6 +45,7 @@ public:
 	// spl must be inverted
 	static double CorrType1(double y,TSpline3 *spl,TF1 *line,double min,double max);
 	static double EvalSpline(double x, TSpline3 *spl,double min, double max); // use spline
+	static double GetDerivative(TSpline3 *spl, bool min=true);
 };
 
 #endif
