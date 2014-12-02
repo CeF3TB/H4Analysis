@@ -55,6 +55,7 @@ public:
 	//void SetBranchAddress(string name,T ptr);
 
 	void Fill( );//{ fChain->Fill() ;};
+	void SetAliases();
 
 };
 

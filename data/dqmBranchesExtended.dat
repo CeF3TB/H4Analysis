@@ -9,6 +9,9 @@ BGOvalues
 SCINTvalues
 TDCreco
 digi_charge_integrated
+digi_charge_integrated_frac50
+digi_charge_integrated_frac30
+digi_charge_integrated_frac10
 digi_max_amplitude
 digi_pedestal
 digi_pedestal_rms

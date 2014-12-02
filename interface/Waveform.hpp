@@ -161,6 +161,18 @@ class Waveform
     for (unsigned int i(0);i<_times.size();++i)
       _times[i]+=time_offset;
   } 
+	
+  int find_time_bin(const float& t1)
+  {
+  int tmin=0;
+  for (unsigned int i(0);i<_times.size();++i)
+    {
+      //      std::cout << i << "," << _times[i] << std::endl;
+      if (_times[i]<t1)
+	tmin=i;
+    }
+  return tmin;
+  }
 
   
     

@@ -137,6 +137,7 @@ void Filler::Init()
 
 void Filler::Write(){
 	cout<<"[Filler]::[Write] Tree "<<endl;
+	SetAliases();
 	fOut->cd();
 	fChain->Print();
 	fChain->Write();
@@ -216,6 +217,9 @@ void Filler::SetBranchesOuttree(){
 	SetBranchAddress("SCINTvalues"	,&out.SCINTvalues);
 	SetBranchAddress("TDCreco"	,&out.TDCreco  );
 	SetBranchAddress("digi_charge_integrated"	,&out.digi_charge_integrated);
+	SetBranchAddress("digi_charge_integrated_frac50"	,&out.digi_charge_integrated_frac50);
+	SetBranchAddress("digi_charge_integrated_frac30"	,&out.digi_charge_integrated_frac30);
+	SetBranchAddress("digi_charge_integrated_frac10"	,&out.digi_charge_integrated_frac10);
 	SetBranchAddress("digi_max_amplitude"		,&out.digi_max_amplitude);
 	SetBranchAddress("digi_pedestal"		,&out.digi_pedestal);
 	SetBranchAddress("digi_pedestal_rms"		,&out.digi_pedestal_rms);
@@ -281,4 +285,30 @@ void Filler::Fill( )
 { 
 	//cout<<"[Filler]::[Fill] Fill tree:"<<fChain->GetEntries()<<endl;
 	fChain->Fill() ;
+}
+
+void Filler::SetAliases(){
+	//fChain->SetAlias("posY","TDCreco[1]+TableY");
+	//fChain->SetAlias("posX","TDCreco[0]+TableX");
+	fChain->SetAlias("posY","-TDCreco[1]+TableY"); // this seems to be the right one
+	fChain->SetAlias("posX","-TDCreco[0]+TableX");
+	fChain->SetAlias("rho0","TMath::Sqrt(pow(posY-254+12,2) + pow(posX-194+12,2))");
+	fChain->SetAlias("phi0","TMath::ATan( (posY-254+12)/(posX-194+12))+((posX-194+12)<0)*3.1415");
+	fChain->SetAlias("rho","TMath::Sqrt(pow(posY-254,2) + pow(posX-194,2))");
+	fChain->SetAlias("phi","TMath::ATan( (posY-254)/(posX-194))+((posX-194)<0)*3.1415");
+	
+	fChain->SetAlias("rho1","TMath::Sqrt(pow(posY-254+12,2) + pow(posX-194-12,2))");
+	fChain->SetAlias("phi1","TMath::ATan( (posY-254+12)/(posX-194-12))+((posX-194-12)<0)*3.1415");
+
+	fChain->SetAlias("rho2","TMath::Sqrt(pow(posY-254-12,2) + pow(posX-194-12,2))");
+	fChain->SetAlias("phi2","TMath::ATan( (posY-254-12)/(posX-194-12))+((posX-194-12)<0)*3.1415");
+
+	fChain->SetAlias("rho3","TMath::Sqrt(pow(posY-254-12,2) + pow(posX-194+12,2))");
+	fChain->SetAlias("phi3","TMath::ATan( (posY-254-12)/(posX-194+12))+((posX-194+12)<0)*3.1415");
+
+
+	fChain->SetAlias("fwhm0","digi_fall_time_at_frac50[0]-digi_time_at_frac50[0]");
+	fChain->SetAlias("fwhm1","digi_fall_time_at_frac50[1]-digi_time_at_frac50[1]");
+	fChain->SetAlias("fwhm2","digi_fall_time_at_frac50[2]-digi_time_at_frac50[2]");
+	fChain->SetAlias("fwhm3","digi_fall_time_at_frac50[3]-digi_time_at_frac50[3]");
 }

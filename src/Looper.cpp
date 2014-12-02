@@ -87,6 +87,9 @@ void Looper::SetBranchesOuttree(){
 	SetBranchAddress("SCINTvalues"	,&SCINTvalues);
 	SetBranchAddress("TDCreco"	,&TDCreco  );
 	SetBranchAddress("digi_charge_integrated"	,&digi_charge_integrated);
+	SetBranchAddress("digi_charge_integrated_frac50"	,&digi_charge_integrated_frac50);
+	SetBranchAddress("digi_charge_integrated_frac30"	,&digi_charge_integrated_frac30);
+	SetBranchAddress("digi_charge_integrated_frac10"	,&digi_charge_integrated_frac10);
 	SetBranchAddress("digi_max_amplitude"		,&digi_max_amplitude);
 	SetBranchAddress("digi_pedestal"		,&digi_pedestal);
 	SetBranchAddress("digi_pedestal_rms"		,&digi_pedestal_rms);

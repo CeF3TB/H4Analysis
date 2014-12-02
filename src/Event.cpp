@@ -7,6 +7,9 @@ tree::tree(){
 	SCINTvalues =new            vector<float> ; 
 	TDCreco   =new              vector<float> ; 
 	digi_charge_integrated =new vector<float> ; 
+	digi_charge_integrated_frac50 =new vector<float> ; 
+	digi_charge_integrated_frac30 =new vector<float> ; 
+	digi_charge_integrated_frac10 =new vector<float> ; 
 	digi_max_amplitude =new     vector<float> ; 
 	digi_pedestal =new          vector<float> ; 
 	digi_pedestal_rms =new      vector<float> ; 

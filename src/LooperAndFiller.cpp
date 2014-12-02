@@ -80,6 +80,9 @@ void LoopAndFill::Fill(){
  	CopyVector(SCINTvalues           ,out.SCINTvalues);
  	CopyVector(TDCreco               ,out.TDCreco);
  	CopyVector(digi_charge_integrated,out.digi_charge_integrated);
+ 	CopyVector(digi_charge_integrated_frac50,out.digi_charge_integrated_frac50);
+ 	CopyVector(digi_charge_integrated_frac30,out.digi_charge_integrated_frac30);
+ 	CopyVector(digi_charge_integrated_frac10,out.digi_charge_integrated_frac10);
  	CopyVector(digi_max_amplitude    ,out.digi_max_amplitude);
  	CopyVector(digi_pedestal         ,out.digi_pedestal);
  	CopyVector(digi_pedestal_rms     ,out.digi_pedestal_rms);
