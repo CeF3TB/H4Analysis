@@ -25,6 +25,15 @@ HODOX2
 HODOY1
 HODOY2
 
+# Bare - no fft
+digi_charge_integrated_bare
+digi_max_amplitude_bare
+digi_time_at_frac30_bare
+digi_time_at_frac50_bare
+digi_fall_time_at_frac30_bare
+digi_fall_time_at_frac50_bare
+digi_time_at_max_bare
+
 ## EXTEND WITH DIGI INFO -- UNCOMMENT FOR DEBUG PURPOSES
 ## nDigiSamples
 ## digiFrequency

@@ -96,6 +96,15 @@ tree::~tree(){
 	delete digi_charge_integrated_corr2 ;
 	delete digi_max_amplitude_corr2 ;
 
+	// --- no fft
+ 	delete digi_max_amplitude_bare  ;
+ 	delete digi_time_at_max_bare  ;
+ 	delete digi_charge_integrated_bare  ;
+ 	delete digi_time_at_frac30_bare  ;
+ 	delete digi_time_at_frac50_bare  ;
+ 	delete digi_fall_time_at_frac30_bare  ;
+ 	delete digi_fall_time_at_frac50_bare  ;
+
 	// DEBUG	
 	delete digi_pedestal_m;
 	delete digi_pedestal_q;
