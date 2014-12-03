@@ -33,6 +33,14 @@ tree::tree(){
 
 	digi_charge_integrated_corr2 =new vector<float> ; 
 	digi_max_amplitude_corr2 =new     vector<float> ; 
+	// --- no fft
+ 	digi_max_amplitude_bare  = new vector<float>;
+ 	digi_time_at_max_bare  = new vector<float>;
+ 	digi_charge_integrated_bare  = new vector<float>;
+ 	digi_time_at_frac30_bare  = new vector<float>;
+ 	digi_time_at_frac50_bare  = new vector<float>;
+ 	digi_fall_time_at_frac30_bare  = new vector<float>;
+ 	digi_fall_time_at_frac50_bare  = new vector<float>;
 
 	// -- DEBUG
 	digi_pedestal_m =new vector<float> ; 

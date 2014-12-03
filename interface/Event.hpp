@@ -75,6 +75,14 @@ map<string,bool> isFilled;
  	vector<float>  *digi_fall_time_at_frac30 ;
  	vector<float>  *digi_fall_time_at_frac50 ;
  	vector<float>  *digi_time_at_max ;
+	// --- no fft
+ 	vector<float>  *digi_max_amplitude_bare ;
+ 	vector<float>  *digi_time_at_max_bare ;
+ 	vector<float>  *digi_charge_integrated_bare ;
+ 	vector<float>  *digi_time_at_frac30_bare ;
+ 	vector<float>  *digi_time_at_frac50_bare ;
+ 	vector<float>  *digi_fall_time_at_frac30_bare ;
+ 	vector<float>  *digi_fall_time_at_frac50_bare ;
 	// --- sub
  	vector<float>  *digi_charge_integrated_sub ;
  	vector<float>  *digi_max_amplitude_sub ;

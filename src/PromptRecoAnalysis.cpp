@@ -70,6 +70,20 @@ void PromptRecoAnalysis::AnalyzeEvent()
   l->digi_value->clear();
   l->digi_value_ch->clear();
   l->digi_value_time->clear();
+  l->digi_max_amplitude_bare       ->clear();
+  l->digi_time_at_max_bare         ->clear();
+  l->digi_charge_integrated_bare   ->clear();
+  l->digi_time_at_frac30_bare      ->clear();
+  l->digi_time_at_frac50_bare      ->clear();
+  l->digi_fall_time_at_frac30_bare ->clear();
+  l->digi_fall_time_at_frac50_bare ->clear();
+  l->digi_max_amplitude_bare       ->resize(nDigiChannels,-999); 
+  l->digi_time_at_max_bare         ->resize(nDigiChannels,-999); 
+  l->digi_charge_integrated_bare   ->resize(nDigiChannels,-999); 
+  l->digi_time_at_frac30_bare      ->resize(nDigiChannels,-999); 
+  l->digi_time_at_frac50_bare      ->resize(nDigiChannels,-999); 
+  l->digi_fall_time_at_frac30_bare ->resize(nDigiChannels,-999); 
+  l->digi_fall_time_at_frac50_bare ->resize(nDigiChannels,-999); 
   l->digi_pedestal->resize(nDigiChannels,-999);
   l->digi_pedestal_rms->resize(nDigiChannels,-999);
   l->digi_max_amplitude->resize(nDigiChannels,-999);
@@ -100,7 +114,17 @@ void PromptRecoAnalysis::AnalyzeEvent()
     Waveform::baseline_informations wave_pedestal = waveform.at(i)->baseline(5,34);
     waveform.at(i)->offset(wave_pedestal.pedestal);
     waveform.at(i)->rescale(-1);
+	
+    // --------- BARE 
+    Waveform::max_amplitude_informations wave_max_bare = waveform.at(i)->max_amplitude(50,300,7);
 
+    l->	digi_max_amplitude_bare->at(i)=wave_max_bare.max_amplitude;
+    l-> digi_charge_integrated_bare->at(i)=waveform.at(i)->charge_integrated(4,900);
+    l-> digi_time_at_max_bare->at(i)=wave_max_bare.time_at_max*1.e9;
+    l-> digi_time_at_frac30_bare->at(i)=waveform.at(i)->time_at_frac(wave_max_bare.time_at_max-30.e-9,wave_max_bare.time_at_max,0.3,wave_max_bare,7)*1.e9;
+    l-> digi_time_at_frac50_bare->at(i)=waveform.at(i)->time_at_frac(wave_max_bare.time_at_max-30.e-9,wave_max_bare.time_at_max,0.5,wave_max_bare,7)*1.e9;
+    l->digi_fall_time_at_frac30_bare->at(i)=waveform.at(i)->time_at_frac(wave_max_bare.time_at_max,wave_max_bare.time_at_max+60.e-9,0.3,wave_max_bare,7,false)*1.e9;
+    l->digi_fall_time_at_frac50_bare->at(i)=waveform.at(i)->time_at_frac(wave_max_bare.time_at_max,wave_max_bare.time_at_max+60.e-9,0.5,wave_max_bare,7,false)*1.e9;
     // --------------------- fft!!! --------------------------
     waveform[i]->fft();
     int cut= 60;

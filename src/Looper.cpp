@@ -98,6 +98,15 @@ void Looper::SetBranchesOuttree(){
 	SetBranchAddress("digi_fall_time_at_frac30"		,&digi_fall_time_at_frac30);
 	SetBranchAddress("digi_fall_time_at_frac50"		,&digi_fall_time_at_frac50);
 	SetBranchAddress("digi_time_at_max"		,&digi_time_at_max);
+	// --nofft
+	SetBranchAddress("digi_max_amplitude_bare",&digi_max_amplitude_bare       );	
+	SetBranchAddress("digi_time_at_max_bare",&digi_time_at_max_bare         );	
+	SetBranchAddress("digi_charge_integrated_bare",&digi_charge_integrated_bare   );	
+	SetBranchAddress("digi_time_at_frac30_bare",&digi_time_at_frac30_bare      );	
+	SetBranchAddress("digi_time_at_frac50_bare",&digi_time_at_frac50_bare      );	
+	SetBranchAddress("digi_fall_time_at_frac30_bare",&digi_fall_time_at_frac30_bare );	
+	SetBranchAddress("digi_fall_time_at_frac50_bare",&digi_fall_time_at_frac50_bare );	
+	//
 	SetBranchAddress("HODOX1",&HODOX1   );
 	SetBranchAddress("HODOX2",&HODOX2   );
 	SetBranchAddress("HODOY1",&HODOY1   );

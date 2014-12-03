@@ -266,6 +266,14 @@ void Filler::SetBranchesOuttree(){
 	SetBranchAddress("digi_pedestal_mu0"		,&out.digi_pedestal_mu0);
 	SetBranchAddress("digi_pedestal_mu1"		,&out.digi_pedestal_mu1);
 	SetBranchAddress("digi_pedestal_mu2"		,&out.digi_pedestal_mu2);
+	// -- nofft
+	SetBranchAddress("digi_max_amplitude_bare"	,&out.digi_max_amplitude_bare       );	
+	SetBranchAddress("digi_time_at_max_bare"	,&out.digi_time_at_max_bare         );	
+	SetBranchAddress("digi_charge_integrated_bare"	,&out.digi_charge_integrated_bare   );	
+	SetBranchAddress("digi_time_at_frac30_bare"	,&out.digi_time_at_frac30_bare      );	
+	SetBranchAddress("digi_time_at_frac50_bare"	,&out.digi_time_at_frac50_bare      );	
+	SetBranchAddress("digi_fall_time_at_frac30_bare",&out.digi_fall_time_at_frac30_bare );	
+	SetBranchAddress("digi_fall_time_at_frac50_bare",&out.digi_fall_time_at_frac50_bare );	
 
 	// --- FFT
 	SetBranchAddress("digi_value"			,&out.digi_value);
