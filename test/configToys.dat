@@ -1,5 +1,5 @@
 ######## Input Files #######
-Generate=100
+Generate=100000
 InputBranches=
 InputFiles=
 ######## Output File #######
