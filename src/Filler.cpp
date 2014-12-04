@@ -279,6 +279,9 @@ void Filler::SetBranchesOuttree(){
 	SetBranchAddress("digi_value"			,&out.digi_value);
 	SetBranchAddress("digi_value_ch"		,&out.digi_value_ch);
 	SetBranchAddress("digi_value_time"		,&out.digi_value_time);
+	// ---TOY
+	SetBranchAddress("ToyResolution",&out.ToyResolution );
+	SetBranchAddress("ToyNoise",&out.ToyNoise );
 }
 
 bool Filler::isActive(string name)

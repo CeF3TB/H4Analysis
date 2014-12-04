@@ -131,6 +131,10 @@ map<string,bool> isFilled;
   float BeamTilt;
   int IsPhysics;
 
+  // --- TOYS TRUTH
+  float ToyResolution;
+  float ToyNoise;
+
   vector<int> *nTdcHits;
 
 	tree();

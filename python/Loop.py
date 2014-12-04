@@ -11,7 +11,7 @@ parser.add_option("","--debug" ,dest='debug',type='int',help="Debug Verbosity. F
 (opts,args)=parser.parse_args()
 
 
-if opts.debug >0 : print "-> Importing ROOOT"
+if opts.debug >0 : print "-> Importing ROOT"
 
 sys.argv=[]
 import ROOT 
@@ -30,6 +30,18 @@ if opts.debug>0 : PrintConfiguration(config)
 
 
 if opts.debug >0 : print "-> Init Class"
+
+Generate=0;
+if 'Generate' in config and config['Generate']> 0:
+	Generate=config['Generate']
+
+if opts.debug >0 and Generate: 
+	print "-------------------- WARNING --------------"
+	print " Generate options is active: "
+	print "          (*) An analysis that generate events should be present "
+	print "          (*) I will NOT read events  "
+	print "          (*) I will Generate", Generate,"toys"
+	print "-------------------------------------------"
 
 l=ROOT.LoopAndFill()
 
@@ -53,7 +65,8 @@ for b in config['OutputBranches']:
 l.Init();
 
 ## INPUT -- POST INIT
-for f in config['InputFiles']:
+if not Generate:
+  for f in config['InputFiles']:
 	print "Adding file '"+f+"'"
 	l.AddToChain(f);
 
@@ -80,9 +93,12 @@ for name in config['Analysis']:
 
 if opts.debug >0 : print "-> Looping: Entries=",l.GetEntries() 
 
-for iEntry in range(0,l.GetEntries() ) :
+nEntries=l.GetEntries();
+if Generate: nEntries=Generate
+
+for iEntry in range(0,nEntries ) :
 	if opts.debug >0  and iEntry % 1000 ==0 : print "--> Entry",iEntry,"of",l.GetEntries()
-	l.GetEntry(iEntry)
+	if not Generate: l.GetEntry(iEntry)
 	## ALL ANALYSIS ANALIZE EVENT
 	for idx,A in enumerate(analysis):
 	     try:

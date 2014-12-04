@@ -144,6 +144,10 @@ void LoopAndFill::Fill(){
 	CopyVector(digi_value_ch,out.digi_value_ch);
 	CopyVector(digi_value_time,out.digi_value_time);
 	
+	// -- TOYS GEN INFO
+	out.ToyResolution=ToyResolution;	
+	out.ToyNoise=ToyNoise;	
+	
 	Filler::Fill();	
 	StopWatch();
 }

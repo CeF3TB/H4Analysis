@@ -37,15 +37,22 @@ def ParseInputFile(fileName):
 			R[parts[0]]=[]
 			fileList=parts[1].split(',')
 			for fName in fileList:
+				fName = re.sub('\n','', fName)
+				if fName=='': continue
 				if len(fName) >0 and fName[0] == '$':
 					br=fName[1:]
 					R[parts[0]].append(br);
+					continue
+				print "DEBUG DEBUG",parts[0],"=", fName
 				fIn=open(fName,"r")
 				for branch in fIn:
 					br= branch.split('#')[0]
 					br= re.sub('\n','',br)
 					if br == "": continue
 					R[parts[0]].append( br )
+		### BOOLS -- INT
+		elif parts[0] == 'Generate':
+			R[ parts[0] ] = int(parts[1])
 		###CONFIG ANALYSIS
 		elif parts[0]=='config':
 			#print "Parsing configuration Line:",line ###DEBUG
