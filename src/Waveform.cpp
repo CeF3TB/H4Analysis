@@ -486,14 +486,17 @@ void Waveform::inv_fft(int cut=0,double tau){
 	TVirtualFFT *vfft =TVirtualFFT::FFT(1,&n,"C2CBACKWARD M K");
 	Double_t orig_re[n],orig_im[n];
 
+	assert( n == _fft_re.size() );
+	assert( n == _fft_im.size() );
+
 	for(int i=0;i<n;i++) 
 		{
-		if( i> cut && i<n-cut) 
+		if( i> cut -1 && i<n-cut) 
 			{
-			int delta = TMath::Min(i-cut,n-cut-i); 
+			int delta = TMath::Min(i-cut-1,n-cut-i); 
 			double dump=TMath::Exp(-delta/tau);
-			orig_im[i]*=dump;
-			orig_re[i]*=dump;
+			orig_im[i]=_fft_im[i]*dump;
+			orig_re[i]=_fft_re[i]*dump;
 			continue;
 			}
 		orig_re[i]= _fft_re[i];

@@ -1,9 +1,9 @@
 ######## Input Files #######
-Generate=100000
+Generate=10000
 InputBranches=
 InputFiles=
 ######## Output File #######
-OutputBranches=data/dqmBranchesExtended.dat,$ToyResolution,$ToyNoise
+OutputBranches=data/dqmBranchesExtended.dat,$ToyResolution,$ToyNoise,data/digiBranches.dat
 OutputFile=outputToys.root
 
 ####### Analysis #######
@@ -18,4 +18,4 @@ config=SimpleAnalysis nChannels=1 inputType=1
 config=PlotAnalysis nChannels=1 E.push_back(10) E.push_back(15) E.push_back(20) E.push_back(50) E.push_back(100) E.push_back(150) E.push_back(200)
 #
 ## toys configurations= charge_mean=1, x_shift_rms=5, nChannels=1, resolution=0.1, seed, noise_rms=0.1
-config=ToysAnalysis nChannels=1 noise_rms=0.05
+config=ToysAnalysis nChannels=1 noise_rms=0.0003 resolution=0.05

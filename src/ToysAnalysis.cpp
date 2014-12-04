@@ -30,8 +30,8 @@ void ToysAnalysis::Init(LoopAndFill*l1)
 		{
 		float xlow,xhigh,value;
 		// -30 ns to center it to roughtly 10 ns = 50 digiSampleIndex
-		xlow=  ( hEvent->GetBinLowEdge(i+1)-30 )/.2   ; // .2 = timesampleunit
-		xhigh= ( hEvent->GetBinLowEdge(i+2)-30)/.2  ;
+		xlow=  ( hEvent->GetBinLowEdge(i+1)-150 )*.2   ; // .2 = timesampleunit
+		xhigh= ( hEvent->GetBinLowEdge(i+2)-150 )*.2    ;
 		value=fEvent->Integral(xlow,xhigh);	
 		hEvent->SetBinContent(i+1, value);
 		}
@@ -68,6 +68,7 @@ void ToysAnalysis::AnalyzeEvent()
 	l->nDigiSamples=1024*nChannels;
 	float my_charge=r->Gaus(charge_mean,resolution*charge_mean);
 	int my_x_shift= int(r->Gaus(0,x_shift_rms));
+	float my_pedestal=r->Gaus(40,10);
 	for(unsigned int iS=0;iS<l->nDigiSamples;++iS)
 		{
 		l->digiFrequency[iS]=0;
@@ -80,8 +81,9 @@ void ToysAnalysis::AnalyzeEvent()
 		//check that with the shift, it is still inside the h boundaries
 		if( l->digiSampleIndex[iS]+1 +my_x_shift >0 && l->digiSampleIndex[iS]+1 +my_x_shift< hEvent->GetNbinsX() +1 ) 
 			value=hEvent->GetBinContent( l->digiSampleIndex[iS]+1 +my_x_shift );
-		// scale to the right "energy"
-		value *= my_charge;
+		// scale to the right "energy"  --- flip it negative!
+		value *= -my_charge;
+		value += my_pedestal;
 		//smear
 		value += r->Gaus(0,noise_rms);
 		l->digiSampleValue[iS]=value;
