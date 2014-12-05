@@ -32,6 +32,7 @@ public:
 		if (h == histoContainer.end() ) return NULL;
 		return (TH1D*)histoContainer[name];
 		}
+	void Print();
 };
 
 #endif

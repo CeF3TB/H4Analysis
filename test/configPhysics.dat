@@ -7,7 +7,8 @@ OutputBranches=data/dqmBranchesExtended.dat
 
 ####### Analysis #######
 #Analysis=PromptRecoAnalysis,DatabaseReadAnalysis,PedestalAnalysis,PedSubAnalysis,SimpleAnalysis,PlotAnalysis,Corr1Analysis,Corr2Analysis
-Analysis=PromptRecoAnalysis,DatabaseReadAnalysis,PedestalAnalysis,PlotAnalysis,Corr1Analysis
+#Analysis=PromptRecoAnalysis,DatabaseReadAnalysis,PedestalAnalysis,PlotAnalysis,Corr1Analysis
+Analysis=PromptRecoAnalysis,DatabaseReadAnalysis,PedestalAnalysis,PlotAnalysis,Corr1Analysis,FitAnalysis
 #
 config=DatabaseReadAnalysis databasename="sqlite://data/CeF3_H4DFall2014_analysisdb.sqlite" tablename="cef3"
 #
@@ -21,3 +22,4 @@ config=PlotAnalysis nChannels=4 E.push_back(10) E.push_back(15) E.push_back(20) 
 #
 config=Corr1Analysis nChannels=4
 config=Corr2Analysis nChannels=4
+config=FitAnalysis nChannels=4 AddRangeFwhm(25.,60,0.5) plotFileName="data/plot.root"

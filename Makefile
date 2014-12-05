@@ -3,7 +3,7 @@ CXX		=g++
 LD		=g++
 CXXFLAGS	=-O2 -ggdb -std=gnu++0x -Wall -fPIC -I/usr/include/mysql $(CFLAGS)
 CXXFLAGSLINKDEF	=-fPIC
-LDFLAGS		=-lz -lm
+LDFLAGS		=-lz -lm -lMathMore
 SOFLAGS		=-fPIC -shared 
 SHELL		=bash
 ###

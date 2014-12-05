@@ -38,6 +38,7 @@ void Histos::FillProfile(string name, double x,double y, double weight)
 	TH1 * h= histoContainer[name]; // avoid double search
 	if ( dynamic_cast<TProfile*> (h) == NULL ) 
 		{
+		Print();
 		cout <<"[Histos]::[FillProfile] Cannot cast Histo "<<name<<" to TProfile"<<endl;
 		assert(0);
 		}
@@ -64,3 +65,21 @@ void Histos::Write()
 		}
 	return;
 	}
+
+void Histos::Print()
+{
+	map<string,TH1*>::iterator it;
+	cout<<"------------HISTOS PRINT --------------"<<endl;
+	for (it=histoContainer.begin();it!=histoContainer.end();it++)
+		{
+		cout<<"H="<<it->first<<" == "<< it->second->GetName();
+		if ( it->second->InheritsFrom("TH1D") ) cout<<"TH1D ";
+		if ( it->second->InheritsFrom("TH2D") ) cout<<"TH2D ";
+		if ( it->second->InheritsFrom("TH1F") ) cout<<"TH1F ";
+		if ( it->second->InheritsFrom("TH2F") ) cout<<"TH2F ";
+		if ( it->second->InheritsFrom("TProfile") ) cout<<"TProfile ";
+		
+		cout <<endl;
+		}
+	cout<<"---------------------------------------"<<endl;
+}

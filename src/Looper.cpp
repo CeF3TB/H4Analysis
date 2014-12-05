@@ -152,6 +152,9 @@ void Looper::SetBranchesOuttree(){
 	SetBranchAddress("digi_value_ch"		,&digi_value_ch);
 	SetBranchAddress("digi_value_time"		,&digi_value_time);
 
+	// --- FIT
+	SetBranchAddress("digi_charge_integrated_fit"	,&digi_charge_integrated_fit);
+
 	// ---TOY
 	SetBranchAddress("ToyResolution",&ToyResolution );
 	SetBranchAddress("ToyNoise",&ToyNoise );

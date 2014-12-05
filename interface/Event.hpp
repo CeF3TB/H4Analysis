@@ -99,6 +99,9 @@ map<string,bool> isFilled;
  	vector<float >  *digi_value ;
  	vector<int >    *digi_value_ch ;
  	vector<float >  *digi_value_time ;
+	
+	// --- FIT
+ 	vector<float>   *digi_charge_integrated_fit  ;
 
 	// ---- HODO
 
@@ -106,6 +109,8 @@ map<string,bool> isFilled;
  	vector<bool>   *HODOX2    ;
  	vector<bool>   *HODOY1    ;
  	vector<bool>   *HODOY2    ;
+	
+	
 	// -- DEBUG
 	
  	vector<float>  *digi_pedestal_m ; 

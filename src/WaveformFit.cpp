@@ -6,6 +6,8 @@
 #include "TMath.h"
 
 #include "assert.h"
+#include <iostream>
+using namespace std;
 
 #define MAX_INTERPOLATOR_POINTS 10000
 

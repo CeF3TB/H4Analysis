@@ -63,6 +63,9 @@ tree::tree(){
 	// ----
 
 	nTdcHits = new vector<int>;
+	
+	// --fit
+ 	digi_charge_integrated_fit  = new vector<float>;
 
 }
 
@@ -104,7 +107,10 @@ tree::~tree(){
  	delete digi_time_at_frac50_bare  ;
  	delete digi_fall_time_at_frac30_bare  ;
  	delete digi_fall_time_at_frac50_bare  ;
-
+	
+	// --- fit
+	delete digi_charge_integrated_fit;
+	
 	// DEBUG	
 	delete digi_pedestal_m;
 	delete digi_pedestal_q;

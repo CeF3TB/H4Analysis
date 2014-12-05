@@ -282,6 +282,8 @@ void Filler::SetBranchesOuttree(){
 	// ---TOY
 	SetBranchAddress("ToyResolution",&out.ToyResolution );
 	SetBranchAddress("ToyNoise",&out.ToyNoise );
+	// --- FIT
+	SetBranchAddress("digi_charge_integrated_fit"	,&out.digi_charge_integrated_fit);
 }
 
 bool Filler::isActive(string name)
