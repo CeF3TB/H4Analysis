@@ -21,7 +21,6 @@ void PedSubAnalysis::AnalyzeEvent()
 		if( digiChannel <unsigned(nChannels)) 
 		{
 
-		//find dmu and cat
 		string name=Form("tprofile_pedestal_ch%d",digiChannel);
 		float sub=0;
 		sub=pedHisto[digiChannel]->GetBinContent( digiSampleIndex +1 );
