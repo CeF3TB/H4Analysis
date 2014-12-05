@@ -1,5 +1,6 @@
 #include "interface/PlotAnalysis.hpp"
 #include <exception>
+#include <algorithm>
 
 void PlotAnalysis::Init(LoopAndFill *l1)
 {
@@ -20,6 +21,19 @@ void PlotAnalysis::Init(LoopAndFill *l1)
 		l->BookHisto(Form("th2d_chint_ch%d_E%d",iCh,E[i])," ch_int vs HV",	40,0.-20.,2000-20,	5000,0-50.,500000-50.	,"TH2D");
 		l->BookHisto(Form("th2d_maxampl_ch%d_E%d",iCh,E[i])," max_ampl vs HV",	40,0.-20.,2000-20,	4000,-0.5,3999.5	,"TH2D");
 		}
+	//profile that depends on fwhm
+	sort(fwhmBins.begin(),fwhmBins.end() );
+	for( unsigned int iCh=0;iCh<unsigned(nChannels);++iCh)
+	   for(unsigned int iFwhm=0;iFwhm<fwhmBins.size() ;++iFwhm)
+		{
+		float fwhm=fwhmBins[iFwhm];
+		//l->BookHisto(Form("tprofile_shape_ch%d_fwhm%.2f",iCh,fwhm),"Pulse shape",1024,-0.5,1024-.5,"TProfile");
+		l->BookHisto(Form("tprofile_shape_ch%d_fwhm%.2f",iCh,fwhm),"Pulse shape",130*10,-30,100,"TProfile");
+		}
+	
+	// --- END FWHM
+	
+	
 	cout<<"[PlotAnalysis]::[Init] Done"<<endl;
 }
 
@@ -37,7 +51,31 @@ bool PlotAnalysis::isActiveRun(int run){
 
 void PlotAnalysis::AnalyzeEvent(){
 	if (!runs.empty()  && !isActiveRun(l->runNumber)){return;}
-	// table selection
+	// ---- FWHM
+	for (unsigned int iSample=0;iSample< l->nDigiSamples;iSample++)
+		{
+ 		UInt_t digiGroup   = l->digiGroup[iSample];
+ 		UInt_t digiChannel = l->digiChannel[iSample] + 8*digiGroup;
+ 		UInt_t digiSampleIndex = l->digiSampleIndex[iSample];
+ 		Float_t digiSampleValue = l->digiSampleValue[iSample];
+		UInt_t digiFrequency = l->digiFrequency[iSample];
+		// post fft -- all times are in ns
+		float digiPed= l->digi_pedestal->at(digiChannel);
+		float fwhm= l->digi_fall_time_at_frac50->at(digiChannel) - l->digi_time_at_frac50->at(digiChannel);
+		float time_at_max=l->digi_time_at_max->at(digiChannel);
+		float max_ampl= l->digi_max_amplitude->at(digiChannel);
+		float digiTime= digiSampleIndex;
+		if (digiFrequency == 0 ) digiTime*=0.2;
+		if (digiFrequency == 1 ) digiTime*=0.4;
+		if (digiFrequency == 2 ) digiTime*=1.;
+		float fwhm_bin=fwhmBins[0];
+		for(unsigned int i=0;i<fwhmBins.size();++i)  if (fwhm < fwhmBins[i] ) fwhm_bin=fwhmBins[i] ;
+	
+		l->FillProfile(Form("tprofile_shape_ch%d_fwhm%.2f",digiChannel,fwhm_bin),digiTime-time_at_max, -(digiSampleValue - digiPed)/max_ampl);
+		}
+	// ---- FWHM
+	
+	// table selection -- this is for corr1 -- only central
 	if (int(l->TableX) !=194 || int(l->TableY) !=254 ) {return;} //center table position
 
 	try{

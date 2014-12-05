@@ -22,6 +22,9 @@ public:
 	bool isActiveRun(int run); // if empty all
 	void AddRun(int run){runs[run]=1;};
 	void AddRunRange(int run1,int run2){for(int i=run1;i<=run2;++i) AddRun(i);};
+	
+	vector<float> fwhmBins;
+	void AddRangeFwhm(float min,float max, float d){for(float x=min;x<=max ; x+=d)fwhmBins.push_back(x);}
 };
 
 #endif

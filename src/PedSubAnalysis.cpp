@@ -1,5 +1,5 @@
 #include "interface/PedSubAnalysis.hpp"
-#include "interface/PedestalAnalysis.hpp"
+//#include "interface/PedestalAnalysis.hpp"
 #include "TMath.h"
 
 void PedSubAnalysis::ClearEvent()
@@ -20,23 +20,14 @@ void PedSubAnalysis::AnalyzeEvent()
 		Float_t valSub=0;
 		if( digiChannel <unsigned(nChannels)) 
 		{
-		float 	dmu2= l->digi_pedestal_mu2->at(digiChannel) - l->digi_pedestal_mu0->at(digiChannel);
-		float 	dmu1= l->digi_pedestal_mu1->at(digiChannel) - l->digi_pedestal_mu0->at(digiChannel);
-		char 	cat	=PedestalAnalysis::computeCategory(digiChannel,dmu2,dmu1);
-		float mu=dmu1;
-		int n=  TMath::Floor((mu-muMin)/muDelta); 
-		mu=muMin+n*muDelta;
-		if (mu>muMax || mu<muMin) mu=0; 
 
 		//find dmu and cat
-		string name=Form("tprofile_pedestal_ch%d_cat%c_dmu%.1f",digiChannel,cat,mu);
+		string name=Form("tprofile_pedestal_ch%d",digiChannel);
 		float sub=0;
-		sub=pedHisto[name]->GetBinContent( digiSampleIndex +1 );
+		sub=pedHisto[digiChannel]->GetBinContent( digiSampleIndex +1 );
 		valSub=digiSampleValue-sub;
 		}
 		l->digiSampleValueSub[iSample]=valSub;
-		
-		
 	}
 
 
@@ -58,19 +49,11 @@ void PedSubAnalysis::Init(LoopAndFill *l1)
 		}
 	pedHisto.clear();
 	pedFile=TFile::Open(pedestalFileName.c_str());
-	for(unsigned int iCat=0;iCat<unsigned(nCat);++iCat)
-	{
 	for( unsigned int iCh=0;iCh<unsigned(nChannels);++iCh)
 	   {
-	   for(float iDMu=muMin;iDMu<=muMax;iDMu+=muDelta)
-	      {
-		string name=Form("tprofile_pedestal_ch%d_cat%c_dmu%.1f",iCh,'A'+iCat,iDMu);
-		pedHisto[name] = (TProfile*)pedFile->Get(name.c_str());
-	      }
-	    string name=Form("tprofile_pedestal_ch%d_cat%c_dmu0.0",iCh,'A'+iCat);
-	    pedHisto[name] = (TProfile*)pedFile->Get(name.c_str());
+		string name=Form("tprofile_pedestal_ch%d",iCh);
+		pedHisto[iCh] = (TProfile*)pedFile->Get(name.c_str());
 	   }
-	}
 	
 }
 
