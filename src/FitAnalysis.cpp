@@ -1,6 +1,7 @@
 #include "interface/FitAnalysis.hpp"
 #include "interface/Waveform.hpp"
 #include "interface/WaveformFit.hpp"
+#include "interface/stat.hpp"
 
 #include <iostream>
 #include <algorithm>
@@ -101,6 +102,7 @@ void FitAnalysis::AnalyzeEvent(){
 		if ( digiSampleIndex >=1000 ) digiSampleValue= l->digi_pedestal->at(digiChannel);
     		waveform[ digiChannel ]-> addTimeAndSample(digiTime, digiSampleValue);
 		}
+
 	// --- loop over the channels, 2nd loop	
 	for(int iCh=0;iCh<nChannels;++iCh){
 		// get fwhm info
@@ -132,25 +134,37 @@ void FitAnalysis::AnalyzeEvent(){
 		double fitcharge=-999;	 // default
 		if ( wave_max.max_amplitude >10 && wave_max.sample_at_max>0 && wave_max.sample_at_max<1000)
 		{
-			WaveformFit::fitWaveform(waveform[iCh],ref,//minimizer,
-					1000,1000, // nsamples before/after max for the fit
-					wave_max, // wavemax info
-					baseline, // rms
-					minimizer
-					);
-			// par0: amplitude, par1 deltat
-			const double* par=minimizer->X();		
+			vector<float> vRef;
+			vector<float> pulse_shape;
+			for(int i=1;i<=ref->GetNbinsX();++i) vRef.push_back(ref->GetBinContent(i));
+			for(int i=0;i< waveform[iCh]->_samples.size() ; ++i) pulse_shape.push_back( waveform[iCh]->_samples.at(i) );
+			float chiSquare=0;
+			float ampl=1;
+			float dT=0;
+			int status;
+			STAT::simpleTemplateFit( pulse_shape,vRef,chiSquare, ampl, dT, status,baseline.rms ) ;
+			// --- // WaveformFit::fitWaveform(waveform[iCh],ref,//minimizer,
+			// --- // 		100,300, // nsamples before/after max for the fit
+			// --- // 		wave_max, // wavemax info
+			// --- // 		baseline, // rms
+			// --- // 		minimizer
+			// --- // 		);
+			// --- // // par0: amplitude, par1 deltat
+			// --- // const double* par=minimizer->X();		
+			if (status == 0 ) fitcharge=ref->Integral() * ampl;
 
-
-			if (minimizer->Status() == 0 ) 
-				{
-				fitcharge= ref->Integral() * par[0];
-				}
+			// --- // if (minimizer->Status() == 0 ) 
+			// --- // 	{
+			// --- // 	fitcharge= ref->Integral() * par[0];
+			// --- // 	}
 		}
 		l->digi_charge_integrated_fit->push_back( fitcharge );
 
 		//delete minimizer;
 		
 	} // loop over iCh
+
+	// delete what created
+	for(int iCh=0;iCh<nChannels;++iCh) delete waveform[iCh] ;
 }
 

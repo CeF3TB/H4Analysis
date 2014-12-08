@@ -14,6 +14,7 @@ parser.add_option("-v","--debug" ,dest='debug',type='int',help="Debug Verbosity.
 parser.add_option("-n","--njobs" ,dest='njobs',type='int',help="Number of Job to submit",default=50)
 parser.add_option("-q","--queue" ,dest='queue',type='string',help="Queue",default="short.q")
 parser.add_option("-t","--no-tar" ,dest='tar',action='store_false',help="Do not Make Tar",default=True)
+parser.add_option("-r","--by-run" ,dest='byrun',action='store_true',help="Split by run",default=False)
 parser.add_option("","--dryrun" ,dest='dryrun',action='store_true',help="Do not Submit",default=False)
 parser.add_option("","--no-compress" ,dest='compress',action='store_false',help="Don't compress",default=True)
 parser.add_option("","--compress"    ,dest='compress',action='store_true',help="Compress stdout/err")
@@ -41,20 +42,37 @@ if opts.tar:
 	call(cmd)
 
 ## expand *
-fileList=[]
-for f in config['InputFiles']:
-	list=[]
-	if 'dcap' in f or 'srm' in f:	
-		list=ReadSRM(f)
-	else :
-		list=glob(f)
-		if list == []: ### maybe remote ?
-			list=f
-	fileList.extend(list)
-config['InputFiles']=fileList
-	
-
-splittedInput=chunkIt(config['InputFiles'],opts.njobs )
+if not opts.byrun:
+	fileList=[]
+	for f in config['InputFiles']:
+		list=[]
+		if 'dcap' in f or 'srm' in f:	
+			list=ReadSRM(f)
+		else :
+			list=glob(f)
+			if list == []: ### maybe remote ?
+				list=f
+		fileList.extend(list)
+	config['InputFiles']=fileList
+	splittedInput=chunkIt(config['InputFiles'],opts.njobs )
+else:
+	print "-- Creating one job per Run --"
+	fileList=[]
+	splittedInput=[] ## [ [ file0, file1 ,file2] , [ file0_r1 ..] ]
+	(template,runs)= config['InputRuns']
+	for run in runs:
+		fileName= re.sub('%%RUN%%',run,template)
+		if 'dcap' in fileName or 'srm' in fileName: 
+			list=ReadSRM(fileName)
+		else:
+			list=glob(fileName)
+			if list == []: ## maybe remote ?
+				list=fileName
+		fileList.extend(list) ## unused
+		splittedInput.append( list )  ## list of list, no extend
+	opts.njobs=len(splittedInput)
+	print "-> will submit", opts.njobs, "==",len(runs)
+		
 
 for iJob in range(0,opts.njobs):
 	sh=open("%s/sub%d.sh"%(opts.dir,iJob),"w")
@@ -75,6 +93,7 @@ for iJob in range(0,opts.njobs):
 		sh.write("mkdir -p %s\n"%opts.dir)
 		sh.write("cp %s/*dat %s/\n"%(basedir,opts.dir))
 	sh.write('touch %s/sub%d.run\n'%(basedir,iJob))
+	if opts.byrun: sh.write('echo "BYRUN CONFIGURATION:%s"\n'%runs[iJob]); ## echo something abount the run on stdout
 	if opts.compress:
 		compressString="2>&1 | gzip > %s/log%d.txt.gz"%(opts.dir,iJob)
 	else: compressString =""
@@ -87,7 +106,11 @@ for iJob in range(0,opts.njobs):
 	sh.write('[ $EXITCODE == 0 ] && touch %s/sub%d.done\n'%(basedir,iJob))
 	sh.write('[ $EXITCODE != 0 ] && touch %s/sub%d.fail\n'%(basedir,iJob))
 	if opts.tar:
-		if basedir != opts.dir : sh.write("mv %s/output%d.root %s/output%d.root\n"%(opts.dir,iJob,basedir,iJob))
+		if basedir != opts.dir : 
+			if opts.byrun:
+				sh.write("mv %s/output_run%s.root %s/output_run%s.root\n"%(opts.dir,runs[iJob],basedir,runs[iJob]))
+			else:
+				sh.write("mv %s/output%d.root %s/output%d.root\n"%(opts.dir,iJob,basedir,iJob))
 		if opts.compress:
 			sh.write("mv %s/log%d.txt.gz %s/log%d.txt.gz\n"%(opts.dir,iJob,basedir,iJob) )
 	
@@ -95,7 +118,10 @@ for iJob in range(0,opts.njobs):
 	dat.write("include=%s\n"%opts.input)
 	#print "inputFiles=",config['InputFiles'], "Splitted=",splittedInput,"\n\nselected=",','.join(splittedInput[iJob]),"\n\n" ###DEBUG
 	dat.write('InputFiles=%s\n'%( ','.join(splittedInput[iJob]) ) )
-	dat.write('OutputFile=%s/output%d.root\n'%(opts.dir,iJob) )
+	if opts.byrun:
+		dat.write('OutputFile=%s/output_run%s.root\n'%(opts.dir,runs[iJob]) )
+	else:
+		dat.write('OutputFile=%s/output%d.root\n'%(opts.dir,iJob) )
 
 	## make the sh file executable	
 	call(["chmod","u+x","%s/sub%d.sh"%(opts.dir,iJob)])

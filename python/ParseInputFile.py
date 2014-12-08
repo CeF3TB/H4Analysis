@@ -70,6 +70,8 @@ def ParseInputFile(fileName):
 			template=parts[1].split(' ')[0]
 			runs=parts[1].split(' ')[1].split(',')
 			R[ 'InputFiles' ]= [ re.sub('%%RUN%%',x,template) for x in runs ]
+			## save in the configuration
+			R[ 'InputRuns']= ( template, runs )
 			print R['InputFiles']
 			print "----------------"
 		else:

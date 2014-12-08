@@ -196,3 +196,98 @@ float STAT::ConfidenceInterval(std::vector<float> &v,std::pair<float,float>&r,fl
 	return (r.second-r.first)/2.;
 }
 
+ // ---------- TEMPLATE FIT
+float STAT::evalVector(std::vector<float> &x, int i)
+{
+	if (i <0 ) return 0;
+	else if( i>= x.size() ) return 0;
+	else return x[i];
+}
+
+float STAT::linearInterpolation(float x, pair<float,float> &p1, pair<float,float> &p2)
+{
+	//y=m(x-x1) +y1
+	float  m= (p1.second - p2.second) / (p1.first - p2.first);
+	return m*(x-p1.first) + p1.second;
+}
+
+float STAT::chi2(std::vector<float> &y1, std::vector<float>&y2,float rms,float ampl,float dx){
+	float ChiSquare=0;	
+	for(int i1 = 0 ;i1<y1.size() ;++i1)
+		{
+		float delta=0;
+		float value1=y1[i1]*ampl;
+	
+		float x2=i1-dx;
+		pair<float,float> p1,p2;
+		p1.first= floor(x2);
+		p2.first= ceil(x2);
+		float value2;
+		if( int(p1.first) == int(p2.first) )
+			{
+			value2=evalVector(y2, int(p1.first ) );
+			}
+		else {
+			p1.second=evalVector( y2,int(p1.first) );
+			p2.second=evalVector( y2,int(p2.first) );
+			value2=linearInterpolation(x2,p1,p2);
+			}
+		
+		delta = value1-value2;
+		delta *= delta;
+		delta /= rms;
+		// penalize the eccessize ChiSquare -- long rang
+		if (delta > 25)  
+			{
+			delta = 5*sqrt(delta);
+			}
+		// end
+		ChiSquare +=  delta;
+		}
+	return ChiSquare;
+}
+
+
+void STAT::simpleTemplateFit(vector<float> &y, vector<float> &ref, float &chiSquare, float&amplitude, float &dT,int &status, float rms) {
+	if (y.empty() || ref.empty() ) return;
+
+	float epsilon=1e-3; // target precision
+	
+	//find max of y
+	int iMax=0, yMax=y[0];
+	for(int i=0;i<y.size();++i) if (yMax<y[i]) { iMax=i; yMax=y[i];}
+	//find max of ref	
+	int iRef=0, yRef=ref[0];
+	for(int i=0;i<ref.size();++i) if (yRef<ref[i]) { iRef=i; yRef=ref[i];}
+	//performe a simple and small grid minimization
+	amplitude = yMax/yRef;
+	dT= iMax-iRef;
+
+	// GRID
+	float amplitude_R = amplitude;
+	float dT_R=dT;
+	float myChi2= chi2(y,ref,rms, amplitude,dT);  
+
+	for( float amplFact=0.9; amplFact<1.1 ; amplFact += 0.005 )
+	for( float dTFact=0.9; dTFact<1.1 ; dTFact += 0.005 )
+	{
+	float chi2_point=chi2(y,ref,rms, amplitude*amplFact,dT*dTFact);	
+	if (chi2_point< myChi2 ) 
+		{
+		myChi2=chi2_point;
+		dT_R=dT*dTFact;
+		amplitude_R=amplitude*amplFact;
+		if ( amplFact <=0.9+0.0001 || amplFact>=1.1 -0.0001 ||
+			dTFact <=0.9+0.0001 || dTFact >=1.1 -0.0001
+			)
+			status = 1; // boundary
+		else 
+			status = 0;
+		}
+	}	
+	//copy back
+	amplitude=amplitude_R;
+	dT=dT_R;
+	chiSquare= myChi2;
+	return ;
+}
