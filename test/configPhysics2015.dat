@@ -1,0 +1,27 @@
+######## Input Files #######
+InputBranches=data/unpackBranches.dat
+include=data/physicsRuns2015.dat
+
+######## Output File #######
+OutputFile=output2015.root
+OutputBranches=data/dqmBranchesExtended.dat
+
+####### Analysis #######
+#Analysis=PromptRecoAnalysis,DatabaseReadAnalysis,PedestalAnalysis,PedSubAnalysis,SimpleAnalysis,PlotAnalysis,Corr1Analysis,Corr2Analysis
+#Analysis=PromptRecoAnalysis,DatabaseReadAnalysis,PedestalAnalysis,PlotAnalysis,Corr1Analysis
+#Analysis=PromptRecoAnalysis,DatabaseReadAnalysis,PedestalAnalysis,PlotAnalysis,Corr1Analysis,FitAnalysis
+Analysis=PromptRecoAnalysis,PedestalAnalysis,PlotAnalysis,Corr1Analysis,FitAnalysis
+#
+#config=DatabaseReadAnalysis databasename="sqlite://data/CeF3_H4DFall2014_analysisdb.sqlite" tablename="cef3"
+#
+config=PedestalAnalysis nChannels=4
+#
+config=PedSubAnalysis pedestalFileName="data/pedestal.root" nChannels=4
+#
+config=SimpleAnalysis nChannels=4 inputType=1
+#
+config=PlotAnalysis nChannels=4 E.push_back(10) E.push_back(15) E.push_back(20) E.push_back(50) E.push_back(100) E.push_back(150) E.push_back(200) AddRangeFwhm(25.,60.,0.5)
+#
+config=Corr1Analysis nChannels=4
+config=Corr2Analysis nChannels=4
+config=FitAnalysis nChannels=4 AddRangeFwhm(25.,60,0.5) plotFileName="data/plot.root"
