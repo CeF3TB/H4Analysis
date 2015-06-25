@@ -1,0 +1,588 @@
+Good runs list:
+
+Position Scan:
+
+----------- Digitizer: 5 GHz 
+50k Center, 20k events on each position: Cross+ Diagonal
+
+--------- Energy = 20 GeV ------
+Run 2745:20 GeV CENTER 50 k
+Run 2746:20 GeV LEFT1 20K
+Run 2747:20 GeV LEFT2 20k
+Run 2748:20 GeV RIGHT1 20k
+Run 2749:20 GeV RIGHT2 20k
+Run 2750 :20 GeV UP1 20k
+Run 2751:20 GeV UP2 20k
+Run 2752:20 GeV DOWN1 20k
+Run 2753:20 GeV DOWN2 20k
+Run 2754:20 GeV SE1 20k
+Run 2755:20 GeV SE2 20k
+Run 2756:20 GeV SW1 20k
+Run 2757:20 GeV SW2 20k
+Run 2758:20 GeV NE1 20k
+Run 2759:20 GeV NE2 20k
+Run 2760:20 GeV NW1 20k
+Run 2761:20 GeV NW2 20k
+
+--------- Energy = 50 GeV ------
+Run 2586 50k Position centre
+Run 2587 20k Position UP3
+Run 2588 20k Position UP2
+Run 2589 20k Position UP1
+Run 2590 20k Position DW1
+Run 2591 20k Position DW2
+Run 2592 20k Position DW3
+Run 2593 20k Position LEFT3
+Run 2594 20k Position LEFT2
+Run 2595 20k Position LEFT1
+Run 2596 20k Position RIGHT1
+Run 2597 20k Position RIGHT2
+Run 2598 20k Position RIGHT3
+
+Run 2599 20k Position SW4
+Run 2600 20k Position SW3
+Run 2601 20k Position SW2
+Run 2602 20k Position SW1
+Run 2603 20k Position NE1
+Run 2604 20k Position NE2
+Run 2605 20k Position NE3
+Run 2606 20k Position NE4
+Run 2607 20k Position NW4
+Run 2608 20k Position NW3
+Run 2609 20k Position NW2
+Run 2610 20k Position NW1
+Run 2611 20k Position SE1
+Run 2612 20k Position SE2
+Run 2613 20k Position SE3
+Run 2615 20k Position SE4
+
+
+-------- Energy = 100GeV ------
+Run 2542 Center 
+Run 2545 Cef3_left2
+Run 2547: Sw1 20k
+Run 2548: Sw2 20k
+Run 2549: Sw3 20k
+Run 2550: Sw4 20k
+Run 2551: NW1 20k
+Run 2552: NW2 20k
+Run 2553: NW3 20k
+Run 2554: NW4 20k
+Run 2555: NE1 20k
+Run 2556: NE2 20k
+Run 2557: NE3 20k
+Run 2558: NE4 20k
+Run 2559: SE1 20k
+Run 2560: SE2 20k
+Run 2561: SE3 20k
+Run 2562: SE4 20k
+Run 2563: UP1 20k
+Run 2564: UP2 20k
+Run 2565: UP3 20k
+Run 2566: DOWN1 20k
+Run 2567: DOWN2 20k
+Run 2568: DOWN3 20k
+Run 2569: LEFT1 20k
+Run 2570: LEFT2 20k
+Run 2571: LEFT3 20k
+Run 2572:RIGHT1 20k
+Run 2573:RIGHT2 20k
+Run 2574:RIGHT3 20k
+
+
+------- Energy = 150 GeV -------------------
+Run 2631  50k Position centre
+Run 2632  20k Position UP3
+Run 2633  20k Position UP2
+Run 2637  20k Position  UP1
+Run 2639 20k  Position DW1
+Run 2640 20k  Position DW2
+Run 2641 20k  Position DW3
+Run 2642 20k  Position LT1
+Run 2643 20k  Position LT2
+Run 2644 25k  Position LT3
+Run 2645 25k  Position RT1
+Run 2646 18k  Position RT2
+Run 2647 18k Position RT2 (additional good data for position RT2)
+run 2682: 150 GeV, UP2 
+run 2683: 150 GeV, SW1 
+run 2684: 150 GeV, SW2 
+run 2685: 150 GeV, NE1 
+run 2685: 150 GeV, NE2 
+run 2686: 150 GeV, NW1 
+run 2688: 150 GeV, NW2 
+run 2688: 150 GeV, SE1 
+run 2688: 150 GeV, SE2
+
+----------- 200 GeV -------------- 
+run 2692: 200 GeV, CEF3_center. 3500 evts/spill
+run 2694: 200 GeV, UP1. 3500 evts/spill
+run 2695: 200 GeV, UP2. 3500 evts/spill
+run 2696: 200 GeV, DW1. 3500 evts/spill
+run 2697: 200 GeV, DW2. 3500 evts/spill
+run 2698: 200 GeV, LEFT1. 3500 evts/spill
+run 2700: 200 GeV, LEFT2. 3500 evts/spill  
+run 2702: 200 GeV, RIGHT1. 3500 evts/spill 
+run 2703: 200 GeV, RIGHT2. 3500 evts/spill 
+run 2704: 200 GeV, SW1. 3500 evts/spill 
+run 2705: 200 GeV, SW2. 3500 evts/spill 
+run 2706: 200 GeV, NE1. 3500 evts/spill 
+run 2708: 200 GeV, NE2. 3500 evts/spill
+run 2709: 200 GeV, NW1. 3500 evts/spill
+run 2710: 200 GeV, NW2. 3500 evts/spill
+run 2711: 200 GeV, SE1. 3500 evts/spill
+run 2712: 200 GeV, UP3. 3500 evts/spill
+run 2713: 200 GeV, DW3. 3500 evts/spill
+run 2714: 200 GeV, LEFT3. 3500 evts/spill
+run 2715: 200 GeV, RIGHT3. 3500 evts/spill
+- RUN = 2992, E = 200 GeV ,  Angle = 0 deg , POS = CeF3 SE2, HV = 1450 , N = 20K
+- RUN = 2993, E = 200 GeV ,  Angle = 0 deg , POS = CeF3 SE3, HV = 1450 , N = 20K
+- RUN = 2994, E = 200 GeV ,  Angle = 0 deg , POS = CeF3 SW3, HV = 1450 , N = 20K
+- RUN = 2995, E = 200 GeV ,  Angle = 0 deg , POS = CeF3 NW3, HV = 1450 , N = 20K
+- RUN = 2996, E = 200 GeV ,  Angle = 0 deg , POS = CeF3 NE3, HV = 1450 , N = 20K
+- RUN = 2997, E = 200 GeV ,  Angle = 0 deg , POS = CeF3 SE4, HV = 1450 , N = 20K
+- RUN = 2998, E = 200 GeV ,  Angle = 0 deg , POS = CeF3 SW4, HV = 1450 , N = 20K
+- RUN = 2999, E = 200 GeV ,  Angle = 0 deg , POS = CeF3 NW4, HV = 1450 (DAQ crashed restart run) => BAD RUN
+- RUN = 3000, E = 200 GeV ,  Angle = 0 deg , POS = CeF3 NW4, HV = 1450 , N = 20K
+- RUN = 3001, E = 200 GeV ,  Angle = 0 deg , POS = CeF3 NE4, HV = 1450 , N = 20K
+
+
+----------- 250 GeV --------------
+Run 2654   25k  Position Center
+Run 2773 250 GeV CENTER 25 k
+Run 2655   25k  Position  UP1
+un 2656: 250 GeV, UP2
+run 2658: 250 GeV, DW2
+run 2659: 250 GeV, LT1
+run 2660: 250 GeV, LT2. 1400 evts/spill
+run 2661: 250 GeV, RT1. 1400 evts/spill
+run 2662: 250 GeV, RT2. 1400 evts/spill 
+run 2673: 250 GeV, SW1. 1400 evts/spill
+run 2674: 250 GeV, SW2. 1400 evts/spill
+run 2675: 250 GeV, NE1. 1400 evts/spill
+run 2676: 250 GeV, NE2. 1400 evts/spill
+run 2677: 250 GeV, NW1. 1400 evts/spill
+run 2678: 250 GeV, NW2. 1400 evts/spill
+run 2679: 250 GeV, SE1. 1500 evts/spill
+run 2680: 250 GeV, SE2. 1500 evts/spill
+
+ 
+
+For the following runs check the position on the database!!!!!
+16:55 start run 2663: 250 GeV, RT2. 1400 evts/spill 
+
+   *** CAREFUL! possibly the table hadn't been moved
+
+17:05 start run 2664: 250 GeV, SW2. 1400 evts/spill
+
+   *** CAREFUL! possibly the table hadn't been moved
+
+17:15 start run 2665: 250 GeV, NE1. 1400 evts/spill
+
+   *** CAREFUL! possibly the table hadn't been moved
+
+17:20 start run 2666: 250 GeV, NE2. 1400 evts/spill
+
+   *** CAREFUL! possibly the table hadn't been moved
+
+17:25 start run 2667: 250 GeV, NW1. 1400 evts/spill
+
+   *** CAREFUL! possibly the table hadn't been moved
+
+17:30 start run 2668: 250 GeV, NW2. 1400 evts/spill
+
+   *** CAREFUL! possibly the table hadn't been moved
+
+17:35 start run 2669: 250 GeV, SE1. 1400 evts/spill
+
+   *** CAREFUL! possibly the table hadn't been moved
+
+17:45 start run 2670: 250 GeV, SE2. 1400 evts/spill
+
+   *** CAREFUL! possibly the table hadn't been moved
+
+------------------------------------------
+
+----------- Digitizer: 2.5 GHz 
+
+----20 GeV----
+- RUN = 2851 , E = 20 GeV ,  POS = center , HV = 1450 , N = 20K
+- RUN = 2852 , E = 20 GeV ,  POS = left2 , HV = 1450 , N = 20K
+- RUN = 2853 , E = 20 GeV ,  POS = right2 , HV = 1450 , N = 20K 
+- RUN = 2854 , E = 20 GeV ,  POS = up2 , HV = 1450 , N = 20K
+- RUN = 2855 , E = 20 GeV ,  POS = down2 , HV = 1450 , N = 20K
+- RUN = 2856 , E = 20 GeV ,  POS = nw3 , HV = 1450 , N = 20K
+- RUN = 2857 , E = 20 GeV ,  POS = ne3 , HV = 1450 , N = 20K
+- RUN = 2859 , E = 20 GeV ,  POS = se3 , HV = 1450 , N = 20K
+- RUN = 2860 , E = 20 GeV ,  POS = sw3 , HV = 1450 , N = 20K
+
+
+----100 GeV----
+Run 2778: Center 50k ----------> energy wrong in the database, fix it
+Run 2779: Left1 20k (not needed for this quick scan, don't take with other energies)
+Run 2780: Left2 20k ----------> energy wrong in the database, fix it
+Run 2781: Right1 (not needed for this quick scan, don't take with other energies)
+Run 2782: Right2 20k
+Run 2783: Up2 20k
+Run 2784: DOWN2 20k
+Run 2785: SE3   20k
+Run 2786: SW3  20k
+Run 2787: NE3  20k
+Run 2788: NW3  20k
+ 
+----50 GeV----
+Run 2801: Center 50k
+Run 2802: Left2 20k
+Run 2803: Right2 20k
+Run 2804: Up2 20k
+Run 2805: Down2 20k
+Run 2806: NW3 20k
+Run 2807: NE3 20k
+Run 2808: SE3 20k
+Run 2809: SW3 20k
+
+----150 GeV----
+- RUN = 2822 , E = 150 GeV ,  POS = center , HV = 1450 , N = 50K 
+- RUN = 2823 , E = 150 GeV ,  POS = left2 , HV = 1450 , N = 20K
+- RUN = 2824 , E = 150 GeV ,  POS = right2 , HV = 1450 , N = 20K
+- RUN = 2825 , E = 150 GeV ,  POS = up2 , HV = 1450 , N = 20K
+- RUN = 2826 , E = 150 GeV ,  POS = down2 , HV = 1450 , N = 20K
+- RUN = 2827 , E = 150 GeV ,  POS = nw3 , HV = 1450 , N = 20K
+- RUN = 2828 , E = 150 GeV ,  POS = ne3 , HV = 1450 , N = 20K
+- RUN = 2829 , E = 150 GeV ,  POS = se3 , HV = 1450 , N = 20K
+- RUN = 2831 , E = 150 GeV ,  POS = sw3 , HV = 1450 , N = 20K
+
+----200 GeV----
+- RUN = 2872 , E = 200 GeV , POS = CeF3 center ,  HV = 1450 , N = 48k (prfiles checked, they are nice) - DAQ alarms, had to restart: probably a bad run
+- RUN = 2873 , E = 200 GeV , POS = CeF3 center ,  HV = 1450 , N = 50k (forgot to write 200 GeV in the comments)
+- RUN = 2874 , E = 200 GeV , POS = CeF3 Left2 ,  HV = 1450 , N = 20k
+- RUN = 2875 , E = 200 GeV , POS = CeF3 Right2 ,  HV = 1450 , N = 20k
+- RUN = 2876 , E = 200 GeV , POS = CeF3 UP2 ,  HV = 1450 , N = 20k
+- RUN = 2877 , E = 200 GeV , POS = CeF3 DOWN2 ,  HV = 1450 , N = 20k
+- RUN = 2878 , E = 200 GeV , POS = CeF3 NW3 ,  HV = 1450 , N = 20k
+- RUN = 2879 , E = 200 GeV , POS = CeF3 NE3 ,  HV = 1450 , N = 20k
+- RUN = 2880 , E = 200 GeV , POS = CeF3 SE3 ,  HV = 1450 , N = 20k
+- RUN = 2881 , E = 200 GeV , POS = CeF3  SW3,  HV = 1450 , N = 20k
+
+---- 250 GeV ----
+- RUN = 2894 , E = 250 GeV ,  POS = CeF3 Center , HV = 1450 , N = 50K
+- RUN = 2895 , E = 250 GeV ,  POS = CeF3 Left2 , HV = 1450 , N = 20K
+- RUN = 2896 , E = 250 GeV ,  POS = CeF3 Right2 , HV = 1450 , N = 20K
+- RUN = 2897 , E = 250 GeV ,  POS = CeF3 Up2 , HV = 1450 , N = 20K
+- RUN = 2898 , E = 250 GeV ,  POS = CeF3 Down2 , HV = 1450 , N = 20K
+- RUN = 2899 , E = 250 GeV ,  POS = CeF3 NW3 , HV = 1450 , N = 20K   -> BAD RUN: run crashed.
+- RUN = 2900 , E = 250 GeV ,  POS = CeF3 NW3 , HV = 1450 , N = 20K
+- RUN = 2901 , E = 250 GeV ,  POS = CeF3 NE3 , HV = 1450 , N = 20K
+- RUN = 2902 , E = 250 GeV ,  POS = CeF3 SE3, HV = 1450 , N = 20K
+- RUN = 2903 , E = 250 GeV ,  POS = CeF3 SW3, HV = 1450 , N = 20K
+
+----------------------------------------------------
+----------------------------------------------------
+
+
+
+---HV SCAN---
+----------- Digitizer: 5 GHz 
+1450V-750 V in 100V steps ONLY for the M,L,S fibers + 4 runs at 750V on each fiber
+-------20 GeV-------
+Run 2762:20 GeV, HV=1350 50k
+Run 2763 :20 GeV, HV=1250 50k
+Run 2764:20 GeV, HV=1150 50k
+Run 2765:20 GeV, HV=1050 50k
+Run 2766:20 GeV, HV=950 50k
+Run 2767:20 GeV, HV=850 50k
+Run 2768:20 GeV, HV=750 50k
+Scan on fibres with HV= 750
+Run 2769: 20 GeV  shooting directly on a fiber SW3 20k
+Run 2770: 20 GeV 20k shooting directly on a fiber NW3 20k
+Run 2771: 20 GeV 20k shooting directly on a fiber NE3 20k
+Run 2772: 20 GeV 20k shooting directly on a fiber SE3 20k
+
+
+
+----50 GeV-------
+Run 2617  50k HV 1350
+Run 2619  50k HV 1150
+Run 2621  50k HV 1050
+Run 2622  50k HV 950
+Run 2623  50k HV 850
+Run 2624  50k HV 750
+	  
+Run 2625  20k Position SW3 HV 750
+Run 2626  20k Position NE3 HV 750
+Run 2627  20k Position NW3 HV 750
+Run 2628  20k Position SE3 HV 750
+
+----100 GeV-------
+Run 575  Centre HV 1350V 50k
+Run 2576: Centre HV 1250V 50k
+Run 2577: Centre HV 1150V 50k
+Run 2578: Centre HV 1050V 50k
+Run 2579: Centre HV 950V 50k
+Run 2580: Centre HV 850V 50k
+Run 2581: Centre HV 750V 50k
+Run 2582 20k Position SW3
+Run 2583 20k Position NE3
+Run 2584 20k Position NW3
+Run 2585 20k Position SE3
+
+
+----150 GeV-----
+Run 2731:150 GeV, HV=1350 55k
+Run 2735: 150 GeV HV=1250 55k
+Run 2736: 150 GeV HV=1150 55k
+Run 2737: 150 GeV HV=1050 50k
+Run 2738: 150 GeV HV=950 50k
+Run 2739: 150 GeV HV=850 50k
+Run 2740: 150 GeV HV=750 50k
+
+Run 2741: 150 GeV 50k shooting directly on a fiber SW3 20k
+Run 2742: 150 GeV shooting directly on a fiber NW3 20k
+Run 2743: 150 GeV shooting directly on a fiber NE3 20k
+Run 2744: 150 GeV shooting directly on a fiber SE3 20k
+
+
+----200 GeV------
+22:16 start run 2716: 200 GeV, HV=1350. 3500 evts/spill
+22:21 start run 2717: 200 GeV, HV=1250. 3500 evts/spill
+22:25 start run 2718: 200 GeV, HV=1150. 3500 evts/spill
+22:30 start run 2719: 200 GeV, HV=1050. 3500 evts/spill
+22:35 start run 2720: 200 GeV, HV=950. 3500 evts/spill
+Run 2721: 200 GeV, HV=850 50k
+Run 2722: 200 GeV, HV=750 DAQ crashed around 30k events started a new run at the same hv (2723)
+Run 2723 : 200 GeV, HV=750 40k
+Run 2724: 200 GeV shooting directly on a fiber SW3  DAQ crashed at 17 k (rate too high, we start another run)
+Run 2725: 200 GeV shooting directly on a fiber SW3 10k
+Run 2726: 200 GeV shooting directly on a fiber NW3
+Run 2729: 200 GeV shooting directly on a fiber NE3 20k
+Run 2730: 200 GeV shooting directly on a fiber SE3 20k
+
+---- 250 GeV ----
+- RUN = 2915 , E = 250 GeV ,  POS = CeF3 Center, HV = 1450 , N = 20K
+- RUN = 2916 , E = 250 GeV ,  POS = CeF3 Center, HV = 1350 , N = 20K
+- RUN = 2917 , E = 250 GeV ,  POS = CeF3 Center, HV = 1250 , N = 20K
+- RUN = 2918 , E = 250 GeV ,  POS = CeF3 Center, HV = 1150 , N = 20K
+- RUN = 2919 , E = 250 GeV ,  POS = CeF3 Center, HV = 1050 , N = 20K
+- RUN = 2920 , E = 250 GeV ,  POS = CeF3 Center, HV = 950 , N = 20K
+- RUN = 2921 , E = 250 GeV ,  POS = CeF3 Center, HV = 850 , N = 20K
+- RUN = 2922 , E = 250 GeV ,  POS = CeF3 Center, HV = 750 , N = 20K
+- RUN = 2923 , E = 250 GeV ,  POS = CeF3 NW3, HV = 750 , N = 20K
+- RUN = 2924 , E = 250 GeV ,  POS = CeF3 NE3, HV = 750 , N = 20K
+- RUN = 2925 , E = 250 GeV ,  POS = CeF3 SE3, HV = 750 , N = 20K
+- RUN = 2926 , E = 250 GeV ,  POS = CeF3 SW3, HV = 750 , N = 20K
+
+
+
+----------- Digitizer: 2.5 GHz 
+----100 GeV----
+Run 2789: HV=1350 20k
+Run 2791: HV=1250 20k
+Run 2792: HV=1150 20k
+Run 2793: HV=1050 20k
+Run 2794: HV=950 20k
+Run 2795: HV=850 20k
+Run 2796: HV=750 20k
+Run 2797: NW3 HV=750 20k
+Run 2798: NE3 HV=750 20k
+Run 2799: SE3 HV=750 20k
+Run 2800: SW3 HV=750  20k
+
+-----50 GeV----
+RUN = 2811 , E = 50 GeV ,  POS = center , HV = 1350 , N = 20K
+RUN = 2812 , E = 50 GeV ,  POS = center , HV = 1250 , N = 20K
+RUN = 2813 , E = 50 GeV ,  POS = center , HV = 1150 , N = 20K
+RUN = 2814 , E = 50 GeV ,  POS = center , HV = 1150 , N = 20K  
+RUN = 2815 , E = 50 GeV ,  POS = center , HV = 950 , N = 20K
+RUN = 2816 , E = 50 GeV ,  POS = center , HV = 850 , N = 20K
+RUN = 2817 , E = 50 GeV ,  POS = center , HV = 750 , N = 20K
+RUN = 2818 , E = 50 GeV ,  POS = NW3 , HV = 750 , N = 20K
+RUN = 2819 , E = 50 GeV ,  POS = NE3 , HV = 750 , N = 20K
+RUN = 2820 , E = 50 GeV ,  POS = SE3 , HV = 750 , N = 20K
+RUN = 2821 , E = 50 GeV ,  POS = SW3 , HV = 750 , N = 20K 
+
+----150 GeV----
+(probably don't use first scan,see below)
+- RUN = 2832 , E = 150 GeV ,  POS = center , HV = 1350 , N = 20K
+- RUN = 2833 , E = 150 GeV ,  POS = center , HV = 1250 , N = 20K
+- RUN = 2834 , E = 150 GeV ,  POS = center , HV = 1150 , N = 20K
+- RUN = 2835 , E = 150 GeV ,  POS = center , HV = 1050 , N = 20K
+- RUN = 2836 , E = 150 GeV ,  POS = center , HV = 950 , N = 20K
+- RUN = 2837 , E = 150 GeV ,  POS = center , HV = 850 , N = 20K
+- RUN = 2838 , E = 150 GeV ,  POS = center , HV = 750 , N = 20K
+- RUN = 2839 , E = 150 GeV ,  POS = nw3 , HV = 750 , N = 20K
+- RUN = 2840 , E = 150 GeV ,  POS = ne3 , HV = 750 , N = 20K
+- RUN = 2841 , E = 150 GeV ,  POS = se3 , HV = 750 , N = 20K
+- RUN = 2842 , E = 150 GeV ,  POS = sw3 , HV = 750 , N = 20K
+
+11:22 : Adrian re-centred the beam at 150 GeV, taking a HV scan in the centre still at 150 GeV with the beam centred
+- RUN = 2843 , E = 150 GeV ,  POS = center , HV = 1450 , N = 20K
+- RUN = 2844 , E = 150 GeV ,  POS = center , HV = 1350 , N = 20K
+- RUN = 2845 , E = 150 GeV ,  POS = center , HV = 1250 , N = 20K
+- RUN = 2846 , E = 150 GeV ,  POS = center , HV = 1150 , N = 20K
+- RUN = 2847 , E = 150 GeV ,  POS = center , HV = 1050 , N = 20K
+- RUN = 2848 , E = 150 GeV ,  POS = center , HV = 950 , N = 20K 
+- RUN = 2849 , E = 150 GeV ,  POS = center , HV = 850 , N = 20K
+- RUN = 2850 , E = 150 GeV ,  POS = center , HV = 750 , N = 20K
+
+---20 GeV----
+- RUN = 2861 , E = 20 GeV ,  POS = centre , HV = 1350 , N = 20K
+- RUN = 2862 , E = 20 GeV ,  POS = centre , HV = 1250 , N = 20K
+- RUN = 2863 , E = 20 GeV ,  POS = centre , HV = 1150 , N = 20K
+- RUN = 2864 , E = 20 GeV ,  POS = centre , HV = 1050 , N = 20K
+- RUN = 2865 , E = 20 GeV ,  POS = centre , HV = 950 , N = 20K
+- RUN = 2866 , E = 20 GeV ,  POS = centre , HV = 850 , N = 20K
+- RUN = 2867 , E = 20 GeV ,  POS = centre , HV = 750 , N = 20K
+- RUN = 2868 , E = 20 GeV ,  POS = nw3 , HV = 750 , N = 20K
+- RUN = 2869 , E = 20 GeV , POS = ne3 ,  HV = 750 , N = 20k
+- RUN = 2870 , E = 20 GeV , POS = se3 ,  HV = 750 , N = 20k
+- RUN = 2871 , E = 20 GeV , POS = sw3 ,  HV = 750 , N = 20k
+
+----200 GeV----
+- RUN = 2882 , E = 200 GeV , POS = CeF3 Center ,  HV = 1350 , N = 20k
+- RUN = 2883 , E = 200 GeV , POS = CeF3 Center ,  HV = 1250 , N = 20k
+- RUN = 2884 , E = 200 GeV , POS = CeF3 Center ,  HV = 1150 , N = 20k
+- RUN = 2885 , E = 200 GeV , POS = CeF3 Center ,  HV = 1050 , N = 20k
+- RUN = 2886 , E = 200 GeV , POS = CeF3 Center ,  HV = 950 , N = 20k
+- RUN = 2887 , E = 200 GeV , POS = CeF3 Center ,  HV = 850 , N = 20k
+- RUN = 2888, E = 200 GeV , POS = CeF3 Center ,  HV = 750 , N = 20k
+- RUN = 2889, E = 200 GeV , POS = CeF3 NW3 ,  HV = 750 , N = 20k
+- RUN = 2890, E = 200 GeV , POS = CeF3 NE3 ,  HV = 750 , N = 20k
+- RUN = 2891, E = 200 GeV , POS = CeF3 SE3 ,  HV = 750 , N = 20k
+- RUN = 2892, E = 200 GeV , POS = CeF3 SW3 ,  HV = 750 , N = 20k
+
+
+----250 GeV----
+- RUN = 2904 , E = 250 GeV ,  POS = CeF3 Center, HV = 1350 , N = 20K
+- RUN = 2905 , E = 250 GeV ,  POS = CeF3 Center, HV = 1250 , N = 20K
+- RUN = 2906 , E = 250 GeV ,  POS = CeF3 Center, HV = 1150 , N = 20K
+- RUN = 2907 , E = 250 GeV ,  POS = CeF3 Center, HV = 1050 , N = 20K
+- RUN = 2908 , E = 250 GeV ,  POS = CeF3 Center, HV = 950 , N = 20K
+- RUN = 2909 , E = 250 GeV ,  POS = CeF3 Center, HV = 850 , N = 20K
+- RUN = 2910 , E = 250 GeV ,  POS = CeF3 Center, HV = 750 , N = 20K
+- RUN = 2911 , E = 250 GeV ,  POS = CeF3 NW3, HV = 750 , N = 20K
+- RUN = 2912 , E = 250 GeV ,  POS = CeF3 NE3, HV = 750 , N = 20K
+- RUN = 2913 , E = 250 GeV ,  POS = CeF3 SE3, HV = 750 , N = 20K
+- RUN = 2914 , E = 250 GeV ,  POS = CeF3 SW3, HV = 750 , N = 20K
+
+
+----Angular Scan----
+----Digitizer frequency  2.5 GHz, beam energy at 200 GeV
+--- Energy = 200 GeV, Angle = 7.5 deg ----
+- RUN = 2927 , E = 200 GeV ,  Angle = 2.5 deg , POS = CeF3 Center, HV = 1450 , N = 50K
+- RUN = 2928 , E = 200 GeV ,  Angle = 2.5 deg , POS = CeF3 -5 mm in X, HV = 1450 , N = 50K (ops plan was 20k...)
+- RUN = 2929 , E = 200 GeV ,  Angle = 2.5 deg , POS = CeF3 -10 mm in X, HV = 1450 , N = 20K
+- RUN = 2930 , E = 200 GeV ,  Angle = 2.5 deg , POS = CeF3 +5 mm in X, HV = 1450 , N = 20K
+- RUN = 2931 , E = 200 GeV ,  Angle = 2.5 deg , POS = CeF3 +10 mm in X, HV = 1450 , N = 20K
+- RUN = 2932 , E = 200 GeV ,  Angle = 2.5 deg , POS = CeF3 -5 mm in Y, HV = 1450 , N = 20K
+- RUN = 2933 , E = 200 GeV ,  Angle = 2.5 deg , POS = CeF3 -10 mm in Y, HV = 1450 , N = 20K
+- RUN = 2934 , E = 200 GeV ,  Angle = 2.5 deg , POS = CeF3 +5 mm in Y, HV = 1450 , N = 20K
+- RUN = 2935 , E = 200 GeV ,  Angle = 2.5 deg , POS = CeF3 +10 mm in Y, HV = 1450 , N = 20K
+
+--- Energy = 200 GeV, Angle = 7.5 deg ----
+- RUN = 2936 , E = 200 GeV ,  Angle = 7.5 deg , POS = CeF3 Center, HV = 1450 , N = 50K
+- RUN = 2955, E = 200 GeV ,  Angle = 7.5 deg , POS = CeF3 -5 mm in X, HV = 1450 , N = 20K
+- RUN = 2956 , E = 200 GeV ,  Angle = 7.5 deg , POS = CeF3 -10 mm in X, HV = 1450 , N = 20K
+- RUN = 2957 , E = 200 GeV ,  Angle = 7.5 deg , POS = CeF3 +5 mm in X, HV = 1450 , N = 20K
+- RUN = 2959, E = 200 GeV ,  Angle = 7.5 deg , POS = CeF3 +10 mm in X, HV = 1450 , N = 20K
+- RUN = 2941, E = 200 GeV ,  Angle = 7.5 deg , POS = CeF3 -5 mm in Y, HV = 1450 , N = 20K
+- RUN = 2942 , E = 200 GeV ,  Angle = 7.5 deg , POS = CeF3 -10 mm in Y, HV = 1450 , N = 20K
+- RUN = 2943 , E = 200 GeV ,  Angle = 7.5 deg , POS = CeF3 +5 mm in Y, HV = 1450 , N = 20K
+- RUN = 2944 , E = 200 GeV ,  Angle = 7.5 deg , POS = CeF3 +10 mm in Y, HV = 1450 , N = 20K
+
+
+--- Energy = 200 GeV, Angle = 10 deg ----
+- RUN = 2946, E = 200 GeV ,  Angle = 10 deg , POS = CeF3 CENTER, HV = 1450 , N = 50K
+- RUN = 2947, E = 200 GeV ,  Angle = 10 deg , POS = CeF3 -5 mm in X, HV = 1450 , N = 20K (DAQ crash after last spill)
+- RUN = 2948 , E = 200 GeV ,  Angle = 10 deg , POS = CeF3 -10 mm in X, HV = 1450 , N = 20K
+- RUN = 2949 , E = 200 GeV ,  Angle = 10 deg , POS = CeF3 +5 mm in X, HV = 1450 , N = 20K (GUI crashed during this run, DAQ was still working)
+- RUN = 2950, E = 200 GeV ,  Angle = 10 deg , POS = CeF3 +10 mm in X, HV = 1450 , N = 20K
+- RUN = 2951, E = 200 GeV ,  Angle = 10 deg , POS = CeF3 -5 mm in Y, HV = 1450 , N = 20K
+- RUN = 2952 , E = 200 GeV ,  Angle = 10 deg , POS = CeF3 -10 mm in Y, HV = 1450 , N = 20K
+- RUN = 2953 , E = 200 GeV ,  Angle = 10 deg , POS = CeF3 +5 mm in Y, HV = 1450 , N = 20K
+- RUN = 2954, E = 200 GeV ,  Angle = 10 deg , POS = CeF3 +10 mm in Y, HV = 1450 , N = 20K
+
+--- Energy = 200 GeV, Angle = 5 deg ----
+- RUN = 2971 , E = 20 GeV ,  Angle = 5 deg , POS = CeF3 CENTER, HV = 1450 , N = 44K (DAQ crashed)
+- RUN = 2972 , E = 20 GeV ,  Angle = 5 deg , POS = CeF3 CENTER, HV = 1450 , N = 50K (GUI crashed during this run, DAQ was still working)
+- RUN = 2973 , E = 50 GeV ,  Angle = 5 deg , POS = CeF3 CENTER, HV = 1450 , N = 5K (DAQ crashed)
+- RUN = 2974 , E = 50 GeV ,  Angle = 5 deg , POS = CeF3 CENTER, HV = 1450 , N = 50K
+- RUN = 2975, E = 100 GeV ,  Angle = 5 deg , POS = CeF3 CENTER, HV = 1450 , N = 50K
+- RUN = 2976, E = 150 GeV ,  Angle = 5 deg , POS = CeF3 CENTER, HV = 1450 , N = 50K
+- RUN = 2977, E = 250 GeV ,  Angle = 5 deg , POS = CeF3 CENTER, HV = 1450 , N = 50K
+
+--- Energy = 100 GeV, Angle = 5 deg ----
+- RUN = 2978, E = 100 GeV ,  Angle = 5 deg , POS = CeF3 -5 mm in X, HV = 1450 , N = 20K
+- RUN = 2979, E = 100 GeV ,  Angle = 5 deg , POS = CeF3 -10 mm in X, HV = 1450 , N = 20K
+- RUN = 2980 , E = 100 GeV ,  Angle = 5 deg , POS = CeF3 +5 mm in X, HV = 1450 , N = 20K
+- RUN = 2981, E = 100 GeV ,  Angle = 5 deg , POS = CeF3 +10 mm in X, HV = 1450 , N = 20K
+- RUN = 2982, E = 100 GeV ,  Angle = 5 deg , POS = CeF3 -5 mm in Y, HV = 1450 , N = 20K
+- RUN = 2983, E = 100 GeV ,  Angle = 5 deg , POS = CeF3 -10 mm in Y, HV = 1450 , N = 20K
+- RUN = 2984, E = 100 GeV ,  Angle = 5 deg , POS = CeF3 +5 mm in Y, HV = 1450 , N = 20K
+- RUN = 2985, E = 100 GeV ,  Angle = 5 deg , POS = CeF3 +10 mm in Y, HV = 1450 , N = 20K
+
+
+-----HV to -1600 V---
+
+--- energy scans with angle at 0 deg and position CENTER
+- RUN = 2986, E = 100 GeV ,  Angle = 0 deg , POS = CeF3 CENTER, HV = 1600 , N = 60K
+- RUN = 2987, E = 20 GeV ,  Angle = 0 deg , POS = CeF3 CENTER, HV = 1600 , N = 50K
+- RUN = 2988, E = 50 GeV ,  Angle = 0 deg , POS = CeF3 CENTER, HV = 1600 , N = 50K
+- RUN = 2989, E = 150 GeV ,  Angle = 0 deg , POS = CeF3 CENTER, HV = 1600 , N = 50K
+- RUN = 2990, E = 250 GeV ,  Angle = 0 deg , POS = CeF3 CENTER, HV = 1600 , N = 50K
+- RUN = 2991, E = 200 GeV ,  Angle = 0 deg , POS = CeF3 CENTER, HV = 1600 , N = 50K
+
+
+---High statistics runs----
+- RUN = 3002, E = 100 GeV ,  Angle = 0 deg , POS = CeF3 CENTER, HV = 1450 , N = 250K
+- RUN = 3003, E = 50 GeV ,  Angle = 0 deg , POS = CeF3 CENTER, HV = 1450 , N = 135k (DAQ crash)
+- RUN = 3004, E = 50 GeV ,  Angle = 0 deg , POS = CeF3 CENTER, HV = 1450 , N = 115k
+3005: CENTER --- 200GeV --- HV=1450/1900V --- 250k
+3006: CENTER --- 200GeV --- HV=750/1850V --- 127k
+3007: CENTER --- 200GeV --- HV=1050/1900V --- 100k
+3008: CENTER --- 250GeV --- HV1050/1900V --- 100k
+
+
+----Longitudinal Scan--- check again this elog https://meridian.roma1.infn.it:8080/cef3h4/115 before analyzing
+
+run 3145, x=372.0, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3146, x=365.5, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3147, x=359.0, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3148, x=352.5, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3149, x=346.0, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3150, x=339.5, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3151, x=333.0, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3152, x=326.5, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3153, x=320.0, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3154, x=313.5, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3172, x=299.5, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3173, x=293.0, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 10K events
+run 3174, x=293.0, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 20K events
+run 3175, x=286.5, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3177, x=280.0, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3180, x=273.5, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3181, x=267.0, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3182, x=260.5, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3183, x=254.0, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3184, x=247.5, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3198, x=239.0, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3199, x=232.5, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3200, x=226.0, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3201, x=219.5, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 13K events
+run 3202, x=219.5, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 18K events
+run 3203, x=213.0, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3204, x=206.5, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3205, x=200.0, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3206, x=193.5, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3207, x=187.0, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3208, x=180.5, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+run 3209, x=174.0, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 30K events
+
+End of longitudinal scan. Taking few short runs to determine precisely the end of the channel.
+run 3211, x=172, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 1 spill
+run 3212, x=170, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 1 spill
+run 3213, x=168, y=80.0, Longitudinal scan - 100 GeV beam -  1450V/1900V - digi 2.5 GS/s, 1 spill
+
+------- beam on the fiber
+run 3210, x=306.0, y=69.0, Beam on Milano Fiber - 100 GeV beam - 1450V/1900V - digi 2.5GS/s, 30K events
+run 3215, x=306.0, y=68.0, Beam on Milano Fiber - 100 GeV beam - 1450V/1900V - digi 2.5GS/s, 20K events
+run 3216, x=306.0, y=70.0, Beam on Milano Fiber - 100 GeV beam - 1450V/1900V - digi 2.5GS/s, 16K events
