@@ -103,7 +103,7 @@ Run 2643 20k  Position LT2
 Run 2644 25k  Position LT3
 Run 2645 25k  Position RT1
 Run 2646 18k  Position RT2
-Run 2647 18k Position RT2 (additional good data for position RT2)
+Run 2647 18k Position RT2 (additional good data for position RT2 after beam tuning)
 run 2682: 150 GeV, UP2 
 run 2683: 150 GeV, SW1 
 run 2684: 150 GeV, SW2 
@@ -172,34 +172,42 @@ For the following runs check the position on the database!!!!!
 16:55 start run 2663: 250 GeV, RT2. 1400 evts/spill 
 
    *** CAREFUL! possibly the table hadn't been moved
+-Checked in the DB,it's SW1
 
 17:05 start run 2664: 250 GeV, SW2. 1400 evts/spill
 
    *** CAREFUL! possibly the table hadn't been moved
+-Checked in the DB,it's SW2
 
 17:15 start run 2665: 250 GeV, NE1. 1400 evts/spill
 
    *** CAREFUL! possibly the table hadn't been moved
+-Checked in the DB,it's NE1
 
 17:20 start run 2666: 250 GeV, NE2. 1400 evts/spill
 
    *** CAREFUL! possibly the table hadn't been moved
+-Checked in the DB,it's NE2
 
 17:25 start run 2667: 250 GeV, NW1. 1400 evts/spill
 
    *** CAREFUL! possibly the table hadn't been moved
+-Checked in the DB,it's NW1
 
 17:30 start run 2668: 250 GeV, NW2. 1400 evts/spill
 
    *** CAREFUL! possibly the table hadn't been moved
+-Checked in the DB,it's NW1
 
 17:35 start run 2669: 250 GeV, SE1. 1400 evts/spill
 
    *** CAREFUL! possibly the table hadn't been moved
+-Checked in the DB,it's SE1
 
 17:45 start run 2670: 250 GeV, SE2. 1400 evts/spill
 
    *** CAREFUL! possibly the table hadn't been moved
+-Checked in the DB,it's SE2
 
 ------------------------------------------
 
@@ -254,7 +262,7 @@ Run 2809: SW3 20k
 
 ----200 GeV----
 - RUN = 2872 , E = 200 GeV , POS = CeF3 center ,  HV = 1450 , N = 48k (prfiles checked, they are nice) - DAQ alarms, had to restart: probably a bad run
-- RUN = 2873 , E = 200 GeV , POS = CeF3 center ,  HV = 1450 , N = 50k (forgot to write 200 GeV in the comments)
+- RUN = 2873 , E = 200 GeV , POS = CeF3 center ,  HV = 1450 , N = 50k (forgot to write 200 GeV in the comments)- Checked in the db, it's ok
 - RUN = 2874 , E = 200 GeV , POS = CeF3 Left2 ,  HV = 1450 , N = 20k
 - RUN = 2875 , E = 200 GeV , POS = CeF3 Right2 ,  HV = 1450 , N = 20k
 - RUN = 2876 , E = 200 GeV , POS = CeF3 UP2 ,  HV = 1450 , N = 20k
