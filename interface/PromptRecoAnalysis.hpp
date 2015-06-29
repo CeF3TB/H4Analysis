@@ -13,8 +13,8 @@
 #define wcYu 2
 
 #define nFibersHodo 64
-#define nBGOChannels 24
-#define nSCINTChannels 4
+#define nBGOChannels 0
+#define nSCINTChannels 0
 
 class PromptRecoAnalysis : public BaseAnalysis
 {

@@ -15,10 +15,10 @@ void PromptRecoAnalysis::AnalyzeEvent()
       //      cout << ch-4 << endl;
       l->SCINTvalues->at(ch-4)=l->adcData[iAdc];
     }
-    else if (l->adcBoard[iAdc]==0x06030001){ // 6,3,0,1
+    else if (l->adcBoard[iAdc]==0x06010001){ // 6,3,0,1
       unsigned int ch = l->adcChannel[iAdc];
-      if (ch==13) continue; // FIX: BGO 14 goes in ADC channel 24 instead of 13
-      if (ch==24) ch=13;
+      //      if (ch==13) continue; // FIX: BGO 14 goes in ADC channel 24 instead of 13
+      //      if (ch==24) ch=13;
       if (ch>=nBGOChannels) continue;
       //      cout << ch << endl;
       l->BGOvalues->at(ch)=l->adcData[iAdc];
@@ -116,7 +116,7 @@ void PromptRecoAnalysis::AnalyzeEvent()
     waveform.at(i)->rescale(-1);
 	
     // --------- BARE 
-    Waveform::max_amplitude_informations wave_max_bare = waveform.at(i)->max_amplitude(50,300,7);
+    Waveform::max_amplitude_informations wave_max_bare = waveform.at(i)->max_amplitude(50,900,5);
 
     l->	digi_max_amplitude_bare->at(i)=wave_max_bare.max_amplitude;
     l-> digi_charge_integrated_bare->at(i)=waveform.at(i)->charge_integrated(4,900);
@@ -150,7 +150,7 @@ void PromptRecoAnalysis::AnalyzeEvent()
 	}
     // --- end fft ------------------------------------
     
-    Waveform::max_amplitude_informations wave_max = waveform.at(i)->max_amplitude(50,300,7);
+    Waveform::max_amplitude_informations wave_max = waveform.at(i)->max_amplitude(50,900,5);
     l->digi_pedestal->at(i)=wave_pedestal.pedestal;
     l->digi_pedestal_rms->at(i)=wave_pedestal.rms;
     l->digi_max_amplitude->at(i)=wave_max.max_amplitude;
@@ -218,7 +218,8 @@ void PromptRecoAnalysis::FillTdc(){
   float tdc_recox=-999;
   float tdc_recoy=-999;
   for (unsigned int i=0; i<l->nTdcChannels; i++){
-    if (l->tdcBoard[i]==0x07030001 && l->tdcChannel[i]<4){
+    //    if (l->tdcBoard[i]==0x07030001 && l->tdcChannel[i]<4){
+    if (l->tdcBoard[i]==0x07020001 && l->tdcChannel[i]<4){
       tdc_readings[l->tdcChannel[i]].push_back((float)l->tdcData[i]);
     }
   }
@@ -258,13 +259,14 @@ void PromptRecoAnalysis::FillHodo(){
   std::vector<bool> *hodo;
 
   for(unsigned int i=0;i<l->nPatterns;++i){
-    if(l->patternBoard[i]==0x08030001 || l->patternBoard[i]==0x08030002){
+    //    if(l->patternBoard[i]==0x08030001 || l->patternBoard[i]==0x08030002){
+    if(l->patternBoard[i]==0x08020001 || l->patternBoard[i]==0x08020002){
       // here is where the hodoscope mapping is done
-      if (l->patternBoard[i]==0x08030001){
+      if (l->patternBoard[i]==0x08020001){
 	if (l->patternChannel[i]<2) hodo=l->HODOY2;
 	else hodo=l->HODOX2;
       }
-      else if (l->patternBoard[i]==0x08030002){
+      else if (l->patternBoard[i]==0x08020002){
 	if (l->patternChannel[i]<2) hodo=l->HODOY1;
 	else hodo=l->HODOX1;
       }
