@@ -8,6 +8,7 @@ void PromptRecoAnalysis::AnalyzeEvent()
   l->SCINTvalues->clear(); l->SCINTvalues->resize(nSCINTChannels);
   l->BGOvalues->clear(); l->BGOvalues->resize(nBGOChannels);
 
+
   for (unsigned int iAdc=0; iAdc<l->nAdcChannels; iAdc++){
     if (l->adcBoard[iAdc]==0x0B030001){ // 11,3,0,1
       unsigned int ch = l->adcChannel[iAdc];
@@ -15,12 +16,12 @@ void PromptRecoAnalysis::AnalyzeEvent()
       //      cout << ch-4 << endl;
       l->SCINTvalues->at(ch-4)=l->adcData[iAdc];
     }
-    else if (l->adcBoard[iAdc]==0x06010001){ // 6,3,0,1
+    else if (l->adcBoard[iAdc]==0xB020001){ // 6,3,0,1
       unsigned int ch = l->adcChannel[iAdc];
       //      if (ch==13) continue; // FIX: BGO 14 goes in ADC channel 24 instead of 13
       //      if (ch==24) ch=13;
       if (ch>=nBGOChannels) continue;
-      //      cout << ch << endl;
+      //      cout << ch << " "<< l->adcData[iAdc]<< endl;
       l->BGOvalues->at(ch)=l->adcData[iAdc];
     }
   }
