@@ -6,6 +6,7 @@ void PromptRecoAnalysis::AnalyzeEvent()
 {
 
   l->SCINTvalues->clear(); l->SCINTvalues->resize(nSCINTChannels);
+  l->HODOSMALLvalues->clear(); l->HODOSMALLvalues->resize(nHODOSMALLChannels);
   l->BGOvalues->clear(); l->BGOvalues->resize(nBGOChannels);
 
 
@@ -23,6 +24,11 @@ void PromptRecoAnalysis::AnalyzeEvent()
       if (ch>=nBGOChannels) continue;
       //      cout << ch << " "<< l->adcData[iAdc]<< endl;
       l->BGOvalues->at(ch)=l->adcData[iAdc];
+    }
+    else if (l->adcBoard[iAdc]==0x6010001){//small hodo for 2015 read out with adc board, channel 2,3,4,5
+      unsigned int ch = l->adcChannel[iAdc];
+      if(ch<2 || ch>5) continue;
+      l->HODOSMALLvalues->at(ch-2)=l->adcData[iAdc];
     }
   }
   

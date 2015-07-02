@@ -5,6 +5,7 @@ tree::tree(){
 	ADCvalues =new              vector<float> ; 
 	BGOvalues =new              vector<float> ; 
 	SCINTvalues =new            vector<float> ; 
+	HODOSMALLvalues =new            vector<float> ; 
 	TDCreco   =new              vector<float> ; 
 	digi_charge_integrated =new vector<float> ; 
 	digi_charge_integrated_frac50 =new vector<float> ; 
@@ -73,6 +74,7 @@ tree::~tree(){
 	delete ADCvalues ;
 	delete BGOvalues ;
 	delete SCINTvalues ;
+	delete HODOSMALLvalues ;
 	delete TDCreco   ;
 	delete digi_charge_integrated ;
 	delete digi_max_amplitude ;

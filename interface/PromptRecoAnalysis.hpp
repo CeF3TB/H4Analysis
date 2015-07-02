@@ -15,6 +15,7 @@
 #define nFibersHodo 64
 #define nBGOChannels 8
 #define nSCINTChannels 0
+#define nHODOSMALLChannels 4
 
 class PromptRecoAnalysis : public BaseAnalysis
 {

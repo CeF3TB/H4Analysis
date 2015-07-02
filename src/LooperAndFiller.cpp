@@ -78,6 +78,7 @@ void LoopAndFill::Fill(){
  	CopyVector(ADCvalues             ,out.ADCvalues);
  	CopyVector(BGOvalues             ,out.BGOvalues);
  	CopyVector(SCINTvalues           ,out.SCINTvalues);
+ 	CopyVector(HODOSMALLvalues       ,out.HODOSMALLvalues);
  	CopyVector(TDCreco               ,out.TDCreco);
  	CopyVector(digi_charge_integrated,out.digi_charge_integrated);
  	CopyVector(digi_charge_integrated_frac50,out.digi_charge_integrated_frac50);
@@ -137,7 +138,7 @@ void LoopAndFill::Fill(){
  	CopyVector(digi_pedestal_q2        ,out.digi_pedestal_q2);
  	CopyVector(digi_pedestal_mu2        ,out.digi_pedestal_mu2);
  	CopyVector(digi_pedestal_mu1        ,out.digi_pedestal_mu1);
- 	CopyVector(digi_pedestal_mu0        ,out.digi_pedestal_mu0);
+	// 	CopyVector(digi_pedestal_mu0        ,out.digi_pedestal_mu0);
 	
 	// --- FFT
 	CopyVector(digi_value,out.digi_value);

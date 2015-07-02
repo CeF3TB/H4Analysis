@@ -85,6 +85,7 @@ void Looper::SetBranchesOuttree(){
 	SetBranchAddress("ADCvalues"	,&ADCvalues);
 	SetBranchAddress("BGOvalues"	,&BGOvalues);
 	SetBranchAddress("SCINTvalues"	,&SCINTvalues);
+	SetBranchAddress("HODOSMALLvalues"	,&HODOSMALLvalues);
 	SetBranchAddress("TDCreco"	,&TDCreco  );
 	SetBranchAddress("digi_charge_integrated"	,&digi_charge_integrated);
 	SetBranchAddress("digi_charge_integrated_frac50"	,&digi_charge_integrated_frac50);

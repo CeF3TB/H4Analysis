@@ -215,6 +215,7 @@ void Filler::SetBranchesOuttree(){
 	SetBranchAddress("ADCvalues"	,&out.ADCvalues);
 	SetBranchAddress("BGOvalues"	,&out.BGOvalues);
 	SetBranchAddress("SCINTvalues"	,&out.SCINTvalues);
+	SetBranchAddress("HODOSMALLvalues"	,&out.HODOSMALLvalues);
 	SetBranchAddress("TDCreco"	,&out.TDCreco  );
 	SetBranchAddress("digi_charge_integrated"	,&out.digi_charge_integrated);
 	SetBranchAddress("digi_charge_integrated_frac50"	,&out.digi_charge_integrated_frac50);

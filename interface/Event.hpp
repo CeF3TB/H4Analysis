@@ -62,6 +62,7 @@ map<string,bool> isFilled;
  	vector<float>  *ADCvalues ;
  	vector<float>  *BGOvalues ;
  	vector<float>  *SCINTvalues ;
+ 	vector<float>  *HODOSMALLvalues ;
  	vector<float>  *TDCreco   ;
  	vector<float>  *digi_charge_integrated ;
  	vector<float>  *digi_charge_integrated_frac50 ;
