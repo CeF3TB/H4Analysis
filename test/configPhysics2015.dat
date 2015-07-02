@@ -13,7 +13,7 @@ OutputBranches=data/dqmBranchesExtended.dat
 #Analysis=PromptRecoAnalysis,PedestalAnalysis,PlotAnalysis,Corr1Analysis,FitAnalysis
 Analysis=PromptRecoAnalysis,DatabaseReadAnalysis
 #
-config=DatabaseReadAnalysis databasename="sqlite://data/CeF3_H4DSummer2015_dummy_analysisdb.sqlite" tablename="cef3"
+config=DatabaseReadAnalysis databasename="sqlite://data/CeF3_H4DSummer2015_analysisdb.sqlite" tablename="cef3"
 #
 #config=PedestalAnalysis nChannels=4
 #
