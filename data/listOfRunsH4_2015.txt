@@ -310,6 +310,7 @@ Run 2772: 20 GeV 20k shooting directly on a fiber SE3 20k
 
 ----50 GeV-------
 Run 2617  50k HV 1350
+>>> Run 2618 50k HV 1250 (entry reconstructed from RUNDB)
 Run 2619  50k HV 1150
 Run 2621  50k HV 1050
 Run 2622  50k HV 950
@@ -399,7 +400,7 @@ Run 2800: SW3 HV=750  20k
 RUN = 2811 , E = 50 GeV ,  POS = center , HV = 1350 , N = 20K
 RUN = 2812 , E = 50 GeV ,  POS = center , HV = 1250 , N = 20K
 RUN = 2813 , E = 50 GeV ,  POS = center , HV = 1150 , N = 20K
-RUN = 2814 , E = 50 GeV ,  POS = center , HV = 1150 , N = 20K  
+RUN = 2814 , E = 50 GeV ,  POS = center , HV = 1150 , N = 20K  (>>> DB comment says HV = 1050)
 RUN = 2815 , E = 50 GeV ,  POS = center , HV = 950 , N = 20K
 RUN = 2816 , E = 50 GeV ,  POS = center , HV = 850 , N = 20K
 RUN = 2817 , E = 50 GeV ,  POS = center , HV = 750 , N = 20K
