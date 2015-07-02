@@ -476,7 +476,7 @@ RUN = 2821 , E = 50 GeV ,  POS = SW3 , HV = 750 , N = 20K
 
 ----Angular Scan----
 ----Digitizer frequency  2.5 GHz, beam energy at 200 GeV
---- Energy = 200 GeV, Angle = 7.5 deg ----
+--- Energy = 200 GeV, Angle = 2.5 deg ----
 - RUN = 2927 , E = 200 GeV ,  Angle = 2.5 deg , POS = CeF3 Center, HV = 1450 , N = 50K
 - RUN = 2928 , E = 200 GeV ,  Angle = 2.5 deg , POS = CeF3 -5 mm in X, HV = 1450 , N = 50K (ops plan was 20k...)
 - RUN = 2929 , E = 200 GeV ,  Angle = 2.5 deg , POS = CeF3 -10 mm in X, HV = 1450 , N = 20K
@@ -486,6 +486,20 @@ RUN = 2821 , E = 50 GeV ,  POS = SW3 , HV = 750 , N = 20K
 - RUN = 2933 , E = 200 GeV ,  Angle = 2.5 deg , POS = CeF3 -10 mm in Y, HV = 1450 , N = 20K
 - RUN = 2934 , E = 200 GeV ,  Angle = 2.5 deg , POS = CeF3 +5 mm in Y, HV = 1450 , N = 20K
 - RUN = 2935 , E = 200 GeV ,  Angle = 2.5 deg , POS = CeF3 +10 mm in Y, HV = 1450 , N = 20K
+
+--- Energy = 200 GeV, Angle = 5 deg ----
+- RUN = 2960, E = 200 GeV ,  Angle = 5 deg , POS = CeF3 CENTER, HV = 1450 , N = 50K
+- RUN = 2961, E = 200 GeV ,  Angle = 5 deg , POS = CeF3 -5 mm in X, HV = 1450  (DAQ crashed)
+- RUN = 2962, E = 200 GeV ,  Angle = 5 deg , POS = CeF3 -5 mm in X, HV = 1450 , N = 20K
+- RUN = 2963 , E = 200 GeV ,  Angle = 5 deg , POS = CeF3 -10 mm in X, HV = 1450 , N = 20K
+- RUN = 2964 , E = 200 GeV ,  Angle = 5 deg , POS = CeF3 +5 mm in X, HV = 1450  (DAQ crash)
+- RUN = 2965 , E = 200 GeV ,  Angle = 5 deg , POS = CeF3 +5 mm in X, HV = 1450 , N = 20K
+- RUN = 2966, E = 200 GeV ,  Angle = 5 deg , POS = CeF3 +10 mm in X, HV = 1450 , N = 20K
+- RUN = 2967, E = 200 GeV ,  Angle = 5 deg , POS = CeF3 -5 mm in Y, HV = 1450 , N = 20K
+- RUN = 2968 , E = 200 GeV ,  Angle = 5 deg , POS = CeF3 -10 mm in Y, HV = 1450 , N = 20K
+- RUN = 2969 , E = 200 GeV ,  Angle = 5 deg , POS = CeF3 +5 mm in Y, HV = 1450 , N = 20K
+- RUN = 2970, E = 200 GeV ,  Angle = 5 deg , POS = CeF3 +10 mm in Y, HV = 1450 , N = 20K
+
 
 --- Energy = 200 GeV, Angle = 7.5 deg ----
 - RUN = 2936 , E = 200 GeV ,  Angle = 7.5 deg , POS = CeF3 Center, HV = 1450 , N = 50K
@@ -510,7 +524,7 @@ RUN = 2821 , E = 50 GeV ,  POS = SW3 , HV = 750 , N = 20K
 - RUN = 2953 , E = 200 GeV ,  Angle = 10 deg , POS = CeF3 +5 mm in Y, HV = 1450 , N = 20K
 - RUN = 2954, E = 200 GeV ,  Angle = 10 deg , POS = CeF3 +10 mm in Y, HV = 1450 , N = 20K
 
---- Energy = 200 GeV, Angle = 5 deg ----
+--- Energy = 20 -250 GeV, Angle = 5 deg ----
 - RUN = 2971 , E = 20 GeV ,  Angle = 5 deg , POS = CeF3 CENTER, HV = 1450 , N = 44K (DAQ crashed)
 - RUN = 2972 , E = 20 GeV ,  Angle = 5 deg , POS = CeF3 CENTER, HV = 1450 , N = 50K (GUI crashed during this run, DAQ was still working)
 - RUN = 2973 , E = 50 GeV ,  Angle = 5 deg , POS = CeF3 CENTER, HV = 1450 , N = 5K (DAQ crashed)
