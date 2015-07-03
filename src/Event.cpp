@@ -14,6 +14,12 @@ tree::tree(){
 	digi_max_amplitude =new     vector<float> ; 
 	digi_pedestal =new          vector<float> ; 
 	digi_pedestal_rms =new      vector<float> ; 
+	digi_pedestal_bare =new          vector<float> ; 
+	digi_pedestal_bare_rms =new      vector<float> ; 
+	digi_pedestal_noise_sub =new          vector<float> ; 
+	digi_pedestal_noise_sub_rms =new      vector<float> ; 
+	digi_pedestal_bare_noise_sub =new          vector<float> ; 
+	digi_pedestal_bare_noise_sub_rms =new      vector<float> ; 
 	digi_time_at_frac30 =new    vector<float> ; 
 	digi_time_at_frac50 =new    vector<float> ; 
 	digi_fall_time_at_frac30 =new    vector<float> ; 
@@ -43,6 +49,16 @@ tree::tree(){
  	digi_fall_time_at_frac30_bare  = new vector<float>;
  	digi_fall_time_at_frac50_bare  = new vector<float>;
 
+ 	digi_max_amplitude_bare_noise_sub  = new vector<float>;
+ 	digi_time_at_max_bare_noise_sub  = new vector<float>;
+ 	digi_charge_integrated_bare_noise_sub  = new vector<float>;
+
+	//-- fft
+ 	digi_max_amplitude_noise_sub  = new vector<float>;
+ 	digi_time_at_max_noise_sub  = new vector<float>;
+ 	digi_charge_integrated_noise_sub  = new vector<float>;
+
+
 	// -- DEBUG
 	digi_pedestal_m =new vector<float> ; 
 	digi_pedestal_q =new vector<float> ; 
@@ -59,9 +75,14 @@ tree::tree(){
 	
 	// --- FFT
 	digi_value 	= new vector<float>;
+	digi_value_bare	= new vector<float>;
 	digi_value_ch 	= new vector<int>;
 	digi_value_time = new vector<float>;
+	digi_value_noise_sub = new vector<float>;
+	digi_value_bare_noise_sub = new vector<float>;
 	// ----
+
+
 
 	nTdcHits = new vector<int>;
 	
@@ -80,6 +101,13 @@ tree::~tree(){
 	delete digi_max_amplitude ;
 	delete digi_pedestal ;
 	delete digi_pedestal_rms ;
+	delete digi_pedestal_bare ;
+	delete digi_pedestal_bare_rms ;
+	delete digi_pedestal_noise_sub ;
+	delete digi_pedestal_noise_sub_rms ;
+	delete digi_pedestal_bare_noise_sub ;
+	delete digi_pedestal_bare_noise_sub_rms ;
+
 	delete digi_time_at_frac30 ;
 	delete digi_time_at_frac50 ;
 	delete digi_fall_time_at_frac30 ;
@@ -101,10 +129,18 @@ tree::~tree(){
 	delete digi_charge_integrated_corr2 ;
 	delete digi_max_amplitude_corr2 ;
 
+ 	delete digi_max_amplitude_noise_sub  ;
+ 	delete digi_time_at_max_noise_sub  ;
+ 	delete digi_charge_integrated_noise_sub  ;
+
+
 	// --- no fft
  	delete digi_max_amplitude_bare  ;
  	delete digi_time_at_max_bare  ;
  	delete digi_charge_integrated_bare  ;
+ 	delete digi_max_amplitude_bare_noise_sub  ;
+ 	delete digi_time_at_max_bare_noise_sub  ;
+ 	delete digi_charge_integrated_bare_noise_sub  ;
  	delete digi_time_at_frac30_bare  ;
  	delete digi_time_at_frac50_bare  ;
  	delete digi_fall_time_at_frac30_bare  ;

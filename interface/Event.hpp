@@ -71,15 +71,28 @@ map<string,bool> isFilled;
  	vector<float>  *digi_max_amplitude ;
  	vector<float>  *digi_pedestal ;
  	vector<float>  *digi_pedestal_rms ;
+ 	vector<float>  *digi_pedestal_noise_sub ;
+ 	vector<float>  *digi_pedestal_noise_sub_rms ;
+ 	vector<float>  *digi_pedestal_bare ;
+ 	vector<float>  *digi_pedestal_bare_rms ;
+ 	vector<float>  *digi_pedestal_bare_noise_sub ;
+ 	vector<float>  *digi_pedestal_bare_noise_sub_rms ;
+
  	vector<float>  *digi_time_at_frac30 ;
  	vector<float>  *digi_time_at_frac50 ;
  	vector<float>  *digi_fall_time_at_frac30 ;
  	vector<float>  *digi_fall_time_at_frac50 ;
  	vector<float>  *digi_time_at_max ;
+ 	vector<float>  *digi_max_amplitude_noise_sub ;
+ 	vector<float>  *digi_time_at_max_noise_sub;
+ 	vector<float>  *digi_charge_integrated_noise_sub;
 	// --- no fft
  	vector<float>  *digi_max_amplitude_bare ;
  	vector<float>  *digi_time_at_max_bare ;
  	vector<float>  *digi_charge_integrated_bare ;
+ 	vector<float>  *digi_max_amplitude_bare_noise_sub ;
+ 	vector<float>  *digi_time_at_max_bare_noise_sub ;
+ 	vector<float>  *digi_charge_integrated_bare_noise_sub ;
  	vector<float>  *digi_time_at_frac30_bare ;
  	vector<float>  *digi_time_at_frac50_bare ;
  	vector<float>  *digi_fall_time_at_frac30_bare ;
@@ -96,20 +109,24 @@ map<string,bool> isFilled;
  	vector<float>  *digi_charge_integrated_corr2 ;
  	vector<float>  *digi_max_amplitude_corr2 ;
 	
-	// --- FFT
- 	vector<float >  *digi_value ;
- 	vector<int >    *digi_value_ch ;
- 	vector<float >  *digi_value_time ;
-	
-	// --- FIT
- 	vector<float>   *digi_charge_integrated_fit  ;
-
 	// ---- HODO
 
  	vector<bool>   *HODOX1    ;
  	vector<bool>   *HODOX2    ;
  	vector<bool>   *HODOY1    ;
  	vector<bool>   *HODOY2    ;
+
+
+	// --- FFT
+ 	vector<float >  *digi_value ;
+ 	vector<float >  *digi_value_bare ;
+ 	vector<int >    *digi_value_ch ;
+ 	vector<float >  *digi_value_time ;
+ 	vector<float >  *digi_value_bare_noise_sub ;	
+ 	vector<float >  *digi_value_noise_sub ;	
+	// --- FIT
+ 	vector<float>   *digi_charge_integrated_fit  ;
+
 	
 	
 	// -- DEBUG

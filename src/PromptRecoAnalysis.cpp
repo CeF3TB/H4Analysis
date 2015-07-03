@@ -55,15 +55,28 @@ void PromptRecoAnalysis::AnalyzeEvent()
       }
     }
     waveform.clear();
-    for (unsigned int i=0; i<mapdigichannels.size(); i++) waveform.push_back(new Waveform());
+    waveform_noise_sub.clear();
+    for (unsigned int i=0; i<mapdigichannels.size(); i++) {
+      waveform.push_back(new Waveform());
+      waveform_noise_sub.push_back(new Waveform());
+    }
     cout << "Found " << mapdigichannels.size() << " digitizer channels" << endl;
   }
 
   unsigned int nDigiChannels = mapdigichannels.size();
 
-  for (unsigned int i=0; i<nDigiChannels; i++) waveform.at(i)->clear();
+  for (unsigned int i=0; i<nDigiChannels; i++){
+    waveform.at(i)->clear();
+    waveform_noise_sub.at(i)->clear();
+  }
   l->digi_pedestal->clear();
   l->digi_pedestal_rms->clear();
+  l->digi_pedestal_noise_sub->clear();
+  l->digi_pedestal_noise_sub_rms->clear();
+  l->digi_pedestal_bare->clear();
+  l->digi_pedestal_bare_rms->clear();
+  l->digi_pedestal_bare_noise_sub->clear();
+  l->digi_pedestal_bare_noise_sub_rms->clear();
   l->digi_max_amplitude->clear();
   l->digi_charge_integrated->clear();
   l->digi_charge_integrated_frac50->clear();
@@ -75,8 +88,11 @@ void PromptRecoAnalysis::AnalyzeEvent()
   l->digi_fall_time_at_frac30->clear();
   l->digi_fall_time_at_frac50->clear();
   l->digi_value->clear();
+  l->digi_value_bare->clear();
   l->digi_value_ch->clear();
   l->digi_value_time->clear();
+  l->digi_value_noise_sub->clear();
+  l->digi_value_bare_noise_sub->clear();
   l->digi_max_amplitude_bare       ->clear();
   l->digi_time_at_max_bare         ->clear();
   l->digi_charge_integrated_bare   ->clear();
@@ -93,6 +109,12 @@ void PromptRecoAnalysis::AnalyzeEvent()
   l->digi_fall_time_at_frac50_bare ->resize(nDigiChannels,-999); 
   l->digi_pedestal->resize(nDigiChannels,-999);
   l->digi_pedestal_rms->resize(nDigiChannels,-999);
+  l->digi_pedestal_noise_sub->resize(nDigiChannels,-999);
+  l->digi_pedestal_noise_sub_rms->resize(nDigiChannels,-999);
+  l->digi_pedestal_bare->resize(nDigiChannels,-999);
+  l->digi_pedestal_bare_rms->resize(nDigiChannels,-999);
+  l->digi_pedestal_bare_noise_sub->resize(nDigiChannels,-999);
+  l->digi_pedestal_bare_noise_sub_rms->resize(nDigiChannels,-999);
   l->digi_max_amplitude->resize(nDigiChannels,-999);
   l->digi_charge_integrated->resize(nDigiChannels,-999);
   l->digi_charge_integrated_frac50->resize(nDigiChannels,-999);
@@ -104,6 +126,23 @@ void PromptRecoAnalysis::AnalyzeEvent()
   l->digi_fall_time_at_frac30->resize(nDigiChannels,-999);
   l->digi_fall_time_at_frac50->resize(nDigiChannels,-999);
 
+  l->digi_max_amplitude_bare_noise_sub       ->clear();
+  l->digi_time_at_max_bare_noise_sub         ->clear();
+  l->digi_charge_integrated_bare_noise_sub   ->clear();
+  l->digi_max_amplitude_bare_noise_sub       ->resize(nDigiChannels,-999); 
+  l->digi_time_at_max_bare_noise_sub         ->resize(nDigiChannels,-999); 
+  l->digi_charge_integrated_bare_noise_sub   ->resize(nDigiChannels,-999); 
+  l->digi_max_amplitude_noise_sub       ->clear();
+  l->digi_time_at_max_noise_sub         ->clear();
+  l->digi_charge_integrated_noise_sub   ->clear();
+  l->digi_max_amplitude_noise_sub       ->resize(nDigiChannels,-999); 
+  l->digi_time_at_max_noise_sub         ->resize(nDigiChannels,-999); 
+  l->digi_charge_integrated_noise_sub   ->resize(nDigiChannels,-999); 
+
+
+
+  Waveform*  waveform_noise= new Waveform();
+
   int digiFrequency[nDigiChannels];
   // add informations in the waveform
   for (unsigned int iS=0; iS < l->nDigiSamples; iS++){
@@ -112,8 +151,15 @@ void PromptRecoAnalysis::AnalyzeEvent()
     waveform.at(index)->addTimeAndSample(l->digiSampleIndex[iS]*timeSampleUnit(l->digiFrequency[iS]),l->digiSampleValue[iS]);
     //    cout << index << " " << l->digiSampleIndex[iS]*timeSampleUnit(l->digiFrequency[iS]) << " " << l->digiSampleValue[iS] << endl;
     digiFrequency[index] = l->digiFrequency[iS];
+    if(index==emptyChannelIndex)waveform_noise->addTimeAndSample(l->digiSampleIndex[iS]*timeSampleUnit(l->digiFrequency[iS]),l->digiSampleValue[iS]);
   }
   
+  Waveform::baseline_informations wave_pedestal_noise_sub = waveform_noise->baseline(5,34);
+  waveform_noise->offset(wave_pedestal_noise_sub.pedestal);
+  waveform_noise->rescale(-1);
+  
+  
+
   for (unsigned int i=0; i<nDigiChannels; i++) {
     
 
@@ -121,7 +167,11 @@ void PromptRecoAnalysis::AnalyzeEvent()
     Waveform::baseline_informations wave_pedestal = waveform.at(i)->baseline(5,34);
     waveform.at(i)->offset(wave_pedestal.pedestal);
     waveform.at(i)->rescale(-1);
-	
+
+    l->digi_pedestal_bare->at(i)=wave_pedestal.pedestal;
+    l->digi_pedestal_bare_rms->at(i)=wave_pedestal.rms;
+
+
     // --------- BARE 
     Waveform::max_amplitude_informations wave_max_bare = waveform.at(i)->max_amplitude(50,900,5);
 
@@ -132,6 +182,35 @@ void PromptRecoAnalysis::AnalyzeEvent()
     l-> digi_time_at_frac50_bare->at(i)=waveform.at(i)->time_at_frac(wave_max_bare.time_at_max-30.e-9,wave_max_bare.time_at_max,0.5,wave_max_bare,7)*1.e9;
     l->digi_fall_time_at_frac30_bare->at(i)=waveform.at(i)->time_at_frac(wave_max_bare.time_at_max,wave_max_bare.time_at_max+60.e-9,0.3,wave_max_bare,7,false)*1.e9;
     l->digi_fall_time_at_frac50_bare->at(i)=waveform.at(i)->time_at_frac(wave_max_bare.time_at_max,wave_max_bare.time_at_max+60.e-9,0.5,wave_max_bare,7,false)*1.e9;
+
+    for (unsigned int iS=0; iS < 1024; iS++){
+      waveform_noise_sub.at(i)->addTimeAndSample(waveform.at(i)->_times[iS],(waveform.at(i)->_samples[iS]-waveform_noise->_samples[iS]));
+    }
+
+    Waveform::max_amplitude_informations wave_max_bare_noise_sub = waveform_noise_sub.at(i)->max_amplitude(50,900,5);
+    l->	digi_max_amplitude_bare_noise_sub->at(i)=wave_max_bare_noise_sub.max_amplitude;
+    l-> digi_charge_integrated_bare_noise_sub->at(i)=waveform_noise_sub.at(i)->charge_integrated(4,900);
+    l-> digi_time_at_max_bare_noise_sub->at(i)=wave_max_bare_noise_sub.time_at_max*1.e9;
+
+    Waveform::baseline_informations wave_pedestal_noise_sub = waveform_noise_sub.at(i)->baseline(5,34);
+    l->digi_pedestal_bare_noise_sub->at(i)=wave_pedestal_noise_sub.pedestal;
+    l->digi_pedestal_bare_noise_sub_rms->at(i)=wave_pedestal_noise_sub.rms;
+
+    // --- SAVE INFO IN OUTFILE
+    if (waveform[i]->_samples.size() != waveform[i]->_times.size() )
+      {
+	cout<<"[PromptRecoAnalysis]::[AnalyzeEvent]::[ERROR] waveform"<<i<<" of event "<<l->runNumber<<"|"<<l->spillNumber<<"|"<<l->evtNumber
+	    <<" samples size ("<<waveform[i]->_samples.size()<<") different from times size ("<<waveform[i]->_times.size()<<")"<<endl;
+	assert(0);
+      }
+    for(unsigned int iSample=0;iSample<waveform[i]->_samples.size();++iSample)
+      {
+	l->digi_value_ch->push_back(i);		
+	l->digi_value_bare->push_back(waveform[i]->_samples.at(iSample));		
+	l->digi_value_time->push_back(waveform[i]->_times.at(iSample));
+	l->digi_value_bare_noise_sub->push_back(waveform_noise_sub[i]->_samples.at(iSample));		
+      }
+    
     // --------------------- fft!!! --------------------------
     waveform[i]->fft();
     int cut= 60;
@@ -142,24 +221,23 @@ void PromptRecoAnalysis::AnalyzeEvent()
 
     waveform[i]->inv_fft(cut,tau);
 	
-    // --- SAVE INFO IN OUTFILE
-    if (waveform[i]->_samples.size() != waveform[i]->_times.size() )
-	{
-	cout<<"[PromptRecoAnalysis]::[AnalyzeEvent]::[ERROR] waveform"<<i<<" of event "<<l->runNumber<<"|"<<l->spillNumber<<"|"<<l->evtNumber
-		<<" samples size ("<<waveform[i]->_samples.size()<<") different from times size ("<<waveform[i]->_times.size()<<")"<<endl;
-	assert(0);
-	}
-    for(unsigned int iSample=0;iSample<waveform[i]->_samples.size();++iSample)
-	{
-	l->digi_value->push_back(waveform[i]->_samples.at(iSample));		
-	l->digi_value_ch->push_back(i);		
-	l->digi_value_time->push_back(waveform[i]->_times.at(iSample));
-	}
+    waveform_noise_sub[i]->fft();
+    waveform_noise_sub[i]->inv_fft(cut,tau);
+   
     // --- end fft ------------------------------------
     
+    for(unsigned int iSample=0;iSample<waveform[i]->_samples.size();++iSample)
+      {
+	l->digi_value->push_back(waveform[i]->_samples.at(iSample));		
+	l->digi_value_noise_sub->push_back(waveform_noise_sub[i]->_samples.at(iSample));		
+      }
+    
+
     Waveform::max_amplitude_informations wave_max = waveform.at(i)->max_amplitude(50,900,5);
     l->digi_pedestal->at(i)=wave_pedestal.pedestal;
     l->digi_pedestal_rms->at(i)=wave_pedestal.rms;
+    l->digi_pedestal_noise_sub->at(i)=wave_pedestal_noise_sub.pedestal;
+    l->digi_pedestal_noise_sub_rms->at(i)=wave_pedestal_noise_sub.rms;
     l->digi_max_amplitude->at(i)=wave_max.max_amplitude;
     l->digi_charge_integrated->at(i)=waveform.at(i)->charge_integrated(4,900);
     l->digi_time_at_max->at(i)=wave_max.time_at_max*1.e9;
@@ -175,6 +253,12 @@ void PromptRecoAnalysis::AnalyzeEvent()
     float fall_time_at_frac30	= waveform.at(i)->time_at_frac(wave_max.time_at_max , wave_max.time_at_max + 60.e-9 ,0.3,wave_max,7, false);
     float time_at_frac10	= waveform.at(i)->time_at_frac(wave_max.time_at_max-60.e-9, wave_max.time_at_max ,0.1,wave_max,7 ); 
     float fall_time_at_frac10	= waveform.at(i)->time_at_frac(wave_max.time_at_max , wave_max.time_at_max + 100.e-9 ,0.1,wave_max,7, false); 
+
+    Waveform::max_amplitude_informations wave_max_noise_sub = waveform_noise_sub.at(i)->max_amplitude(50,900,5);
+    l->	digi_max_amplitude_noise_sub->at(i)=wave_max_noise_sub.max_amplitude;
+    l-> digi_charge_integrated_noise_sub->at(i)=waveform_noise_sub.at(i)->charge_integrated(4,900);
+    l-> digi_time_at_max_noise_sub->at(i)=wave_max_noise_sub.time_at_max*1.e9;
+
 	
     if(time_at_frac50 >-1 && fall_time_at_frac50>-1)
 	{

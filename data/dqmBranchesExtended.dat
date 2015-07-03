@@ -10,16 +10,18 @@ SCINTvalues
 HODOSMALLvalues
 TDCreco
 digi_charge_integrated
-digi_charge_integrated_frac50
-digi_charge_integrated_frac30
-digi_charge_integrated_frac10
+#digi_charge_integrated_frac50
+#digi_charge_integrated_frac30
+#digi_charge_integrated_frac10
 digi_max_amplitude
 digi_pedestal
 digi_pedestal_rms
-digi_time_at_frac30
-digi_time_at_frac50
-digi_fall_time_at_frac30
-digi_fall_time_at_frac50
+digi_pedestal_bare
+digi_pedestal_bare_rms
+#digi_time_at_frac30
+#digi_time_at_frac50
+#digi_fall_time_at_frac30
+#digi_fall_time_at_frac50
 digi_time_at_max
 HODOX1
 HODOX2
@@ -29,13 +31,34 @@ HODOY2
 # Bare - no fft
 digi_charge_integrated_bare
 digi_max_amplitude_bare
-digi_time_at_frac30_bare
-digi_time_at_frac50_bare
-digi_fall_time_at_frac30_bare
-digi_fall_time_at_frac50_bare
+#digi_time_at_frac30_bare
+#digi_time_at_frac50_bare
+#digi_fall_time_at_frac30_bare
+#digi_fall_time_at_frac50_bare
 digi_time_at_max_bare
 
+# Noise subtracted on evt by evt base
+digi_charge_integrated_noise_sub
+digi_max_amplitude_noise_sub
+digi_pedestal_noise_sub
+digi_pedestal_noise_sub_rms
+digi_time_at_max_noise_sub
+
+# Noise subtracted on evt by evt base fft
+digi_charge_integrated_bare_noise_sub
+digi_max_amplitude_bare_noise_sub
+digi_pedestal_bare_noise_sub
+digi_pedestal_bare_noise_sub_rms
+digi_time_at_max_bare_noise_sub
+
+
 ## EXTEND WITH DIGI INFO -- UNCOMMENT FOR DEBUG PURPOSES
+digi_value
+digi_value_bare
+digi_value_bare_noise_sub
+digi_value_noise_sub
+digi_value_ch
+digi_value_time
 ## nDigiSamples
 ## digiFrequency
 ## digiGroup
@@ -50,17 +73,17 @@ digi_time_at_max_bare
 runNumber
 evtNumber
 spillNumber
-digi_charge_integrated_sub
-digi_max_amplitude_sub
-digi_pedestal_sub
-digi_pedestal_rms_sub
+#digi_charge_integrated_sub
+#digi_max_amplitude_sub
+#digi_pedestal_sub
+#digi_pedestal_rms_sub
 
-digi_charge_integrated_corr1
-digi_max_amplitude_corr1
+#digi_charge_integrated_corr1
+#digi_max_amplitude_corr1
 
-digi_charge_integrated_corr2
-digi_max_amplitude_corr2
+#digi_charge_integrated_corr2
+#digi_max_amplitude_corr2
 
-digi_charge_integrated_fit
+#digi_charge_integrated_fit
 
 nTdcHits

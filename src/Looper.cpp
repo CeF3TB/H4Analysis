@@ -94,6 +94,13 @@ void Looper::SetBranchesOuttree(){
 	SetBranchAddress("digi_max_amplitude"		,&digi_max_amplitude);
 	SetBranchAddress("digi_pedestal"		,&digi_pedestal);
 	SetBranchAddress("digi_pedestal_rms"		,&digi_pedestal_rms);
+	SetBranchAddress("digi_pedestal_bare"		,&digi_pedestal_bare);
+	SetBranchAddress("digi_pedestal_bare_rms"		,&digi_pedestal_bare_rms);
+	SetBranchAddress("digi_pedestal_noise_sub"		,&digi_pedestal_noise_sub);
+	SetBranchAddress("digi_pedestal_noise_sub_rms"		,&digi_pedestal_noise_sub_rms);
+	SetBranchAddress("digi_pedestal_bare_noise_sub"		,&digi_pedestal_bare_noise_sub);
+	SetBranchAddress("digi_pedestal_bare_noise_sub_rms"		,&digi_pedestal_bare_noise_sub_rms);
+
 	SetBranchAddress("digi_time_at_frac30"		,&digi_time_at_frac30);
 	SetBranchAddress("digi_time_at_frac50"		,&digi_time_at_frac50);
 	SetBranchAddress("digi_fall_time_at_frac30"		,&digi_fall_time_at_frac30);
@@ -103,6 +110,12 @@ void Looper::SetBranchesOuttree(){
 	SetBranchAddress("digi_max_amplitude_bare",&digi_max_amplitude_bare       );	
 	SetBranchAddress("digi_time_at_max_bare",&digi_time_at_max_bare         );	
 	SetBranchAddress("digi_charge_integrated_bare",&digi_charge_integrated_bare   );	
+	SetBranchAddress("digi_max_amplitude_bare_noise_sub",&digi_max_amplitude_bare_noise_sub       );	
+	SetBranchAddress("digi_time_at_max_bare_noise_sub",&digi_time_at_max_bare_noise_sub         );	
+	SetBranchAddress("digi_charge_integrated_bare_noise_sub",&digi_charge_integrated_bare_noise_sub   );	
+	SetBranchAddress("digi_max_amplitude_noise_sub",&digi_max_amplitude_noise_sub       );	
+	SetBranchAddress("digi_time_at_max_noise_sub",&digi_time_at_max_noise_sub         );	
+	SetBranchAddress("digi_charge_integrated_noise_sub",&digi_charge_integrated_noise_sub   );	
 	SetBranchAddress("digi_time_at_frac30_bare",&digi_time_at_frac30_bare      );	
 	SetBranchAddress("digi_time_at_frac50_bare",&digi_time_at_frac50_bare      );	
 	SetBranchAddress("digi_fall_time_at_frac30_bare",&digi_fall_time_at_frac30_bare );	
@@ -150,6 +163,9 @@ void Looper::SetBranchesOuttree(){
 	
 	// --- FFT
 	SetBranchAddress("digi_value"			,&digi_value);
+	SetBranchAddress("digi_value_bare"			,&digi_value_bare);
+	SetBranchAddress("digi_value_noise_sub"			,&digi_value_noise_sub);
+	SetBranchAddress("digi_value_bare_noise_sub"			,&digi_value_bare_noise_sub);
 	SetBranchAddress("digi_value_ch"		,&digi_value_ch);
 	SetBranchAddress("digi_value_time"		,&digi_value_time);
 

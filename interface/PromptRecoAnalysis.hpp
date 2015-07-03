@@ -16,6 +16,7 @@
 #define nBGOChannels 8
 #define nSCINTChannels 0
 #define nHODOSMALLChannels 4
+#define emptyChannelIndex 4
 
 class PromptRecoAnalysis : public BaseAnalysis
 {
@@ -33,6 +34,8 @@ public:
 
   std::map<unsigned int,unsigned int> mapdigichannels;
   std::vector<Waveform*> waveform;
+  std::vector<Waveform*> waveform_noise_sub;
+  std::vector<Waveform*> waveform_noise_bare_sub;
   float timeSampleUnit(int drs4Freq);
 
 };

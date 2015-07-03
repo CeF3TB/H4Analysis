@@ -224,6 +224,12 @@ void Filler::SetBranchesOuttree(){
 	SetBranchAddress("digi_max_amplitude"		,&out.digi_max_amplitude);
 	SetBranchAddress("digi_pedestal"		,&out.digi_pedestal);
 	SetBranchAddress("digi_pedestal_rms"		,&out.digi_pedestal_rms);
+	SetBranchAddress("digi_pedestal_noise_sub"		,&out.digi_pedestal_noise_sub);
+	SetBranchAddress("digi_pedestal_noise_sub_rms"		,&out.digi_pedestal_noise_sub_rms);
+	SetBranchAddress("digi_pedestal_bare"		,&out.digi_pedestal_bare);
+	SetBranchAddress("digi_pedestal_bare_rms"		,&out.digi_pedestal_bare_rms);
+	SetBranchAddress("digi_pedestal_bare_noise_sub"		,&out.digi_pedestal_bare_noise_sub);
+	SetBranchAddress("digi_pedestal_bare_noise_sub_rms"		,&out.digi_pedestal_bare_noise_sub_rms);
 	SetBranchAddress("digi_time_at_frac30"		,&out.digi_time_at_frac30);
 	SetBranchAddress("digi_time_at_frac50"		,&out.digi_time_at_frac50);
 	SetBranchAddress("digi_fall_time_at_frac30"		,&out.digi_fall_time_at_frac30);
@@ -271,6 +277,12 @@ void Filler::SetBranchesOuttree(){
 	SetBranchAddress("digi_max_amplitude_bare"	,&out.digi_max_amplitude_bare       );	
 	SetBranchAddress("digi_time_at_max_bare"	,&out.digi_time_at_max_bare         );	
 	SetBranchAddress("digi_charge_integrated_bare"	,&out.digi_charge_integrated_bare   );	
+	SetBranchAddress("digi_max_amplitude_bare_noise_sub"	,&out.digi_max_amplitude_bare_noise_sub       );	
+	SetBranchAddress("digi_time_at_max_bare_noise_sub"	,&out.digi_time_at_max_bare_noise_sub         );	
+	SetBranchAddress("digi_charge_integrated_bare_noise_sub"	,&out.digi_charge_integrated_bare_noise_sub   );	
+	SetBranchAddress("digi_max_amplitude_noise_sub"	,&out.digi_max_amplitude_noise_sub       );	
+	SetBranchAddress("digi_time_at_max_noise_sub"	,&out.digi_time_at_max_noise_sub         );	
+	SetBranchAddress("digi_charge_integrated_noise_sub"	,&out.digi_charge_integrated_noise_sub   );	
 	SetBranchAddress("digi_time_at_frac30_bare"	,&out.digi_time_at_frac30_bare      );	
 	SetBranchAddress("digi_time_at_frac50_bare"	,&out.digi_time_at_frac50_bare      );	
 	SetBranchAddress("digi_fall_time_at_frac30_bare",&out.digi_fall_time_at_frac30_bare );	
@@ -278,8 +290,11 @@ void Filler::SetBranchesOuttree(){
 
 	// --- FFT
 	SetBranchAddress("digi_value"			,&out.digi_value);
+	SetBranchAddress("digi_value_bare"			,&out.digi_value_bare);
 	SetBranchAddress("digi_value_ch"		,&out.digi_value_ch);
 	SetBranchAddress("digi_value_time"		,&out.digi_value_time);
+	SetBranchAddress("digi_value_noise_sub"			,&out.digi_value_noise_sub);
+	SetBranchAddress("digi_value_bare_noise_sub"			,&out.digi_value_noise_sub);
 	// ---TOY
 	SetBranchAddress("ToyResolution",&out.ToyResolution );
 	SetBranchAddress("ToyNoise",&out.ToyNoise );

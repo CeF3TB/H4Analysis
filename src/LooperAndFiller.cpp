@@ -62,7 +62,7 @@ void LoopAndFill::Fill(){
 	if(activeBranches["digiChannel"])CopyArray(digiChannel,out.digiChannel,nDigiSamples);
 	if(activeBranches["digiSampleIndex"])CopyArray(digiSampleIndex,out.digiSampleIndex,nDigiSamples);
 	if(activeBranches["digiSampleValue"])CopyArray(digiSampleValue,out.digiSampleValue,nDigiSamples);
-	if(activeBranches["digiSampleValueSub"])CopyArray(digiSampleValueSub,out.digiSampleValueSub,nDigiSamples);
+	//	if(activeBranches["digiSampleValueSub"])CopyArray(digiSampleValueSub,out.digiSampleValueSub,nDigiSamples);
 	if(activeBranches["digiBoard"])CopyArray(digiBoard,out.digiBoard,nDigiSamples);
 
 	if(activeBranches["scalerWord"])CopyArray(scalerWord,out.scalerWord,nScalerWords);
@@ -87,6 +87,13 @@ void LoopAndFill::Fill(){
  	CopyVector(digi_max_amplitude    ,out.digi_max_amplitude);
  	CopyVector(digi_pedestal         ,out.digi_pedestal);
  	CopyVector(digi_pedestal_rms     ,out.digi_pedestal_rms);
+ 	CopyVector(digi_pedestal_noise_sub         ,out.digi_pedestal_noise_sub);
+ 	CopyVector(digi_pedestal_noise_sub_rms     ,out.digi_pedestal_noise_sub_rms);
+ 	CopyVector(digi_pedestal_bare         ,out.digi_pedestal_bare);
+ 	CopyVector(digi_pedestal_bare_rms     ,out.digi_pedestal_bare_rms);
+ 	CopyVector(digi_pedestal_bare_noise_sub         ,out.digi_pedestal_bare_noise_sub);
+ 	CopyVector(digi_pedestal_bare_noise_sub_rms     ,out.digi_pedestal_bare_noise_sub_rms);
+
  	CopyVector(digi_time_at_frac30   ,out.digi_time_at_frac30);
  	CopyVector(digi_time_at_frac50   ,out.digi_time_at_frac50);
  	CopyVector(digi_fall_time_at_frac30   ,out.digi_fall_time_at_frac30);
@@ -96,16 +103,23 @@ void LoopAndFill::Fill(){
 	CopyVector(digi_max_amplitude_bare       ,out.digi_max_amplitude_bare       );
 	CopyVector(digi_time_at_max_bare         ,out.digi_time_at_max_bare         );
 	CopyVector(digi_charge_integrated_bare   ,out.digi_charge_integrated_bare   );
+	CopyVector(digi_max_amplitude_bare_noise_sub       ,out.digi_max_amplitude_bare_noise_sub       );
+	CopyVector(digi_time_at_max_bare_noise_sub         ,out.digi_time_at_max_bare_noise_sub         );
+	CopyVector(digi_charge_integrated_bare_noise_sub   ,out.digi_charge_integrated_bare_noise_sub   );
+	CopyVector(digi_max_amplitude_noise_sub       ,out.digi_max_amplitude_noise_sub       );
+	CopyVector(digi_time_at_max_noise_sub         ,out.digi_time_at_max_noise_sub         );
+	CopyVector(digi_charge_integrated_noise_sub   ,out.digi_charge_integrated_noise_sub   );
 	CopyVector(digi_time_at_frac30_bare      ,out.digi_time_at_frac30_bare      );
 	CopyVector(digi_time_at_frac50_bare      ,out.digi_time_at_frac50_bare      );
 	CopyVector(digi_fall_time_at_frac30_bare ,out.digi_fall_time_at_frac30_bare );
-	CopyVector(digi_fall_time_at_frac50_bare ,out.digi_fall_time_at_frac50_bare );
+	//	CopyVector(digi_fall_time_at_frac50_bare ,out.digi_fall_time_at_frac50_bare );
 	//
-	
+
  	CopyVector(HODOX1                ,out.HODOX1);
  	CopyVector(HODOX2                ,out.HODOX2);
  	CopyVector(HODOY1                ,out.HODOY1);
  	CopyVector(HODOY2                ,out.HODOY2);
+
 
 	out.TableX = TableX;
 	out.TableY = TableY;
@@ -115,6 +129,8 @@ void LoopAndFill::Fill(){
 	out.BeamTilt = BeamTilt;
 	out.IsPhysics = IsPhysics;
 	CopyVector(nTdcHits,out.nTdcHits);
+
+
 	
 	//  Sub
  	CopyVector(digi_charge_integrated_sub,out.digi_charge_integrated_sub);
@@ -127,21 +143,24 @@ void LoopAndFill::Fill(){
  	CopyVector(digi_charge_integrated_corr2,out.digi_charge_integrated_corr2);
  	CopyVector(digi_max_amplitude_corr2    ,out.digi_max_amplitude_corr2);
 	// DEBUG
- 	CopyVector(digi_pedestal_m         ,out.digi_pedestal_m);
- 	CopyVector(digi_pedestal_q         ,out.digi_pedestal_q);
-
- 	CopyVector(digi_pedestal_m0        ,out.digi_pedestal_m0);
- 	CopyVector(digi_pedestal_q0        ,out.digi_pedestal_q0);
- 	CopyVector(digi_pedestal_m1        ,out.digi_pedestal_m1);
- 	CopyVector(digi_pedestal_q1        ,out.digi_pedestal_q1);
- 	CopyVector(digi_pedestal_m2        ,out.digi_pedestal_m2);
- 	CopyVector(digi_pedestal_q2        ,out.digi_pedestal_q2);
- 	CopyVector(digi_pedestal_mu2        ,out.digi_pedestal_mu2);
- 	CopyVector(digi_pedestal_mu1        ,out.digi_pedestal_mu1);
-	// 	CopyVector(digi_pedestal_mu0        ,out.digi_pedestal_mu0);
+// 	CopyVector(digi_pedestal_m         ,out.digi_pedestal_m);
+// 	CopyVector(digi_pedestal_q         ,out.digi_pedestal_q);
+//
+// 	CopyVector(digi_pedestal_m0        ,out.digi_pedestal_m0);
+// 	CopyVector(digi_pedestal_q0        ,out.digi_pedestal_q0);
+// 	CopyVector(digi_pedestal_m1        ,out.digi_pedestal_m1);
+// 	CopyVector(digi_pedestal_q1        ,out.digi_pedestal_q1);
+// 	CopyVector(digi_pedestal_m2        ,out.digi_pedestal_m2);
+// 	CopyVector(digi_pedestal_q2        ,out.digi_pedestal_q2);
+// 	CopyVector(digi_pedestal_mu2        ,out.digi_pedestal_mu2);
+// 	CopyVector(digi_pedestal_mu1        ,out.digi_pedestal_mu1);
+// 	CopyVector(digi_pedestal_mu0        ,out.digi_pedestal_mu0);
 	
 	// --- FFT
 	CopyVector(digi_value,out.digi_value);
+	CopyVector(digi_value_bare,out.digi_value_bare);
+	CopyVector(digi_value_noise_sub,out.digi_value_noise_sub);
+	CopyVector(digi_value_bare_noise_sub,out.digi_value_bare_noise_sub);
 	CopyVector(digi_value_ch,out.digi_value_ch);
 	CopyVector(digi_value_time,out.digi_value_time);
 	
