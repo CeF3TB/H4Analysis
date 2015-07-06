@@ -155,4 +155,11 @@ tree::~tree(){
 
 	delete nTdcHits;
 
+	delete digi_value; 	
+	delete digi_value_bare;
+	delete digi_value_ch;	
+	delete digi_value_time; 
+	delete digi_value_noise_sub;
+	delete digi_value_bare_noise_sub;
+
 }

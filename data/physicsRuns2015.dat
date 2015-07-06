@@ -1,1 +1,2 @@
-InputRuns=dcap://t3se01.psi.ch:22125/pnfs/psi.ch/cms/trivcat/store/t3groups/ethz-ecal/H4TestBeamJune2015/data/raw/DataTree/%%RUN%%/1.root 2745
+#InputRuns=dcap://t3se01.psi.ch:22125/pnfs/psi.ch/cms/trivcat/store/t3groups/ethz-ecal/H4TestBeamJune2015/data/raw/DataTree/%%RUN%%/1.root 2745,2586,2542,2631,2692,2654,2548,2552,2556,2557
+InputRuns=dcap://t3se01.psi.ch:22125/pnfs/psi.ch/cms/trivcat/store/t3groups/ethz-ecal/H4TestBeamJune2015/data/raw/DataTree/%%RUN%%/1.root 2557

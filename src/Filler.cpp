@@ -294,7 +294,7 @@ void Filler::SetBranchesOuttree(){
 	SetBranchAddress("digi_value_ch"		,&out.digi_value_ch);
 	SetBranchAddress("digi_value_time"		,&out.digi_value_time);
 	SetBranchAddress("digi_value_noise_sub"			,&out.digi_value_noise_sub);
-	SetBranchAddress("digi_value_bare_noise_sub"			,&out.digi_value_noise_sub);
+	SetBranchAddress("digi_value_bare_noise_sub"			,&out.digi_value_bare_noise_sub);
 	// ---TOY
 	SetBranchAddress("ToyResolution",&out.ToyResolution );
 	SetBranchAddress("ToyNoise",&out.ToyNoise );
