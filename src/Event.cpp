@@ -45,6 +45,7 @@ tree::tree(){
  	digi_time_at_max_bare  = new vector<float>;
  	digi_charge_integrated_bare  = new vector<float>;
  	digi_charge_integrated_bare_fast  = new vector<float>;
+ 	digi_charge_integrated_bare_slow  = new vector<float>;
  	digi_time_at_frac30_bare  = new vector<float>;
  	digi_time_at_frac50_bare  = new vector<float>;
  	digi_fall_time_at_frac30_bare  = new vector<float>;
@@ -139,6 +140,7 @@ tree::~tree(){
  	delete digi_time_at_max_bare  ;
  	delete digi_charge_integrated_bare  ;
  	delete digi_charge_integrated_bare_fast  ;
+ 	delete digi_charge_integrated_bare_slow  ;
  	delete digi_max_amplitude_bare_noise_sub  ;
  	delete digi_time_at_max_bare_noise_sub  ;
  	delete digi_charge_integrated_bare_noise_sub  ;

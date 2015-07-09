@@ -278,6 +278,7 @@ void Filler::SetBranchesOuttree(){
 	SetBranchAddress("digi_time_at_max_bare"	,&out.digi_time_at_max_bare         );	
 	SetBranchAddress("digi_charge_integrated_bare"	,&out.digi_charge_integrated_bare   );	
 	SetBranchAddress("digi_charge_integrated_bare_fast"	,&out.digi_charge_integrated_bare_fast   );	
+	SetBranchAddress("digi_charge_integrated_bare_slow"	,&out.digi_charge_integrated_bare_slow   );	
 	SetBranchAddress("digi_max_amplitude_bare_noise_sub"	,&out.digi_max_amplitude_bare_noise_sub       );	
 	SetBranchAddress("digi_time_at_max_bare_noise_sub"	,&out.digi_time_at_max_bare_noise_sub         );	
 	SetBranchAddress("digi_charge_integrated_bare_noise_sub"	,&out.digi_charge_integrated_bare_noise_sub   );	

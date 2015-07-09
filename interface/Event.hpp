@@ -92,6 +92,7 @@ map<string,bool> isFilled;
  	vector<float>  *digi_time_at_max_bare ;
  	vector<float>  *digi_charge_integrated_bare ;
  	vector<float>  *digi_charge_integrated_bare_fast ;
+ 	vector<float>  *digi_charge_integrated_bare_slow ;
  	vector<float>  *digi_max_amplitude_bare_noise_sub ;
  	vector<float>  *digi_time_at_max_bare_noise_sub ;
  	vector<float>  *digi_charge_integrated_bare_noise_sub ;

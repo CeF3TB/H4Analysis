@@ -105,6 +105,7 @@ void LoopAndFill::Fill(){
 	CopyVector(digi_time_at_max_bare         ,out.digi_time_at_max_bare         );
 	CopyVector(digi_charge_integrated_bare   ,out.digi_charge_integrated_bare   );
 	CopyVector(digi_charge_integrated_bare_fast   ,out.digi_charge_integrated_bare_fast   );
+	CopyVector(digi_charge_integrated_bare_slow   ,out.digi_charge_integrated_bare_slow   );
 	CopyVector(digi_max_amplitude_bare_noise_sub       ,out.digi_max_amplitude_bare_noise_sub       );
 	CopyVector(digi_time_at_max_bare_noise_sub         ,out.digi_time_at_max_bare_noise_sub         );
 	CopyVector(digi_charge_integrated_bare_noise_sub   ,out.digi_charge_integrated_bare_noise_sub   );
