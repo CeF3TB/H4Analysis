@@ -2,7 +2,7 @@
 
 
 tree::tree(){
-	ADCvalues =new              vector<float> ; 
+ 	ADCvalues =new              vector<float> ; 
 	BGOvalues =new              vector<float> ; 
 	SCINTvalues =new            vector<float> ; 
 	HODOSMALLvalues =new            vector<float> ; 
@@ -44,6 +44,7 @@ tree::tree(){
  	digi_max_amplitude_bare  = new vector<float>;
  	digi_time_at_max_bare  = new vector<float>;
  	digi_charge_integrated_bare  = new vector<float>;
+ 	digi_charge_integrated_bare_fast  = new vector<float>;
  	digi_time_at_frac30_bare  = new vector<float>;
  	digi_time_at_frac50_bare  = new vector<float>;
  	digi_fall_time_at_frac30_bare  = new vector<float>;
@@ -81,7 +82,6 @@ tree::tree(){
 	digi_value_noise_sub = new vector<float>;
 	digi_value_bare_noise_sub = new vector<float>;
 	// ----
-
 
 
 	nTdcHits = new vector<int>;
@@ -138,6 +138,7 @@ tree::~tree(){
  	delete digi_max_amplitude_bare  ;
  	delete digi_time_at_max_bare  ;
  	delete digi_charge_integrated_bare  ;
+ 	delete digi_charge_integrated_bare_fast  ;
  	delete digi_max_amplitude_bare_noise_sub  ;
  	delete digi_time_at_max_bare_noise_sub  ;
  	delete digi_charge_integrated_bare_noise_sub  ;

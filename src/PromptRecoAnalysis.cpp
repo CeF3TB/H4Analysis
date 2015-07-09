@@ -96,6 +96,7 @@ void PromptRecoAnalysis::AnalyzeEvent()
   l->digi_max_amplitude_bare       ->clear();
   l->digi_time_at_max_bare         ->clear();
   l->digi_charge_integrated_bare   ->clear();
+  l->digi_charge_integrated_bare_fast   ->clear();
   l->digi_time_at_frac30_bare      ->clear();
   l->digi_time_at_frac50_bare      ->clear();
   l->digi_fall_time_at_frac30_bare ->clear();
@@ -103,6 +104,7 @@ void PromptRecoAnalysis::AnalyzeEvent()
   l->digi_max_amplitude_bare       ->resize(nDigiChannels,-999); 
   l->digi_time_at_max_bare         ->resize(nDigiChannels,-999); 
   l->digi_charge_integrated_bare   ->resize(nDigiChannels,-999); 
+  l->digi_charge_integrated_bare_fast   ->resize(nDigiChannels,-999); 
   l->digi_time_at_frac30_bare      ->resize(nDigiChannels,-999); 
   l->digi_time_at_frac50_bare      ->resize(nDigiChannels,-999); 
   l->digi_fall_time_at_frac30_bare ->resize(nDigiChannels,-999); 
@@ -153,7 +155,7 @@ void PromptRecoAnalysis::AnalyzeEvent()
     digiFrequency[index] = l->digiFrequency[iS];
     if(index==emptyChannelIndex)waveform_noise->addTimeAndSample(l->digiSampleIndex[iS]*timeSampleUnit(l->digiFrequency[iS]),l->digiSampleValue[iS]);
   }
-  
+  l->digi_frequency=l->digiFrequency[0];
   Waveform::baseline_informations wave_pedestal_noise_sub = waveform_noise->baseline(5,34);
   waveform_noise->offset(wave_pedestal_noise_sub.pedestal);
   waveform_noise->rescale(-1);
@@ -177,6 +179,7 @@ void PromptRecoAnalysis::AnalyzeEvent()
 
     l->	digi_max_amplitude_bare->at(i)=wave_max_bare.max_amplitude;
     l-> digi_charge_integrated_bare->at(i)=waveform.at(i)->charge_integrated(4,900);
+    l-> digi_charge_integrated_bare_fast->at(i)=waveform.at(i)->charge_integrated(4,230);
     l-> digi_time_at_max_bare->at(i)=wave_max_bare.time_at_max*1.e9;
     l-> digi_time_at_frac30_bare->at(i)=waveform.at(i)->time_at_frac(wave_max_bare.time_at_max-30.e-9,wave_max_bare.time_at_max,0.3,wave_max_bare,7)*1.e9;
     l-> digi_time_at_frac50_bare->at(i)=waveform.at(i)->time_at_frac(wave_max_bare.time_at_max-30.e-9,wave_max_bare.time_at_max,0.5,wave_max_bare,7)*1.e9;

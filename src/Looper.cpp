@@ -78,7 +78,7 @@ void Looper::SetBranchesCommon(){
 	SetBranchAddress("runNumber"	,&runNumber);
 	SetBranchAddress("spillNumber"	,&spillNumber);
 	SetBranchAddress("evtNumber"	,&evtNumber);
-
+	SetBranchAddress("digi_frequency"	,&digi_frequency);
 }
 
 void Looper::SetBranchesOuttree(){
@@ -110,6 +110,7 @@ void Looper::SetBranchesOuttree(){
 	SetBranchAddress("digi_max_amplitude_bare",&digi_max_amplitude_bare       );	
 	SetBranchAddress("digi_time_at_max_bare",&digi_time_at_max_bare         );	
 	SetBranchAddress("digi_charge_integrated_bare",&digi_charge_integrated_bare   );	
+	SetBranchAddress("digi_charge_integrated_bare_fast",&digi_charge_integrated_bare_fast   );	
 	SetBranchAddress("digi_max_amplitude_bare_noise_sub",&digi_max_amplitude_bare_noise_sub       );	
 	SetBranchAddress("digi_time_at_max_bare_noise_sub",&digi_time_at_max_bare_noise_sub         );	
 	SetBranchAddress("digi_charge_integrated_bare_noise_sub",&digi_charge_integrated_bare_noise_sub   );	

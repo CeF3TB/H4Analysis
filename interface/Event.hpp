@@ -27,6 +27,7 @@ map<string,bool> isFilled;
 	UInt_t spillNumber;
 	UInt_t evtNumber;
 	// ---- H4tree ---
+        UInt_t digi_frequency;
 	UInt_t evtTimeDist;
 	UInt_t evtTimeStart;
 	UInt_t nEvtTimes;
@@ -90,6 +91,7 @@ map<string,bool> isFilled;
  	vector<float>  *digi_max_amplitude_bare ;
  	vector<float>  *digi_time_at_max_bare ;
  	vector<float>  *digi_charge_integrated_bare ;
+ 	vector<float>  *digi_charge_integrated_bare_fast ;
  	vector<float>  *digi_max_amplitude_bare_noise_sub ;
  	vector<float>  *digi_time_at_max_bare_noise_sub ;
  	vector<float>  *digi_charge_integrated_bare_noise_sub ;

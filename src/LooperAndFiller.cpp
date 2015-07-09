@@ -33,6 +33,7 @@ void LoopAndFill::Fill(){
 	//copy from this to out->
 	//
 	out.runNumber	=runNumber;
+	out.digi_frequency	=digi_frequency;
 	out.spillNumber	=spillNumber;
 	out.evtNumber	=evtNumber;
 	// ---- H4tree ---
@@ -103,6 +104,7 @@ void LoopAndFill::Fill(){
 	CopyVector(digi_max_amplitude_bare       ,out.digi_max_amplitude_bare       );
 	CopyVector(digi_time_at_max_bare         ,out.digi_time_at_max_bare         );
 	CopyVector(digi_charge_integrated_bare   ,out.digi_charge_integrated_bare   );
+	CopyVector(digi_charge_integrated_bare_fast   ,out.digi_charge_integrated_bare_fast   );
 	CopyVector(digi_max_amplitude_bare_noise_sub       ,out.digi_max_amplitude_bare_noise_sub       );
 	CopyVector(digi_time_at_max_bare_noise_sub         ,out.digi_time_at_max_bare_noise_sub         );
 	CopyVector(digi_charge_integrated_bare_noise_sub   ,out.digi_charge_integrated_bare_noise_sub   );
