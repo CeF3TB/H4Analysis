@@ -25,10 +25,15 @@ void PromptRecoAnalysis::AnalyzeEvent()
       //      cout << ch << " "<< l->adcData[iAdc]<< endl;
       l->BGOvalues->at(ch)=l->adcData[iAdc];
     }
-    else if (l->adcBoard[iAdc]==0x6010001){//small hodo for 2015 read out with adc board, channel 2,3,4,5
+    else if (l->adcBoard[iAdc]==0x6010001){//small hodo for 2015 read out with adc board
       unsigned int ch = l->adcChannel[iAdc];
-      if(ch<2 || ch>5) continue;
-      l->HODOSMALLvalues->at(ch-2)=l->adcData[iAdc];
+      //      std::cout<<ch<<std::endl;
+      if(ch<2 || ch>13) continue;
+      if(ch<6){//2,3,4,5 are on y; 10,11,12,13 on x
+	l->HODOSMALLvalues->at(ch-2)=l->adcData[iAdc];
+      }else if(ch>9){
+	l->HODOSMALLvalues->at(ch-6)=l->adcData[iAdc];
+      }
     }
   }
   

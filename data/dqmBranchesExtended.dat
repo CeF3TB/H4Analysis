@@ -31,6 +31,7 @@ HODOY2
 # Bare - no fft
 digi_charge_integrated_bare
 digi_charge_integrated_bare_fast
+digi_charge_integrated_bare_slow
 digi_max_amplitude_bare
 #digi_time_at_frac30_bare
 #digi_time_at_frac50_bare
