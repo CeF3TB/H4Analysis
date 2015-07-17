@@ -101,8 +101,8 @@ void PromptRecoAnalysis::AnalyzeEvent()
   l->digi_max_amplitude_bare       ->clear();
   l->digi_time_at_max_bare         ->clear();
   l->digi_charge_integrated_bare   ->clear();
-  l->digi_charge_integrated_bare_fast   ->clear();
-  l->digi_charge_integrated_bare_slow   ->clear();
+  l->digi_charge_integrated_bare_noise_sub_fast   ->clear();
+  l->digi_charge_integrated_bare_noise_sub_slow   ->clear();
   l->digi_time_at_frac30_bare      ->clear();
   l->digi_time_at_frac50_bare      ->clear();
   l->digi_fall_time_at_frac30_bare ->clear();
@@ -110,8 +110,8 @@ void PromptRecoAnalysis::AnalyzeEvent()
   l->digi_max_amplitude_bare       ->resize(nDigiChannels,-999); 
   l->digi_time_at_max_bare         ->resize(nDigiChannels,-999); 
   l->digi_charge_integrated_bare   ->resize(nDigiChannels,-999); 
-  l->digi_charge_integrated_bare_fast   ->resize(nDigiChannels,-999); 
-  l->digi_charge_integrated_bare_slow   ->resize(nDigiChannels,-999); 
+  l->digi_charge_integrated_bare_noise_sub_fast   ->resize(nDigiChannels,-999); 
+  l->digi_charge_integrated_bare_noise_sub_slow   ->resize(nDigiChannels,-999); 
   l->digi_time_at_frac30_bare      ->resize(nDigiChannels,-999); 
   l->digi_time_at_frac50_bare      ->resize(nDigiChannels,-999); 
   l->digi_fall_time_at_frac30_bare ->resize(nDigiChannels,-999); 
@@ -186,10 +186,6 @@ void PromptRecoAnalysis::AnalyzeEvent()
 
     l->	digi_max_amplitude_bare->at(i)=wave_max_bare.max_amplitude;
     l-> digi_charge_integrated_bare->at(i)=waveform.at(i)->charge_integrated(4,900);
-    float finalFastSample=230;
-    if(l->digi_frequency==1)finalFastSample=185;//no direct realtion between 5Gs and 2.5Gs since offset is different
-    l-> digi_charge_integrated_bare_fast->at(i)=waveform.at(i)->charge_integrated(4,finalFastSample);
-    l-> digi_charge_integrated_bare_slow->at(i)=waveform.at(i)->charge_integrated(finalFastSample,900);
     l-> digi_time_at_max_bare->at(i)=wave_max_bare.time_at_max*1.e9;
     l-> digi_time_at_frac30_bare->at(i)=waveform.at(i)->time_at_frac(wave_max_bare.time_at_max-30.e-9,wave_max_bare.time_at_max,0.3,wave_max_bare,7)*1.e9;
     l-> digi_time_at_frac50_bare->at(i)=waveform.at(i)->time_at_frac(wave_max_bare.time_at_max-30.e-9,wave_max_bare.time_at_max,0.5,wave_max_bare,7)*1.e9;
@@ -201,9 +197,15 @@ void PromptRecoAnalysis::AnalyzeEvent()
     }
 
     Waveform::max_amplitude_informations wave_max_bare_noise_sub = waveform_noise_sub.at(i)->max_amplitude(50,900,5);
+    float finalFastSample=230;
+    if(l->digi_frequency==1)finalFastSample=185;//no direct realtion between 5Gs and 2.5Gs since offset is different
+
     l->	digi_max_amplitude_bare_noise_sub->at(i)=wave_max_bare_noise_sub.max_amplitude;
     l-> digi_charge_integrated_bare_noise_sub->at(i)=waveform_noise_sub.at(i)->charge_integrated(4,900);
     l-> digi_time_at_max_bare_noise_sub->at(i)=wave_max_bare_noise_sub.time_at_max*1.e9;
+    l-> digi_charge_integrated_bare_noise_sub_fast->at(i)=waveform_noise_sub.at(i)->charge_integrated(4,finalFastSample);
+    l-> digi_charge_integrated_bare_noise_sub_slow->at(i)=waveform_noise_sub.at(i)->charge_integrated(finalFastSample,900);
+
 
     Waveform::baseline_informations wave_pedestal_noise_sub = waveform_noise_sub.at(i)->baseline(5,34);
     l->digi_pedestal_bare_noise_sub->at(i)=wave_pedestal_noise_sub.pedestal;

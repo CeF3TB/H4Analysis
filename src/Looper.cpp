@@ -110,8 +110,8 @@ void Looper::SetBranchesOuttree(){
 	SetBranchAddress("digi_max_amplitude_bare",&digi_max_amplitude_bare       );	
 	SetBranchAddress("digi_time_at_max_bare",&digi_time_at_max_bare         );	
 	SetBranchAddress("digi_charge_integrated_bare",&digi_charge_integrated_bare   );	
-	SetBranchAddress("digi_charge_integrated_bare_fast",&digi_charge_integrated_bare_fast   );	
-	SetBranchAddress("digi_charge_integrated_bare_slow",&digi_charge_integrated_bare_slow   );	
+	SetBranchAddress("digi_charge_integrated_bare_noise_sub_fast",&digi_charge_integrated_bare_noise_sub_fast   );	
+	SetBranchAddress("digi_charge_integrated_bare_noise_sub_slow",&digi_charge_integrated_bare_noise_sub_slow   );	
 	SetBranchAddress("digi_max_amplitude_bare_noise_sub",&digi_max_amplitude_bare_noise_sub       );	
 	SetBranchAddress("digi_time_at_max_bare_noise_sub",&digi_time_at_max_bare_noise_sub         );	
 	SetBranchAddress("digi_charge_integrated_bare_noise_sub",&digi_charge_integrated_bare_noise_sub   );	

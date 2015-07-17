@@ -19,7 +19,7 @@ digi_pedestal_rms
 digi_pedestal_bare
 digi_pedestal_bare_rms
 #digi_time_at_frac30
-#digi_time_at_frac50
+digi_time_at_frac50
 #digi_fall_time_at_frac30
 #digi_fall_time_at_frac50
 digi_time_at_max
@@ -30,8 +30,8 @@ HODOY2
 
 # Bare - no fft
 digi_charge_integrated_bare
-digi_charge_integrated_bare_fast
-digi_charge_integrated_bare_slow
+digi_charge_integrated_bare_noise_sub_fast
+digi_charge_integrated_bare_noise_sub_slow
 digi_max_amplitude_bare
 #digi_time_at_frac30_bare
 #digi_time_at_frac50_bare
