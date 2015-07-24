@@ -1,15 +1,15 @@
 #include "interface/PromptRecoAnalysis.hpp"
 #include <assert.h>
-
+//#define TESTPULSE
 
 void PromptRecoAnalysis::AnalyzeEvent()
 {
-
+#ifndef TESTPULSE
   l->SCINTvalues->clear(); l->SCINTvalues->resize(nSCINTChannels);
   l->HODOSMALLvalues->clear(); l->HODOSMALLvalues->resize(nHODOSMALLChannels);
   l->BGOvalues->clear(); l->BGOvalues->resize(nBGOChannels);
 
-
+  std::cout<<"starting"<<std::endl;
   for (unsigned int iAdc=0; iAdc<l->nAdcChannels; iAdc++){
     if (l->adcBoard[iAdc]==0x0B030001){ // 11,3,0,1
       unsigned int ch = l->adcChannel[iAdc];
@@ -25,6 +25,7 @@ void PromptRecoAnalysis::AnalyzeEvent()
       //      cout << ch << " "<< l->adcData[iAdc]<< endl;
       l->BGOvalues->at(ch)=l->adcData[iAdc];
     }
+    
     else if (l->adcBoard[iAdc]==0x6010001){//small hodo for 2015 read out with adc board
       unsigned int ch = l->adcChannel[iAdc];
       //      std::cout<<ch<<std::endl;
@@ -36,16 +37,16 @@ void PromptRecoAnalysis::AnalyzeEvent()
       }
     }
   }
-  
-  //  cout << "done adc" << endl;
+#endif
+  //    cout << "done adc" << endl;
 
   FillTdc();
 
-  //  cout << "done tdc" << endl;
+  //    cout << "done tdc" << endl;
 
   FillHodo();
 
-  //  cout << "done hodo" << endl;
+  //    cout << "done hodo" << endl;
 
 
   if (mapdigichannels.size()==0) {
@@ -105,8 +106,8 @@ void PromptRecoAnalysis::AnalyzeEvent()
   l->digi_charge_integrated_bare_noise_sub_slow   ->clear();
   l->digi_time_at_frac30_bare      ->clear();
   l->digi_time_at_frac50_bare      ->clear();
+  l->digi_time_at_frac50_bare_noise_sub      ->clear();
   l->digi_fall_time_at_frac30_bare ->clear();
-  l->digi_fall_time_at_frac50_bare ->clear();
   l->digi_max_amplitude_bare       ->resize(nDigiChannels,-999); 
   l->digi_time_at_max_bare         ->resize(nDigiChannels,-999); 
   l->digi_charge_integrated_bare   ->resize(nDigiChannels,-999); 
@@ -114,6 +115,7 @@ void PromptRecoAnalysis::AnalyzeEvent()
   l->digi_charge_integrated_bare_noise_sub_slow   ->resize(nDigiChannels,-999); 
   l->digi_time_at_frac30_bare      ->resize(nDigiChannels,-999); 
   l->digi_time_at_frac50_bare      ->resize(nDigiChannels,-999); 
+  l->digi_time_at_frac50_bare_noise_sub      ->resize(nDigiChannels,-999); 
   l->digi_fall_time_at_frac30_bare ->resize(nDigiChannels,-999); 
   l->digi_fall_time_at_frac50_bare ->resize(nDigiChannels,-999); 
   l->digi_pedestal->resize(nDigiChannels,-999);
@@ -188,7 +190,7 @@ void PromptRecoAnalysis::AnalyzeEvent()
     l-> digi_charge_integrated_bare->at(i)=waveform.at(i)->charge_integrated(4,900);
     l-> digi_time_at_max_bare->at(i)=wave_max_bare.time_at_max*1.e9;
     l-> digi_time_at_frac30_bare->at(i)=waveform.at(i)->time_at_frac(wave_max_bare.time_at_max-30.e-9,wave_max_bare.time_at_max,0.3,wave_max_bare,7)*1.e9;
-    l-> digi_time_at_frac50_bare->at(i)=waveform.at(i)->time_at_frac(wave_max_bare.time_at_max-30.e-9,wave_max_bare.time_at_max,0.5,wave_max_bare,7)*1.e9;
+    l-> digi_time_at_frac50_bare->at(i)=waveform.at(i)->time_at_frac(wave_max_bare.time_at_max-150.e-9,wave_max_bare.time_at_max,0.5,wave_max_bare,7)*1.e9;
     l->digi_fall_time_at_frac30_bare->at(i)=waveform.at(i)->time_at_frac(wave_max_bare.time_at_max,wave_max_bare.time_at_max+60.e-9,0.3,wave_max_bare,7,false)*1.e9;
     l->digi_fall_time_at_frac50_bare->at(i)=waveform.at(i)->time_at_frac(wave_max_bare.time_at_max,wave_max_bare.time_at_max+60.e-9,0.5,wave_max_bare,7,false)*1.e9;
 
@@ -203,6 +205,7 @@ void PromptRecoAnalysis::AnalyzeEvent()
     l->	digi_max_amplitude_bare_noise_sub->at(i)=wave_max_bare_noise_sub.max_amplitude;
     l-> digi_charge_integrated_bare_noise_sub->at(i)=waveform_noise_sub.at(i)->charge_integrated(4,900);
     l-> digi_time_at_max_bare_noise_sub->at(i)=wave_max_bare_noise_sub.time_at_max*1.e9;
+    l-> digi_time_at_frac50_bare_noise_sub->at(i)=waveform.at(i)->time_at_frac(wave_max_bare_noise_sub.time_at_max-180.e-9,wave_max_bare_noise_sub.time_at_max,0.5,wave_max_bare_noise_sub,7)*1.e9;
     l-> digi_charge_integrated_bare_noise_sub_fast->at(i)=waveform_noise_sub.at(i)->charge_integrated(4,finalFastSample);
     l-> digi_charge_integrated_bare_noise_sub_slow->at(i)=waveform_noise_sub.at(i)->charge_integrated(finalFastSample,900);
 

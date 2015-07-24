@@ -98,6 +98,7 @@ map<string,bool> isFilled;
  	vector<float>  *digi_charge_integrated_bare_noise_sub ;
  	vector<float>  *digi_time_at_frac30_bare ;
  	vector<float>  *digi_time_at_frac50_bare ;
+ 	vector<float>  *digi_time_at_frac50_bare_noise_sub ;
  	vector<float>  *digi_fall_time_at_frac30_bare ;
  	vector<float>  *digi_fall_time_at_frac50_bare ;
 	// --- sub

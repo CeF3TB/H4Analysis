@@ -114,6 +114,7 @@ void LoopAndFill::Fill(){
 	CopyVector(digi_charge_integrated_noise_sub   ,out.digi_charge_integrated_noise_sub   );
 	CopyVector(digi_time_at_frac30_bare      ,out.digi_time_at_frac30_bare      );
 	CopyVector(digi_time_at_frac50_bare      ,out.digi_time_at_frac50_bare      );
+	CopyVector(digi_time_at_frac50_bare_noise_sub      ,out.digi_time_at_frac50_bare_noise_sub      );
 	CopyVector(digi_fall_time_at_frac30_bare ,out.digi_fall_time_at_frac30_bare );
 	//	CopyVector(digi_fall_time_at_frac50_bare ,out.digi_fall_time_at_frac50_bare );
 	//

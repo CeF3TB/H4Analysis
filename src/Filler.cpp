@@ -287,6 +287,7 @@ void Filler::SetBranchesOuttree(){
 	SetBranchAddress("digi_charge_integrated_noise_sub"	,&out.digi_charge_integrated_noise_sub   );	
 	SetBranchAddress("digi_time_at_frac30_bare"	,&out.digi_time_at_frac30_bare      );	
 	SetBranchAddress("digi_time_at_frac50_bare"	,&out.digi_time_at_frac50_bare      );	
+	SetBranchAddress("digi_time_at_frac50_bare_noise_sub"	,&out.digi_time_at_frac50_bare_noise_sub      );	
 	SetBranchAddress("digi_fall_time_at_frac30_bare",&out.digi_fall_time_at_frac30_bare );	
 	SetBranchAddress("digi_fall_time_at_frac50_bare",&out.digi_fall_time_at_frac50_bare );	
 
