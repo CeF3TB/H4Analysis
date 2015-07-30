@@ -9,7 +9,6 @@ void PromptRecoAnalysis::AnalyzeEvent()
   l->HODOSMALLvalues->clear(); l->HODOSMALLvalues->resize(nHODOSMALLChannels);
   l->BGOvalues->clear(); l->BGOvalues->resize(nBGOChannels);
 
-  std::cout<<"starting"<<std::endl;
   for (unsigned int iAdc=0; iAdc<l->nAdcChannels; iAdc++){
     if (l->adcBoard[iAdc]==0x0B030001){ // 11,3,0,1
       unsigned int ch = l->adcChannel[iAdc];
