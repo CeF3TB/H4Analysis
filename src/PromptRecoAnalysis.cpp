@@ -106,6 +106,7 @@ void PromptRecoAnalysis::AnalyzeEvent()
   l->digi_time_at_frac30_bare      ->clear();
   l->digi_time_at_frac50_bare      ->clear();
   l->digi_time_at_frac50_bare_noise_sub      ->clear();
+  l->digi_time_at_1000_bare_noise_sub      ->clear();
   l->digi_fall_time_at_frac30_bare ->clear();
   l->digi_max_amplitude_bare       ->resize(nDigiChannels,-999); 
   l->digi_time_at_max_bare         ->resize(nDigiChannels,-999); 
@@ -115,6 +116,7 @@ void PromptRecoAnalysis::AnalyzeEvent()
   l->digi_time_at_frac30_bare      ->resize(nDigiChannels,-999); 
   l->digi_time_at_frac50_bare      ->resize(nDigiChannels,-999); 
   l->digi_time_at_frac50_bare_noise_sub      ->resize(nDigiChannels,-999); 
+  l->digi_time_at_1000_bare_noise_sub      ->resize(nDigiChannels,-999); 
   l->digi_fall_time_at_frac30_bare ->resize(nDigiChannels,-999); 
   l->digi_fall_time_at_frac50_bare ->resize(nDigiChannels,-999); 
   l->digi_pedestal->resize(nDigiChannels,-999);
@@ -205,6 +207,10 @@ void PromptRecoAnalysis::AnalyzeEvent()
     l-> digi_charge_integrated_bare_noise_sub->at(i)=waveform_noise_sub.at(i)->charge_integrated(4,900);
     l-> digi_time_at_max_bare_noise_sub->at(i)=wave_max_bare_noise_sub.time_at_max*1.e9;
     l-> digi_time_at_frac50_bare_noise_sub->at(i)=waveform.at(i)->time_at_frac(wave_max_bare_noise_sub.time_at_max-180.e-9,wave_max_bare_noise_sub.time_at_max,0.5,wave_max_bare_noise_sub,7)*1.e9;
+    // 
+    std::vector<float> crossingTimes=waveform.at(i)->time_at_threshold((const float)0., 0.25e-6,1000,7);
+    if(crossingTimes.size()>0)    l-> digi_time_at_1000_bare_noise_sub->at(i)=crossingTimes[0]*1.e9;
+    else l-> digi_time_at_1000_bare_noise_sub->at(i)=-999;
     l-> digi_charge_integrated_bare_noise_sub_fast->at(i)=waveform_noise_sub.at(i)->charge_integrated(4,finalFastSample);
     l-> digi_charge_integrated_bare_noise_sub_slow->at(i)=waveform_noise_sub.at(i)->charge_integrated(finalFastSample,900);
 

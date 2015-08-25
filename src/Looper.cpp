@@ -121,6 +121,7 @@ void Looper::SetBranchesOuttree(){
 	SetBranchAddress("digi_time_at_frac30_bare",&digi_time_at_frac30_bare      );	
 	SetBranchAddress("digi_time_at_frac50_bare",&digi_time_at_frac50_bare      );	
 	SetBranchAddress("digi_time_at_frac50_bare_noise_sub",&digi_time_at_frac50_bare_noise_sub      );	
+	SetBranchAddress("digi_time_at_1000_bare_noise_sub",&digi_time_at_1000_bare_noise_sub      );	
 	SetBranchAddress("digi_fall_time_at_frac30_bare",&digi_fall_time_at_frac30_bare );	
 	SetBranchAddress("digi_fall_time_at_frac50_bare",&digi_fall_time_at_frac50_bare );	
 	//
