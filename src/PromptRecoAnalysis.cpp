@@ -199,7 +199,9 @@ void PromptRecoAnalysis::AnalyzeEvent()
       waveform_noise_sub.at(i)->addTimeAndSample(waveform.at(i)->_times[iS],(waveform.at(i)->_samples[iS]-waveform_noise->_samples[iS]));
     }
 
-    Waveform::max_amplitude_informations wave_max_bare_noise_sub = waveform_noise_sub.at(i)->max_amplitude(50,900,5);
+    int sampleIntegral=190;
+    if(i==2)sampleIntegral=50;
+    Waveform::max_amplitude_informations wave_max_bare_noise_sub = waveform_noise_sub.at(i)->max_amplitude(sampleIntegral,900,5);
     float finalFastSample=230;
     if(l->digi_frequency==1)finalFastSample=185;//no direct realtion between 5Gs and 2.5Gs since offset is different
 
