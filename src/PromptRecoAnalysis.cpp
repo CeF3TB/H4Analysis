@@ -52,7 +52,7 @@ void PromptRecoAnalysis::AnalyzeEvent()
     for (unsigned int iS=0; iS < l->nDigiSamples; iS++){
       unsigned int ch = l->digiChannel[iS];
       unsigned int gr = l->digiGroup[iS];
-      unsigned int index = 8*gr+ch;
+      unsigned int index = (8+1)*gr+ch;
       if (mapdigichannels.find(index)==mapdigichannels.end()){
 	unsigned int my = mapdigichannels.size();
 	mapdigichannels.insert(std::make_pair<unsigned int,unsigned int>(index,my));
@@ -158,7 +158,7 @@ void PromptRecoAnalysis::AnalyzeEvent()
   int digiFrequency[nDigiChannels];
   // add informations in the waveform
   for (unsigned int iS=0; iS < l->nDigiSamples; iS++){
-    unsigned int index = mapdigichannels[l->digiGroup[iS]*8+l->digiChannel[iS]];
+    unsigned int index = mapdigichannels[l->digiGroup[iS]*(8+1)+l->digiChannel[iS]];
     //    cout << "debug " << l->digiGroup[iS] << " " << l->digiChannel[iS] << " " << index << endl;
     waveform.at(index)->addTimeAndSample(l->digiSampleIndex[iS]*timeSampleUnit(l->digiFrequency[iS]),l->digiSampleValue[iS]);
     //    cout << index << " " << l->digiSampleIndex[iS]*timeSampleUnit(l->digiFrequency[iS]) << " " << l->digiSampleValue[iS] << endl;
@@ -199,8 +199,7 @@ void PromptRecoAnalysis::AnalyzeEvent()
       waveform_noise_sub.at(i)->addTimeAndSample(waveform.at(i)->_times[iS],(waveform.at(i)->_samples[iS]-waveform_noise->_samples[iS]));
     }
 
-    int sampleIntegral=190;
-    if(i==2)sampleIntegral=50;
+    int sampleIntegral=4;
     Waveform::max_amplitude_informations wave_max_bare_noise_sub = waveform_noise_sub.at(i)->max_amplitude(sampleIntegral,900,5);
     float finalFastSample=230;
     if(l->digi_frequency==1)finalFastSample=185;//no direct realtion between 5Gs and 2.5Gs since offset is different
@@ -215,7 +214,7 @@ void PromptRecoAnalysis::AnalyzeEvent()
     else l-> digi_time_at_1000_bare_noise_sub->at(i)=-999;
     l-> digi_charge_integrated_bare_noise_sub_fast->at(i)=waveform_noise_sub.at(i)->charge_integrated(4,finalFastSample);
     l-> digi_charge_integrated_bare_noise_sub_slow->at(i)=waveform_noise_sub.at(i)->charge_integrated(finalFastSample,900);
-
+    //    if(i<4 && l-> digi_charge_integrated_bare_noise_sub_fast->at(i)<0)std::cout<<i<<" "<< l-> digi_charge_integrated_bare_noise_sub_fast->at(i)<<std::endl;
 
     Waveform::baseline_informations wave_pedestal_noise_sub = waveform_noise_sub.at(i)->baseline(5,34);
     l->digi_pedestal_bare_noise_sub->at(i)=wave_pedestal_noise_sub.pedestal;
