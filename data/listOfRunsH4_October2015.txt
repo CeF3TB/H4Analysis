@@ -1,0 +1,28 @@
+Good runs list:
+
+------------- MAPD Runs -----------------
+Central Runs and runs on Milano fibers listed here. Other positions available, check elog 117-125 if needed.
+
+---50 GeV
+CENTRE 200k Run 3971
+NW1 100k Run 3983
+NW2 100k Run 3984
+NW3 100k Run 3985
+
+---100 GeV
+CENTRE 200k Run 3990
+NW1 100k Run 3996
+NW2 100k Run 3997
+NW3 100k Run 3998
+
+---150 GeV
+CENTRE 200k Run 4001
+NW1 100k Run 4010 
+NW2 100k Run 4011
+NW3 100k Run 4012
+
+---200 GeV
+CENTRE 200k Run 4026 //change energy in DB afterwards
+NW1 70k Run 4031
+NW2 70k Run 4032
+NW3 70k Run 4033
