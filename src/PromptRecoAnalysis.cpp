@@ -153,7 +153,24 @@ void PromptRecoAnalysis::AnalyzeEvent()
 
 
 
+
+
   Waveform*  waveform_noise= new Waveform();
+
+  bool isOctober2015Run = (l->runNumber > 3900. && l->runNumber<4200);
+  bool isSignalPositive[8] = {false};//4 cef3 and then MCP
+  int emptyChannelIndex=emptyChannel;
+  if(isOctober2015Run) {
+    emptyChannelIndex+=2;//in october empty channel was ch6
+    if(l->runNumber<4060){//mapd and sipm signal is positive
+      isSignalPositive[0]=true;
+      isSignalPositive[1]=true;
+      isSignalPositive[3]=true;
+      isSignalPositive[4]=true;
+    }
+  }
+
+
 
   int digiFrequency[nDigiChannels];
   // add informations in the waveform
@@ -178,7 +195,7 @@ void PromptRecoAnalysis::AnalyzeEvent()
     //    cout << i << " " << waveform.at(i)->_samples.size() << endl;
     Waveform::baseline_informations wave_pedestal = waveform.at(i)->baseline(5,34);
     waveform.at(i)->offset(wave_pedestal.pedestal);
-    waveform.at(i)->rescale(-1);
+    if(!isSignalPositive[i])    waveform.at(i)->rescale(-1);
 
     l->digi_pedestal_bare->at(i)=wave_pedestal.pedestal;
     l->digi_pedestal_bare_rms->at(i)=wave_pedestal.rms;
@@ -315,6 +332,7 @@ void PromptRecoAnalysis::Init(LoopAndFill *l1)
 	BaseAnalysis::Init(l1);
 
 	FillFiberOrder();
+
 
 	cout<<"[PromptRecoAnalysis]::[Init]::Done"<<endl;
 	return ;
