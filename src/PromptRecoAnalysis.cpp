@@ -158,7 +158,7 @@ void PromptRecoAnalysis::AnalyzeEvent()
   Waveform*  waveform_noise= new Waveform();
 
   bool isOctober2015Run = (l->runNumber > 3900. && l->runNumber<4200);
-  bool isSignalPositive[8] = {false};//4 cef3 and then MCP
+  bool isSignalPositive[9] = {false};//4 cef3 and then MCP
   int emptyChannelIndex=emptyChannel;
   if(isOctober2015Run) {
     emptyChannelIndex+=2;//in october empty channel was ch6
