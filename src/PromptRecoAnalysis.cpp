@@ -213,7 +213,8 @@ void PromptRecoAnalysis::AnalyzeEvent()
     l->digi_fall_time_at_frac50_bare->at(i)=waveform.at(i)->time_at_frac(wave_max_bare.time_at_max,wave_max_bare.time_at_max+60.e-9,0.5,wave_max_bare,7,false)*1.e9;
 
     for (unsigned int iS=0; iS < 1024; iS++){
-      waveform_noise_sub.at(i)->addTimeAndSample(waveform.at(i)->_times[iS],(waveform.at(i)->_samples[iS]-waveform_noise->_samples[iS]));
+      if(!isSignalPositive[i])      waveform_noise_sub.at(i)->addTimeAndSample(waveform.at(i)->_times[iS],(waveform.at(i)->_samples[iS]-waveform_noise->_samples[iS]));
+      else waveform_noise_sub.at(i)->addTimeAndSample(waveform.at(i)->_times[iS],(waveform.at(i)->_samples[iS]+waveform_noise->_samples[iS]));
     }
 
     int sampleIntegral=4;
