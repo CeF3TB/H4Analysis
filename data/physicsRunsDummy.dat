@@ -8,7 +8,7 @@
 #100 GeV runs 5 Gs
 #InputRuns=dcap://t3se01.psi.ch:22125/pnfs/psi.ch/cms/trivcat/store/t3groups/ethz-ecal/H4TestBeamJune2015/data/raw/DataTree/%%RUN%%/*.root 2542,2545,2547,2548,2549,2550,2551,2552,2553,2554,2556,2557,2558,2559,2560,2561,2562,2563,2564,2565,2566,2567,2568,2569,2579,2571,2572,2573,2574
 #dummy
-InputRuns=dcap://t3se01.psi.ch:22125/pnfs/psi.ch/cms/trivcat/store/t3groups/ethz-ecal/H4TestBeamFall2015/raw/DataTree/%%RUN%%/*.root 4054
-#InputRuns=srm://srm-eoscms.cern.ch//eos/cms/store/group/dpg_ecal/alca_ecalcalib/ECALTB_H4_Fall2015/raw/DataTree/%%RUN%%/1.root 4010
+InputRuns=dcap://t3se01.psi.ch:22125/pnfs/psi.ch/cms/trivcat/store/t3groups/ethz-ecal/H4TestBeamFall2015/raw/DataTree/%%RUN%%/1.root 4493
+#InputRuns=srm://srm-eoscms.cern.ch//eos/cms/store/group/dpg_ecal/alca_ecalcalib/ECALTB_H4_Fall2015/raw/DataTree/%%RUN%%/1.root 4491
 
 #InputRuns=dcap://t3se01.psi.ch:22125/pnfs/psi.ch/cms/trivcat/store/t3groups/ethz-ecal/H4TestBeamJune2015/data/raw/DataTree/%%RUN%%/1.root 2557

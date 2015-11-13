@@ -3,7 +3,7 @@ InputBranches=data/unpackBranches.dat
 include=data/physicsRunsDummy.dat
 
 ######## Output File #######
-OutputFile=output_run4054.root
+OutputFile=output_run4493.root
 OutputBranches=data/dqmBranchesExtended.dat
 
 ####### Analysis #######
@@ -13,7 +13,7 @@ OutputBranches=data/dqmBranchesExtended.dat
 #Analysis=PromptRecoAnalysis,PedestalAnalysis,PlotAnalysis,Corr1Analysis,FitAnalysis
 Analysis=PromptRecoAnalysis,DatabaseReadAnalysis
 #
-config=DatabaseReadAnalysis databasename="sqlite://data/CeF3_H4DFall2015_analysisdb_dummy.sqlite" tablename="cef3"
+config=DatabaseReadAnalysis databasename="sqlite://data/CeF3_H4DOctober2015_analysisdb.sqlite" tablename="cef3"
 #
 #config=PedestalAnalysis nChannels=4
 #
