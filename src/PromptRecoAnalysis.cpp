@@ -157,16 +157,32 @@ void PromptRecoAnalysis::AnalyzeEvent()
 
   Waveform*  waveform_noise= new Waveform();
 
-  bool isOctober2015Run = (l->runNumber > 3900. && l->runNumber<4200);
+  bool isOctober2015Run = (l->runNumber > 3900. && l->runNumber<4550);
   bool isSignalPositive[9] = {false};//4 cef3 and then MCP
   int emptyChannelIndex=emptyChannel;
   if(isOctober2015Run) {
+    //Run ranges:
+    //for this ranges: digiGroup=0 ch=0,1,3 (Kuraray),4 fibres (ch=2 is broken) ch=5 mcp
+    //3971-4033 MAPD
+    //4051-4054 MAPD+SiPM
+    //4063-4104 PMT 
+    //for this ranges: digiGroup=1 ch=0,1,2(Kuraray),3 fibres ch=4 mcp
+    //4491-4536 Diffuser on MAPD + Nino
+    //see here for full list: https://github.com/CeF3TB/H4Analysis/blob/master/data/listOfRunsH4_October2015.txt 
     emptyChannelIndex+=2;//in october empty channel was ch6
-    if(l->runNumber<4060){//mapd and sipm signal is positive
+    if(l->runNumber<4060){//mapd and mapd+sipm runs. mapd and sipm signal are positive. mcp is negative
       isSignalPositive[0]=true;
       isSignalPositive[1]=true;
       isSignalPositive[3]=true;
       isSignalPositive[4]=true;
+    }else if(l->runNumber>4060 && l->runNumber<=4104){
+      //do nothing since all pmt channels are negative
+    }
+    else if(l->runNumber>4490){//1 nino negative
+      isSignalPositive[0]=true;
+      isSignalPositive[1]=false;
+      isSignalPositive[2]=true;
+      isSignalPositive[3]=true;
     }
   }
 
