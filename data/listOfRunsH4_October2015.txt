@@ -97,3 +97,46 @@ RUN       position     events        HV(0,1, 2, 3)
 4102     CENTER       150k           1450, 1450, 1900, 1450
 4103     CENTER       150k           1250, 1450, 1900, 1450
 4104 (100k) + 4107 (50k)     CENTER       150k           1250, 1450, 1900, 1450
+
+------------- Diffuser + Nino on SiPM Runs -----------------
+Energy    Run       position    events
+200       4491      NE3_CH      150k
+200       4492      CENTER      158k
+200       4516      UP2         80k
+200       4517      DOWN2       85k
+200       4518      LEFT2       80k
+200       4519      RIGHT2      80k
+200       4520      SE2         80k
+
+
+150       4493      CENTER      151k
+150       4494      NE3_CH      151k
+150       4531      UP2         75k
+150       4532      DOWN2       75k
+150       4533      LEFT2       75k
+150       4534      RIGHT2      75k
+150       4535      SE2         75k
+
+
+100       4495      NE3_CH      186k
+100       4496      CENTER      170k
+100       4526      UP2         75k
+100       4527      DOWN2       75k
+100       4528      LEFT2       75k
+100       4529      RIGHT2      75k
+100       4530      SE2         75k
+
+
+
+50        4497      CENTER      153k
+50        4498      NE3_CH      268k
+50        4521      UP2         75k
+50        4522      DOWN2       75k
+50        4523      LEFT2       75k
+50        4524      RIGHT2      75k
+50        4525      SE2         75k
+
+
+20        4499      NE3_CH      6k
+20        4515      CENTER      100k
+20        4536      UP2         8k
