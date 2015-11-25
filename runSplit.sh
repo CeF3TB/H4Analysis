@@ -10,5 +10,5 @@ do
     sed -i "s|3990|$run|" data/physicsRunsDummySplit_"$run"_$i.dat
     sed -i "s|*.root|$i*.root|" data/physicsRunsDummySplit_"$run"_$i.dat
     sed -i "s|physicsRunsDummySplit|physicsRunsDummySplit_"$run"_$i|" test/configPhysicsDummySplit_"$run"_$i.dat
-#    python python/Loop.py --input test/configPhysicsDummySplit_"$run"_$i.dat --debug 3
+    python python/Loop.py --input test/configPhysicsDummySplit_"$run"_$i.dat --debug 3
 done
