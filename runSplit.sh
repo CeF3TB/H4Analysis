@@ -1,6 +1,8 @@
 #!/bin/bash
 
 run=$1
+destinationdir="srm://t3se01.psi.ch/pnfs/psi.ch/cms/trivcat/store/user/micheli/rawData/"
+echo $destinationdir
 
 for i in {1..10..1}
 do
@@ -12,3 +14,7 @@ do
     sed -i "s|physicsRunsDummySplit|physicsRunsDummySplit_"$run"_$i|" test/configPhysicsDummySplit_"$run"_$i.dat
     python python/Loop.py --input test/configPhysicsDummySplit_"$run"_$i.dat --debug 3
 done
+
+hadd output_run$run.root output_run"$run"_*.root
+rm output_run"$run"_*.root
+gfal-copy file:///shome/micheli/H4Analysis/output_run$run.root $destinationdir
