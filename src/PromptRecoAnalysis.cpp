@@ -169,7 +169,7 @@ void PromptRecoAnalysis::AnalyzeEvent()
     //for this ranges: digiGroup=1 ch=0,1,2(Kuraray),3 fibres ch=4 mcp
     //4491-4536 Diffuser on MAPD + Nino
     //see here for full list: https://github.com/CeF3TB/H4Analysis/blob/master/data/listOfRunsH4_October2015.txt 
-    emptyChannelIndex+=2;//in october empty channel was ch6
+    emptyChannelIndex+=3;//in october empty channel was ch6
     if(l->runNumber<4060){//mapd and mapd+sipm runs. mapd and sipm signal are positive. mcp is negative
       isSignalPositive[0]=true;
       isSignalPositive[1]=true;
@@ -183,6 +183,7 @@ void PromptRecoAnalysis::AnalyzeEvent()
       isSignalPositive[1]=false;
       isSignalPositive[2]=true;
       isSignalPositive[3]=true;
+      isSignalPositive[6]=true;
     }
   }
 
