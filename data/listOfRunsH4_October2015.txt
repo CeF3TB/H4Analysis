@@ -22,7 +22,7 @@ NW2 100k Run 4011
 NW3 100k Run 4012
 
 ---200 GeV
-CENTRE 200k Run 4026 //change energy in DB afterwards
+CENTRE 200k Run 4026 
 NW1 70k Run 4031
 NW2 70k Run 4032
 NW3 70k Run 4033
